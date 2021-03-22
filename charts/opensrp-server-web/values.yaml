@@ -205,3 +205,6 @@ oauth_profiles:
 #    callback_url: ""
 #    roles:
 #      - ROLE_CLIENT
+
+sentry:
+  dsn: "https://example.sentry.io"

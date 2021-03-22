@@ -94,8 +94,8 @@ rabbitmq.reply.timeout={{ .Values.rabbitmq.reply_timeout }}
 rabbitmq.concurrent.consumers={{ .Values.rabbitmq.concurrent_consumers }}
 rabbitmq.max.concurrent.consumers={{ .Values.rabbitmq.max_concurrent_consumers }}
 
-sentry.dsn=
-sentry.release=
+sentry.dsn={{ .Values.sentry.dsn }}
+sentry.release={{ .Values.image.tag }}
 
 {{- range $index, $element:=.Values.oauth_profiles }}
 #OAuth Profile {{ $index }}
