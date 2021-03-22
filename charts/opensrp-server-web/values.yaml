@@ -66,6 +66,12 @@ affinity: {}
 # Recreates pods when configMap changes, default is true
 recreatePodsWhenConfigMapChange: true
 
+readinessProbe:
+  initialDelaySeconds: 120
+
+livenessProbe:
+  initialDelaySeconds: 120
+
 postgres:
   host: "db"
   port: 5432
