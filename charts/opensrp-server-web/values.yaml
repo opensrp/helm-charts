@@ -44,7 +44,7 @@ ingress:
   enabled: false
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: opensrp-server-web.local
       paths: []
   tls: []
 resources: {}
@@ -213,4 +213,4 @@ oauth_profiles:
 #      - ROLE_CLIENT
 
 sentry:
-  dsn: "https://example.sentry.io"
+  dsn: ""
