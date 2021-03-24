@@ -44,7 +44,7 @@ ingress:
   enabled: false
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: opensrp-server-web.local
       paths: []
   tls: []
 resources: {}
@@ -65,6 +65,12 @@ affinity: {}
 
 # Recreates pods when configMap changes, default is true
 recreatePodsWhenConfigMapChange: true
+
+readinessProbe:
+  initialDelaySeconds: 120
+
+livenessProbe:
+  initialDelaySeconds: 120
 
 postgres:
   host: "db"
@@ -207,4 +213,4 @@ oauth_profiles:
 #      - ROLE_CLIENT
 
 sentry:
-  dsn: "https://example.sentry.io"
+  dsn: ""
