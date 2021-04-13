@@ -18,7 +18,6 @@ spec:
       labels:
     {{- include "opensrp-server-web.selectorLabels" . | nindent 8 }}
     spec:
-      hostNetwork: true
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
       {{- toYaml . | nindent 8 }}
