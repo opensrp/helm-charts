@@ -214,4 +214,4 @@ oauth_profiles:
 
 sentry:
   dsn: ""
-  environment: "stage"
+  environment: "staging"
