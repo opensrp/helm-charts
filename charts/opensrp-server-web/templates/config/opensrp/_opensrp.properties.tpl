@@ -96,6 +96,7 @@ rabbitmq.max.concurrent.consumers={{ .Values.rabbitmq.max_concurrent_consumers }
 
 sentry.dsn={{ .Values.sentry.dsn }}
 sentry.release={{ .Values.image.tag }}
+sentry.environment={{ .Values.sentry.environment }}
 
 {{- range $index, $element:=.Values.oauth_profiles }}
 #OAuth Profile {{ $index }}
