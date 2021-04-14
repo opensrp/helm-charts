@@ -8,7 +8,7 @@ image:
   repository: manutarus/opensrp-web
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0"
+  tag: "1.0.5"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -26,15 +26,8 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -43,27 +36,11 @@ service:
 ingress:
   enabled: false
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: opensrp-web.local
       paths: []
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
 
 autoscaling:
   enabled: false
@@ -77,3 +54,41 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+shared_vars:
+  keycloak_url: "keycloak_url"
+  app_domain_name: "app_domain_name"
+  opensrp_client_id: "express_opensrp_client_id"
+  opensrp_server: "opensrp_server"
+  keycloak_realm: "keycloak_realm"
+express:
+  opensrp_user_url: "express_opensrp_user_url"
+  opensrp_client_id: "express_opensrp_client_id"
+  opensrp_client_secret: "express_opensrp_client_secret"
+  session_name: "express_session_name"
+  session_secret: "express_session_secret"
+  opensrp_oauth_state: "opensrp"
+  session_login_url: "/login"
+  preloaded_state_file: "/tmp/opensrpState.json"
+  session_filestore_path: "/tmp/express-sessions"
+  frontend_login_url: "/fe/login"
+  session_path: "/"
+  react_build_path: "/usr/src/web"
+  node_env: "development"
+  frontend_logout_url: "/logout"
+front_end:
+  app_enable_product_catalogue: "false"
+  app_enable_plans: "false"
+  app_enable_inventory: "false"
+  app_enable_locations: "false"
+  app_enable_teams_module: "false"
+  app_website_name: "opensrp-web"
+  app_backend_active: "true"
+  app_disable_login_protection: "false"
+  app_enable_opensrp_oauth: "true"
+  app_action_uuid_namespace: "35968df5-f335-44ae-8ae5-25804caa2d86"
+  app_plan_uuid_namespace: "85f7dbbf-07d0-4c92-aa2d-d50d141dde00"
+  app_default_plan_duration_days: 20
+  app_default_activity_duration_days: 7
+  app_date_format: "yyyy-mm-dd"
+  app_navbar_brand_img_src: ""

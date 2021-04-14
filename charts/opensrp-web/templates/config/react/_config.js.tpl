@@ -1,0 +1,31 @@
+{{- define "config.react.config.js" }}
+window._env_ = {
+  REACT_APP_BACKEND_ACTIVE: "{{ .Values.front_end.app_backend_active }}",
+  REACT_APP_DISABLE_LOGIN_PROTECTION: "{{ .Values.front_end.app_disable_login_protection }}",
+  REACT_APP_DOMAIN_NAME: "https://{{ .Values.shared_vars.app_domain_name }}",
+  REACT_APP_ENABLE_OPENSRP_OAUTH: "{{ .Values.front_end.app_enable_opensrp_oauth }}",
+  REACT_APP_EXPRESS_OAUTH_GET_STATE_URL: "https://{{ .Values.shared_vars.app_domain_name }}/oauth/state",
+  REACT_APP_EXPRESS_OAUTH_LOGOUT_URL: "https://{{ .Values.shared_vars.app_domain_name }}/logout",
+  REACT_APP_KEYCLOAK_API_BASE_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/admin/realms/{{ .Values.shared_vars.keycloak_realm }}",
+  REACT_APP_KEYCLOAK_LOGOUT_URL:  "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/logout",
+  REACT_APP_NAVBAR_BRAND_IMG_SRC: "{{ .Values.front_end.app_navbar_brand_img_src }}",
+  REACT_APP_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/token",
+  REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.shared_vars.opensrp_server  }}/opensrp/rest/",
+  REACT_APP_OPENSRP_AUTHORIZATION_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/auth",
+  REACT_APP_OPENSRP_CLIENT_ID: "{{ .Values.shared_vars.opensrp_client_id }}",
+  REACT_APP_OPENSRP_LOGOUT_URL: "https://{{ .Values.shared_vars.opensrp_server  }}//opensrp/logout.do",
+  REACT_APP_OPENSRP_USER_URL: "https://{{ .Values.shared_vars.opensrp_server  }}//opensrp/user-details/",
+  REACT_APP_WEBSITE_NAME: "{{ .Values.express.app_website_name }}",
+  REACT_APP_ACTION_UUID_NAMESPACE: "{{ .Values.front_end.app_action_uuid_namespace }}",
+  REACT_APP_PLAN_UUID_NAMESPACE: "{{ .Values.front_end.app_plan_uuid_namespace }}",
+  REACT_APP_ENABLE_PRODUCT_CATALOGUE: "{{ .Values.front_end.app_enable_product_catalogue }}",
+  REACT_APP_ENABLE_PLANS: "{{ .Values.front_end.app_enable_plans }}",
+  REACT_APP_ENABLE_INVENTORY: "{{ .Values.front_end.app_enable_inventory }}",
+  REACT_APP_ENABLE_LOCATIONS: "{{ .Values.front_end.app_enable_locations }}",
+  REACT_APP_ENABLE_TEAMS_MODULE: "{{ .Values.front_end.app_enable_teams_module }}",
+  REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.shared_vars.opensrp_server }}/opensrp/rest/",
+  REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "{{ .Values.front_end.app_default_plan_duration_days }}",
+  REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "{{ .Values.front_end.app_default_activity_duration_days }}",
+  REACT_APP_DATE_FORMAT: "{{ .Values.front_end.app_date_format }}"
+};
+{{- end }}
