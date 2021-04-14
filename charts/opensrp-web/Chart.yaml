@@ -1,6 +1,10 @@
 apiVersion: v2
 name: opensrp-web
-description: A Helm chart for Kubernetes
+description: OpenSRP Web is the default frontend for the OpenSRP Server API, providing access to the data collected on the server, configuration options as well as any functionality provided by the API server.
+icon: https://avatars2.githubusercontent.com/u/7898027?s=200&v=4
+maintainers:
+  - name: opensrp
+    email: techops@ona.io
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,4 +25,4 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "1.16.0"
+appVersion: "1.0.0"
