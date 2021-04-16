@@ -108,6 +108,6 @@ oauth.default.token.validity={{ .token_validity }}
 oauth.default.callback.url={{ .callback_url }}
 oauth.default.roles={{ .roles | join "," }}
 #end
-{{end}}
+{{ end }}
 
 {{- end }}

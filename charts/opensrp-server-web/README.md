@@ -292,4 +292,8 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `rabbitmq.max_concurrent_consumers` |  | `1` |  
 | `spring_active_profiles` |  | `["postgres", "jedis", "oauth2"]` |  
 | `oauth_profiles` | `(Array)` | `null` |  
- 
+| `tomcatRemoteIpValve.className` | | `"org.apache.catalina.valves.RemoteIpValve"` |
+| `tomcatRemoteIpValve.protocolHeader` |  | `"x-forwarded-proto"` |
+| `tomcatRemoteIpValve.proxiesHeader` |  | `"x-forwarded-by"` |
+| `tomcatRemoteIpValve.remoteIpHeader` |  | `"x-forwarded-for"` |
+| `useTomcatRemoteIpValve` |  | `false` |

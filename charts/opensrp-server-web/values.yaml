@@ -62,6 +62,18 @@ tolerations: []
 
 affinity: {}
 
+# if true it applies tomcatRemoteIpValve properties on the opensrp context.xml file
+useTomcatRemoteIpValve: false
+
+# Enable useTomcatRemoteIpValve to use this feature
+# This valve replaces the apparent client remote IP address and hostname for the request with the IP address list presented by a proxy or a load balancer via a request headers
+# Refer to https://tomcat.apache.org/tomcat-9.0-doc/api/org/apache/catalina/valves/RemoteIpValve.html
+# Include 'internalProxies' for address family of the pod network, omit this to use the default (refer to url above)
+tomcatRemoteIpValve:
+  className: 'org.apache.catalina.valves.RemoteIpValve'
+  remoteIpHeader: 'x-forwarded-for'
+  proxiesHeader: 'x-forwarded-by'
+  protocolHeader: 'x-forwarded-proto'
 
 # Recreates pods when configMap changes, default is true
 recreatePodsWhenConfigMapChange: true
