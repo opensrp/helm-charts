@@ -22,5 +22,14 @@
   driverClassName="org.postgresql.Driver"
   url="jdbc:postgresql://{{ .Values.postgres.host }}:{{ .Values.postgres.port }}/{{ .Values.postgres.database }}"
     />
+
+{{- if .Values.useTomcatRemoteIpValve }}
+<Valve
+   {{- range $index, $element:=.Values.tomcatRemoteIpValve }}
+    {{ $index }}="{{ $element }}"
+   {{- end }}
+/>
+{{- end}}
+
 </Context>
 {{- end }}
