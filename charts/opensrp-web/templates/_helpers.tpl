@@ -60,3 +60,17 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+
+{{/*
+Dynamically add React environment variables
+*/}}
+{{- define "opensrp-web.reactEnvironmenVariables" -}}
+{{- $scope := . -}}
+{
+{{- range $key, $value := .Values.reactEnvironmentVariables }}
+{{ $key }}={{ tpl $value $scope }},
+{{- end }}
+};
+{{- end }}
