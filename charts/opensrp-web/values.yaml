@@ -81,6 +81,8 @@ front_end:
   app_enable_plans: "false"
   app_enable_inventory: "false"
   app_enable_locations: "false"
+  app_enable_card_support: "false"
+  app_enable_teams_assignment: "false"
   app_enable_teams: "false"
   app_website_name: "opensrp-web"
   app_backend_active: "true"

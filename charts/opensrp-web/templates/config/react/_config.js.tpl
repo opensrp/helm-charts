@@ -12,6 +12,7 @@ window._env_ = {
   REACT_APP_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/token",
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.shared_vars.opensrp_server  }}/opensrp/rest/",
   REACT_APP_OPENSRP_AUTHORIZATION_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/auth",
+  REACT_APP_KEYCLOAK_LOGOUT_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/logout",
   REACT_APP_OPENSRP_CLIENT_ID: "{{ .Values.shared_vars.opensrp_client_id }}",
   REACT_APP_OPENSRP_LOGOUT_URL: "https://{{ .Values.shared_vars.opensrp_server  }}//opensrp/logout.do",
   REACT_APP_OPENSRP_USER_URL: "https://{{ .Values.shared_vars.opensrp_server  }}//opensrp/user-details/",
@@ -23,9 +24,11 @@ window._env_ = {
   REACT_APP_ENABLE_INVENTORY: "{{ .Values.front_end.app_enable_inventory }}",
   REACT_APP_ENABLE_LOCATIONS: "{{ .Values.front_end.app_enable_locations }}",
   REACT_APP_ENABLE_TEAMS: "{{ .Values.front_end.app_enable_teams }}",
+  REACT_APP_ENABLE_CARD_SUPPORT: "{{ .Values.front_end.app_enable_card_support }}",
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.shared_vars.opensrp_server }}/opensrp/rest/",
   REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "{{ .Values.front_end.app_default_plan_duration_days }}",
   REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "{{ .Values.front_end.app_default_activity_duration_days }}",
-  REACT_APP_DATE_FORMAT: "{{ .Values.front_end.app_date_format }}"
+  REACT_APP_DATE_FORMAT: "{{ .Values.front_end.app_date_format }}",
+  REACT_APP_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.front_end.app_enable_teams_assignment }}"
 };
 {{- end }}
