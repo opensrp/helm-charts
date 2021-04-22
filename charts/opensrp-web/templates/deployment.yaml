@@ -43,9 +43,9 @@ spec:
               subPath: config.js.tpl
           env:
             - name: EXPRESS_OPENSRP_AUTHORIZATION_URL 
-              value: https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/eusm-mg-staging/protocol/openid-connect/auth
+              value: https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/auth
             - name: EXPRESS_OPENSRP_ACCESS_TOKEN_URL
-              value: https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/eusm-mg-staging/protocol/openid-connect/token
+              value: https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/token
             - name: EXPRESS_OPENSRP_CALLBACK_URL
               value: https://{{ .Values.shared_vars.app_domain_name }}/oauth/callback/OpenSRP/
             - name: EXPRESS_OPENSRP_USER_URL
