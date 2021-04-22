@@ -90,6 +90,7 @@ front_end:
   app_enable_opensrp_oauth: "true"
   app_action_uuid_namespace: "35968df5-f335-44ae-8ae5-25804caa2d86"
   app_plan_uuid_namespace: "85f7dbbf-07d0-4c92-aa2d-d50d141dde00"
+  app_default_plan_id: "35968df5-f335-44ae-8ae5-25804caa2d86"
   app_default_plan_duration_days: 20
   app_default_activity_duration_days: 7
   app_date_format: "yyyy-mm-dd"

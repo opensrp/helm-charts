@@ -29,6 +29,7 @@ window._env_ = {
   REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "{{ .Values.front_end.app_default_plan_duration_days }}",
   REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "{{ .Values.front_end.app_default_activity_duration_days }}",
   REACT_APP_DATE_FORMAT: "{{ .Values.front_end.app_date_format }}",
-  REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.front_end.app_enable_teams_assignment }}"
+  REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.front_end.app_enable_teams_assignment }}",
+  REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.front_end.app_default_plan_id }}"
 };
 {{- end }}
