@@ -79,9 +79,7 @@ spec:
             - name: EXPRESS_FRONTEND_LOGOUT_URL
               value:  {{ .Values.express.session_filestore_path }}  
             - name: EXPRESS_PRELOADED_STATE_FILE
-              value:  {{ .Values.express.preloaded_state_file }} 
-            - name: REACT_APP_OPENSRP_API_BASE_URL
-              value:  {{ .Values.express.preloaded_state_file }}                                                                                                                                                                                                                                        
+              value:  {{ .Values.express.preloaded_state_file }}
           ports:
             - name: http
               containerPort: 3000
