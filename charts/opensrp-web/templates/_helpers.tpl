@@ -60,3 +60,27 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+
+{{/*
+Dynamically add React environment variables
+*/}}
+{{- define "opensrp-web.reactEnvironmenVariables" -}}
+{{- $scope := . -}}
+{{ range  $key, $value := index .Values.reactEnvironmentVariables }}
+{{- $key -}}:{{- tpl $value $scope | quote -}},
+{{ end }}
+{{- end }}
+
+{{/*
+Populate the pod annotations
+*/}}
+{{- define "opensrp-web.podAnnotations" -}}
+{{- range $index, $element:=.Values.podAnnotations }}
+{{ $index }}: {{ $element }}
+{{- end }}
+{{- if .Values.recreatePodsWhenConfigMapChange }}
+checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+{{- end }}
+{{- end }}
