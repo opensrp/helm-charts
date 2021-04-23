@@ -72,11 +72,11 @@ containerEnvironmentVariables:
   EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL: "https://{{ .Values.sharedVars.appDomainName }}/fe/oauth/callback/opensrp"
   EXPRESS_REACT_BUILD_PATH: "{{ .Values.express.reactBuildPath }}"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
-  EXPRESS_FRONTEND_LOGIN_URL: "{{ .Values.express.frontendLoginUrl }}"
+  EXPRESS_FRONTEND_LOGIN_URL: "{{ .Values.express.frontEndLoginUrl }}"
   EXPRESS_OPENSRP_OAUTH_STATE: "{{ .Values.express.opensrpOauthState }}"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_LOGIN_URL: "{{ .Values.express.sessionLoginUrl }}"
-  EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.frontendLogoutUrl }}"
+  EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.frontEndLogoutUrl }}"
   EXPRESS_FRONTEND_LOGOUT_URL: "{{ .Values.express.sessionFileStorePath }}"
   EXPRESS_PRELOADED_STATE_FILE: "{{ .Values.express.preloadedStateFile }}"
 
@@ -121,7 +121,6 @@ sharedVars:
   keycloakRealm: "keycloakRealm"
 
 express:
-  opensrpUserUrl: ""
   opensrpClientId: ""
   opensrpClientSecret: ""
   sessionName: "express_sessionName"
@@ -130,11 +129,11 @@ express:
   sessionLoginUrl: "/login"
   preloadedStateFile: "/tmp/opensrpState.json"
   sessionFileStorePath: "/tmp/express-sessions"
-  frontendLoginUrl: "/fe/login"
+  frontEndLoginUrl: "/fe/login"
   sessionPath: "/"
   reactBuildPath: "/usr/src/web"
   nodeEnv: "development"
-  frontendLogoutUrl: "/logout"
+  frontEndLogoutUrl: "/logout"
 
 frontEnd:
   appEnableProductCatalogue: "false"
