@@ -40,46 +40,8 @@ spec:
               mountPath: /etc/confd/templates/config.js.tmpl
               subPath: config.js.tpl
           env:
-            - name: EXPRESS_OPENSRP_AUTHORIZATION_URL 
-              value: https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/auth
-            - name: EXPRESS_OPENSRP_ACCESS_TOKEN_URL
-              value: https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/token
-            - name: EXPRESS_OPENSRP_CALLBACK_URL
-              value: https://{{ .Values.sharedVars.appDomainName }}/oauth/callback/OpenSRP/
-            - name: EXPRESS_OPENSRP_USER_URL
-              value: {{ .Values.express.opensrpUserUrl }}
-            - name: EXPRESS_OPENSRP_CLIENT_ID
-              value: {{ .Values.sharedVars.opensrpClientId }}
-            - name: EXPRESS_OPENSRP_CLIENT_SECRET
-              value: {{ .Values.sharedVars.opensrpClientSecret }}
-            - name: EXPRESS_SESSION_NAME
-              value: {{ .Values.express.sessionName }}
-            - name: EXPRESS_OAUTH_GET_STATE_URL
-              value: https://{{ .Values.sharedVars.appDomainName }}/oauth/state
-            - name: EXPRESS_SESSION_SECRET
-              value: {{ .Values.express.sessionSecret }}
-            - name: EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL
-              value: https://{{ .Values.sharedVars.appDomainName }}/fe/oauth/callback/opensrp
-            - name: EXPRESS_REACT_BUILD_PATH
-              value:  {{ .Values.express.reactBuildPath }}
-            - name: NODE_ENV
-              value:  {{ .Values.express.node_env }}     
-            - name: EXPRESS_FRONTEND_LOGIN_URL
-              value:  {{ .Values.express.frontendLoginUrl }}
-            - name: EXPRESS_OPENSRP_OAUTH_STATE
-              value:  {{ .Values.express.opensrpOauthState }}
-            - name: EXPRESS_SESSION_PATH
-              value:  {{ .Values.express.sessionPath }}
-            - name: EXPRESS_SESSION_LOGIN_URL
-              value:  {{ .Values.express.session_login_url }} 
-            - name: EXPRESS_SESSION_FILESTORE_PATH
-              value:  {{ .Values.express.frontendLogoutUrl }}
-            - name: EXPRESS_FRONTEND_LOGOUT_URL
-              value:  {{ .Values.express.sessionFilestorePath }}
-            - name: EXPRESS_PRELOADED_STATE_FILE
-              value:  {{ .Values.express.preloadedStateFile }}
             {{- $scope := . -}}
-            {{- range $key, $value := .Values.extraEnvs }}
+            {{- range $key, $value := .Values.containerEnvironmentVariables }}
             - name: {{ $key }}
               value: {{ tpl $value $scope }}
           {{- end }}
