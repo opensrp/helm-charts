@@ -13,10 +13,8 @@ spec:
       {{- include "opensrp-web.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- include "opensrp-web.podAnnotations" . | indent 8 }}
       labels:
         {{- include "opensrp-web.selectorLabels" . | nindent 8 }}
     spec:
@@ -80,6 +78,11 @@ spec:
               value:  {{ .Values.express.session_filestore_path }}  
             - name: EXPRESS_PRELOADED_STATE_FILE
               value:  {{ .Values.express.preloaded_state_file }}
+            {{- $scope := . -}}
+            {{- range $key, $value := .Values.extraEnvs }}
+            - name: {{ $key }}
+              value: {{ tpl $value $scope }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 3000
