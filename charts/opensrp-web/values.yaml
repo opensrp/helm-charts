@@ -59,8 +59,26 @@ affinity: {}
 recreatePodsWhenConfigMapChange: true
 
 # populated the container environment variables
-extraEnvs:
-  # key:value
+containerEnvironmentVariables:
+  EXPRESS_OPENSRP_AUTHORIZATION_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/auth"
+  EXPRESS_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.shared_vars.keycloak_url }}/auth/realms/{{ .Values.shared_vars.keycloak_realm }}/protocol/openid-connect/token"
+  EXPRESS_OPENSRP_CALLBACK_URL: "https://{{ .Values.shared_vars.app_domain_name }}/oauth/callback/OpenSRP/"
+  EXPRESS_OPENSRP_USER_URL: "https://{{ .Values.shared_vars.opensrp_server  }}/opensrp/user-details/"
+  EXPRESS_OPENSRP_CLIENT_ID: "{{ .Values.shared_vars.opensrp_client_id }}"
+  EXPRESS_OPENSRP_CLIENT_SECRET: "{{ .Values.shared_vars.opensrp_client_secret }}"
+  EXPRESS_SESSION_NAME: "{{ .Values.express.session_name }}"
+  EXPRESS_OAUTH_GET_STATE_URL: "https://{{ .Values.shared_vars.app_domain_name }}/oauth/state"
+  EXPRESS_SESSION_SECRET: "{{ .Values.express.session_secret }}"
+  EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL: "https://{{ .Values.shared_vars.app_domain_name }}/fe/oauth/callback/opensrp"
+  EXPRESS_REACT_BUILD_PATH: "{{ .Values.express.react_build_path }}"
+  NODE_ENV: "{{ .Values.express.node_env }}"
+  EXPRESS_FRONTEND_LOGIN_URL: "{{ .Values.express.frontend_login_url }}"
+  EXPRESS_OPENSRP_OAUTH_STATE: "{{ .Values.express.opensrp_oauth_state }}"
+  EXPRESS_SESSION_PATH: "{{ .Values.express.session_path }}"
+  EXPRESS_SESSION_LOGIN_URL: "{{ .Values.express.session_login_url }}"
+  EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.frontend_logout_url }}"
+  EXPRESS_FRONTEND_LOGOUT_URL: "{{ .Values.express.session_filestore_path }}"
+  EXPRESS_PRELOADED_STATE_FILE: "{{ .Values.express.preloaded_state_file }}"
 
 # populated the react app environment variables
 reactEnvironmentVariables:
@@ -93,9 +111,10 @@ reactEnvironmentVariables:
   REACT_APP_DATE_FORMAT: "{{ .Values.front_end.app_date_format }}"
   REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.front_end.app_enable_teams_assignment }}"
   REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.front_end.app_default_plan_id }}"
+  SKIP_PREFLIGHT_CHECK: "{{ .Values.front_end.skip_preflight_check }}"
 
 shared_vars:
-  keycloak_url: "keycloak_url"
+  keycloakUrl: "keycloak_url"
   app_domain_name: "app_domain_name"
   opensrp_client_id: "express_opensrp_client_id"
   opensrp_server: "opensrp_server"
@@ -125,6 +144,7 @@ front_end:
   app_enable_card_support: "false"
   app_enable_teams_assignment: "false"
   app_enable_teams: "false"
+  skip_preflight_check: "true"
   app_website_name: "opensrp-web"
   app_backend_active: "true"
   app_disable_login_protection: "false"
