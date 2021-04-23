@@ -10,7 +10,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
-imagePullSecrets: []
+imagePullSecrets: [ ]
 nameOverride: ""
 fullnameOverride: ""
 
@@ -18,16 +18,16 @@ serviceAccount:
   # Specifies whether a service account should be created
   create: true
   # Annotations to add to the service account
-  annotations: {}
+  annotations: { }
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations: {}
+podAnnotations: { }
 
-podSecurityContext: {}
+podSecurityContext: { }
 
-securityContext: {}
+securityContext: { }
 
 service:
   type: ClusterIP
@@ -35,12 +35,12 @@ service:
 
 ingress:
   enabled: false
-  annotations: {}
+  annotations: { }
   hosts:
     - host: opensrp-web.local
-      paths: []
-  tls: []
-resources: {}
+      paths: [ ]
+  tls: [ ]
+resources: { }
 
 autoscaling:
   enabled: false
@@ -49,11 +49,11 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
+nodeSelector: { }
 
-tolerations: []
+tolerations: [ ]
 
-affinity: {}
+affinity: { }
 
 # Recreates pods when configMap changes, default is true
 recreatePodsWhenConfigMapChange: true
@@ -111,7 +111,7 @@ reactEnvironmentVariables:
   REACT_APP_DATE_FORMAT: "{{ .Values.frontEnd.appDateFormat }}"
   REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.frontEnd.appEnableTeamsAssignment }}"
   REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.frontEnd.appDefaultPlanId }}"
-  SKIP_PREFLIGHT_CHECK: "{{ .Values.front_end.skip_preflight_check }}"
+  SKIP_PREFLIGHT_CHECK: "{{ .Values.front_end.skipPreflightCheck }}"
 
 sharedVars:
   keycloakUrl: "keycloakUrl"
@@ -155,4 +155,4 @@ frontEnd:
   appDefaultActivityDurationDays: 7
   appDateFormat: "yyyy-mm-dd"
   appNavbarBrandImgSrc: ""
-  skip_preflight_check: "true"
+  skipPreflightCheck: "true"
