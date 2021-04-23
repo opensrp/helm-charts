@@ -1,0 +1,157 @@
+# Default values for opensrp-web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: opensrp/web
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: opensrp-web.local
+      paths: []
+  tls: []
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Recreates pods when configMap changes, default is true
+recreatePodsWhenConfigMapChange: true
+
+# Any additional container environment variables
+containerEnvironmentVariables:
+  EXPRESS_OPENSRP_AUTHORIZATION_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/auth"
+  EXPRESS_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/token"
+  EXPRESS_OPENSRP_CALLBACK_URL: "https://{{ .Values.sharedVars.appDomainName }}/oauth/callback/OpenSRP/"
+  EXPRESS_OPENSRP_USER_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/user-details/"
+  EXPRESS_OPENSRP_CLIENT_ID: "{{ .Values.sharedVars.opensrpClientId }}"
+  EXPRESS_OPENSRP_CLIENT_SECRET: "{{ .Values.sharedVars.opensrpClientSecret }}"
+  EXPRESS_SESSION_NAME: "{{ .Values.express.sessionName }}"
+  EXPRESS_OAUTH_GET_STATE_URL: "https://{{ .Values.sharedVars.appDomainName }}/oauth/state"
+  EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
+  EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL: "https://{{ .Values.sharedVars.appDomainName }}/fe/oauth/callback/opensrp"
+  EXPRESS_REACT_BUILD_PATH: "{{ .Values.express.reactBuildPath }}"
+  NODE_ENV: "{{ .Values.express.nodeEnv }}"
+  EXPRESS_FRONTEND_LOGIN_URL: "{{ .Values.express.frontEndLoginUrl }}"
+  EXPRESS_OPENSRP_OAUTH_STATE: "{{ .Values.express.opensrpOauthState }}"
+  EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
+  EXPRESS_SESSION_LOGIN_URL: "{{ .Values.express.sessionLoginUrl }}"
+  EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.frontEndLogoutUrl }}"
+  EXPRESS_FRONTEND_LOGOUT_URL: "{{ .Values.express.sessionFileStorePath }}"
+  EXPRESS_PRELOADED_STATE_FILE: "{{ .Values.express.preloadedStateFile }}"
+
+# The react app environment variables
+reactEnvironmentVariables:
+  REACT_APP_BACKEND_ACTIVE: "{{ .Values.frontEnd.appBackendActive }}"
+  REACT_APP_DISABLE_LOGIN_PROTECTION: "{{ .Values.frontEnd.appDisableLoginProtection }}"
+  REACT_APP_DOMAIN_NAME: "https://{{ .Values.sharedVars.appDomainName }}"
+  REACT_APP_ENABLE_OPENSRP_OAUTH: "{{ .Values.frontEnd.appEnableOpensrpOauth }}"
+  REACT_APP_EXPRESS_OAUTH_GET_STATE_URL: "https://{{ .Values.sharedVars.appDomainName }}/oauth/state"
+  REACT_APP_EXPRESS_OAUTH_LOGOUT_URL: "https://{{ .Values.sharedVars.appDomainName }}/logout"
+  REACT_APP_KEYCLOAK_API_BASE_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/admin/realms/{{ .Values.sharedVars.keycloakRealm }}"
+  REACT_APP_KEYCLOAK_LOGOUT_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"
+  REACT_APP_NAVBAR_BRAND_IMG_SRC: "{{ .Values.frontEnd.appNavbarBrandImgSrc }}"
+  REACT_APP_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/token"
+  REACT_APP_OPENSRP_AUTHORIZATION_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/auth"
+  REACT_APP_OPENSRP_CLIENT_ID: "{{ .Values.sharedVars.opensrpClientId }}"
+  REACT_APP_OPENSRP_LOGOUT_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/logout.do"
+  REACT_APP_OPENSRP_USER_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/user-details/"
+  REACT_APP_WEBSITE_NAME: "{{ .Values.express.appWebsiteName }}"
+  REACT_APP_ACTION_UUID_NAMESPACE: "{{ .Values.frontEnd.appActionUUIDNamespace }}"
+  REACT_APP_PLAN_UUID_NAMESPACE: "{{ .Values.frontEnd.appPlanUUIDNamespace }}"
+  REACT_APP_ENABLE_PRODUCT_CATALOGUE: "{{ .Values.frontEnd.appEnableProductCatalogue }}"
+  REACT_APP_ENABLE_PLANS: "{{ .Values.frontEnd.appEnablePlans }}"
+  REACT_APP_ENABLE_INVENTORY: "{{ .Values.frontEnd.appEnableInventory }}"
+  REACT_APP_ENABLE_LOCATIONS: "{{ .Values.frontEnd.appEnableLocations }}"
+  REACT_APP_ENABLE_TEAMS: "{{ .Values.frontEnd.appEnableTeams }}"
+  REACT_APP_ENABLE_CARD_SUPPORT: "{{ .Values.frontEnd.appEnableCardSupport }}"
+  REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/"
+  REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "{{ .Values.frontEnd.appDefaultPlanDurationDays }}"
+  REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "{{ .Values.frontEnd.appDefaultActivityDurationDays }}"
+  REACT_APP_DATE_FORMAT: "{{ .Values.frontEnd.appDateFormat }}"
+  REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.frontEnd.appEnableTeamsAssignment }}"
+  REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.frontEnd.appDefaultPlanId }}"
+  SKIP_PREFLIGHT_CHECK: "{{ .Values.frontEnd.skipPreflightCheck }}"
+
+sharedVars:
+  keycloakUrl: "keycloakUrl"
+  appDomainName: "appDomainName"
+  opensrpClientId: "opensrpClientId"
+  opensrpServer: "opensrpServer"
+  keycloakRealm: "keycloakRealm"
+
+express:
+  opensrpClientId: ""
+  opensrpClientSecret: ""
+  sessionName: "express_sessionName"
+  sessionSecret: "express_sessionSecret"
+  opensrpOauthState: "opensrp"
+  sessionLoginUrl: "/login"
+  preloadedStateFile: "/tmp/opensrpState.json"
+  sessionFileStorePath: "/tmp/express-sessions"
+  frontEndLoginUrl: "/fe/login"
+  sessionPath: "/"
+  reactBuildPath: "/usr/src/web"
+  nodeEnv: "development"
+  frontEndLogoutUrl: "/logout"
+
+frontEnd:
+  appEnableProductCatalogue: "false"
+  appEnablePlans: "false"
+  appEnableInventory: "false"
+  appEnableLocations: "false"
+  appEnableCardSupport: "false"
+  appEnableTeamsAssignment: "false"
+  appEnableTeams: "false"
+  appWebsiteName: "opensrp-web"
+  appBackendActive: "true"
+  appDisableLoginProtection: "false"
+  appEnableOpensrpOauth: "true"
+  appActionUUIDNamespace: "35968df5-f335-44ae-8ae5-25804caa2d86"
+  appPlanUUIDNamespace: "85f7dbbf-07d0-4c92-aa2d-d50d141dde00"
+  appDefaultPlanId: "27362060-0309-411a-910c-64f55ede3758"
+  appDefaultPlanDurationDays: 20
+  appDefaultActivityDurationDays: 7
+  appDateFormat: "yyyy-mm-dd"
+  appNavbarBrandImgSrc: ""
+  skipPreflightCheck: "true"
