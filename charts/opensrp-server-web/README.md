@@ -296,4 +296,6 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `tomcatRemoteIpValve.protocolHeader` |  | `"x-forwarded-proto"` |
 | `tomcatRemoteIpValve.proxiesHeader` |  | `"x-forwarded-by"` |
 | `tomcatRemoteIpValve.remoteIpHeader` |  | `"x-forwarded-for"` |
+| `tomcatRemoteIpValve.hostOctetPortion` | `hostOctetPortion (4 < x > 0 )` | `2` |
+| `tomcatRemoteIpValve.internalProxies` | `dynamically populated if not specified, control the hostPortion by updating tomcatRemoteIpValve.hostOctetPortion e.g for 2 is equivalent to ip/16`  | `nil` |
 | `useTomcatRemoteIpValve` |  | `false` |
