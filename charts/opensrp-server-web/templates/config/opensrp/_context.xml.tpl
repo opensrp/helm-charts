@@ -28,6 +28,10 @@
    {{- range $index, $element:=.Values.tomcatRemoteIpValve }}
     {{ $index }}="{{ $element }}"
    {{- end }}
+
+   {{- if and .Values.useTomcatRemoteIpValve (empty .Values.tomcatRemoteIpValve.internalProxies) }}
+    internalProxies="{{- (include "opensrp-server-web.internalProxies" . ) -}}"
+   {{- end}}
 />
 {{- end}}
 
