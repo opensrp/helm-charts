@@ -112,6 +112,7 @@ reactEnvironmentVariables:
   REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.frontEnd.appEnableTeamsAssignment }}"
   REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.frontEnd.appDefaultPlanId }}"
   SKIP_PREFLIGHT_CHECK: "{{ .Values.frontEnd.skipPreflightCheck }}"
+  REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL: "{{ .Values.frontEnd.planAssignmentAtGeoLevel }}"
 
 sharedVars:
   keycloakUrl: "keycloakUrl"
@@ -155,3 +156,4 @@ frontEnd:
   appDateFormat: "yyyy-mm-dd"
   appNavbarBrandImgSrc: ""
   skipPreflightCheck: "true"
+  planAssignmentAtGeoLevel: '0'
