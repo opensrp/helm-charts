@@ -106,6 +106,22 @@ entries:
   opensrp-web:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2021-04-27T11:20:36.511638344Z"
+    description: OpenSRP Web is the default frontend for the OpenSRP Server API, providing
+      access to the data collected on the server, configuration options as well as
+      any functionality provided by the API server.
+    digest: 94e40aaeb1638197c84865f0a81c5c668ae682caf314141a456bc88b02c9408d
+    icon: https://avatars2.githubusercontent.com/u/7898027?s=200&v=4
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: opensrp-web
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/opensrp-web-0.1.1/opensrp-web-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2021-04-23T15:28:09.532673636Z"
     description: OpenSRP Web is the default frontend for the OpenSRP Server API, providing
       access to the data collected on the server, configuration options as well as
@@ -120,4 +136,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-26T07:22:46.286099742Z"
+generated: "2021-04-27T11:20:36.511692045Z"
