@@ -74,7 +74,8 @@ tomcatRemoteIpValve:
   remoteIpHeader: 'x-forwarded-for'
   proxiesHeader: 'x-forwarded-by'
   protocolHeader: 'x-forwarded-proto'
-  hostOctetPortion: 2
+
+hostOctetPortion: 2
 
 
 # Recreates pods when configMap changes, default is true

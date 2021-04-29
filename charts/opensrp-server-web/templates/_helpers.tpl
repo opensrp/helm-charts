@@ -80,11 +80,11 @@ Find the podCIDRPattern
 {{- $node := (lookup "v1" "Node" .Release.Namespace "") -}}
 {{- if and $node $node.items -}}
 {{- $firstNode := ($node.items | first) -}}
-{{- $hostPortion :=  (int .Values.tomcatRemoteIpValve.hostOctetPortion) -}}
+{{- $hostPortion :=  (int .Values.hostOctetPortion) -}}
 {{- if and ($firstNode) ($firstNode.spec) ($firstNode.spec.podCIDR) -}}
 {{- if and ( kindIs "int" $hostPortion ) (gt $hostPortion 0) (lt $hostPortion 4) -}}
 {{- $podCIDR := (regexFind (repeat $hostPortion ".\\d{1,3}.") $firstNode.spec.podCIDR) | trimSuffix "." -}}
-{{- $podCIDRPattern := (cat $podCIDR  (repeat (int (sub 4 $hostPortion)) ".d{1,3}")) | nospace | replace "." "\\." -}}
+{{- $podCIDRPattern := (cat $podCIDR  (repeat (int (sub 4 $hostPortion)) ".\\d{1,3}")) | nospace | replace "." "\\." -}}
 {{- $podCIDRPattern -}}
 {{- end }}
 {{- end }}
