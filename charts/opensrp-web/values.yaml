@@ -113,13 +113,13 @@ reactEnvironmentVariables:
   REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.frontEnd.appDefaultPlanId }}"
   SKIP_PREFLIGHT_CHECK: "{{ .Values.frontEnd.skipPreflightCheck }}"
   REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL: "{{ .Values.frontEnd.planAssignmentAtGeoLevel }}"
-  REACT_APP_SENTRY_DSN: "{{.Values.frontEnd.sentryDsn}}"
-  REACT_APP_DEFAULT_PLAN_VERSION: "{{.Values.frontEnd.defaultPlanVersion}}"
-  REACT_APP_TASK_GENERATION_STATUS: "{{.Values.frontEnd.taskGenerationStatus}}"
-  REACT_APP_PROJECT_LANGUAGE_CODE: "{{.Values.frontEnd.projectLanguageCode}}"
-  REACT_APP_LANGUAGE_CODE: "{{.Values.frontEnd.languageCode}}"
-  REACT_APP_SUPPORTED_LANGUAGES: "{{.Values.frontEnd.supportedLanguages}}"
-  REACT_APP_ENABLE_LANGUAGE_SWITCHER: "{{.Values.frontEnd.enableLanguageSwitcher}}"
+  REACT_APP_SENTRY_DSN: "{{ .Values.frontEnd.sentryDsn }}"
+  REACT_APP_DEFAULT_PLAN_VERSION: "{{ .Values.frontEnd.defaultPlanVersion }}"
+  REACT_APP_TASK_GENERATION_STATUS: "{{ .Values.frontEnd.taskGenerationStatus }}"
+  REACT_APP_PROJECT_LANGUAGE_CODE: "{{ .Values.frontEnd.projectLanguageCode }}"
+  REACT_APP_LANGUAGE_CODE: "{{ .Values.frontEnd.languageCode }}"
+  REACT_APP_SUPPORTED_LANGUAGES: "{{ .Values.frontEnd.supportedLanguages }}"
+  REACT_APP_ENABLE_LANGUAGE_SWITCHER: "{{ .Values.frontEnd.enableLanguageSwitcher }}"
 
 sharedVars:
   keycloakUrl: "keycloakUrl"
@@ -163,11 +163,11 @@ frontEnd:
   appDateFormat: "yyyy-mm-dd"
   appNavbarBrandImgSrc: ""
   skipPreflightCheck: "true"
-  planAssignmentAtGeoLevel: '0'
-  sentryDsn: ''
-  defaultPlanVersion: '1'
-  taskGenerationStatus: 'False'
-  projectLanguageCode: 'core'
-  languageCode: 'en'
-  supportedLanguages: 'en'
-  enableLanguageSwitcher: 'false'
+  planAssignmentAtGeoLevel: "0"
+  sentryDsn: ""
+  defaultPlanVersion: "1"
+  taskGenerationStatus: "False"
+  projectLanguageCode: "core"
+  languageCode: "en"
+  supportedLanguages: "en"
+  enableLanguageSwitcher: "false"
