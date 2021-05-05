@@ -109,7 +109,7 @@ reactEnvironmentVariables:
   REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "{{ .Values.frontEnd.appDefaultPlanDurationDays }}"
   REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "{{ .Values.frontEnd.appDefaultActivityDurationDays }}"
   REACT_APP_DATE_FORMAT: "{{ .Values.frontEnd.appDateFormat }}"
-  REACT_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.frontEnd.appEnableTeamsAssignment }}"
+  REACT_APP_ENABLE_TEAMS_ASSIGNMENT_MODULE: "{{ .Values.frontEnd.appEnableTeamsAssignment }}"
   REACT_APP_DEFAULT_PLAN_ID: "{{ .Values.frontEnd.appDefaultPlanId }}"
   SKIP_PREFLIGHT_CHECK: "{{ .Values.frontEnd.skipPreflightCheck }}"
   REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL: "{{ .Values.frontEnd.planAssignmentAtGeoLevel }}"
