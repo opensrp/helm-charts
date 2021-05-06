@@ -92,7 +92,9 @@ reactEnvironmentVariables:
   REACT_APP_OPENSRP_LOGOUT_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/logout.do"
   REACT_APP_OPENSRP_USER_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/user-details/"
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/"
+  REACT_APP_FHIR_API_BASE_URL: https://{{ .Values.sharedVars.fhirServer }}/fhir
   REACT_APP_OPENSRP_CLIENT_ID: "{{ .Values.sharedVars.opensrpClientId }}"
+  REACT_APP_ENABLE_FHIR_PATIENTS: "false"
   REACT_APP_BACKEND_ACTIVE: "true"
   REACT_APP_DISABLE_LOGIN_PROTECTION: "false"
   REACT_APP_ENABLE_OPENSRP_OAUTH: "true"
