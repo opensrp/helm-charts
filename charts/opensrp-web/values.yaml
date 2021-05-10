@@ -107,7 +107,7 @@ reactEnvironmentVariables:
   REACT_APP_ENABLE_LOCATIONS: "false"
   REACT_APP_ENABLE_TEAMS: "false"
   REACT_APP_ENABLE_CARD_SUPPORT: "false"
-  REACT_APP_MAIN_LOGO_SRC: ""
+  REACT_APP_MAIN_LOGO_SRC: "https://github.com/OpenSRP/web/raw/master/app/src/assets/images/opensrp-logo-color.png"
   REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "20"
   REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "7"
   REACT_APP_DATE_FORMAT: "yyyy-mm-dd"
