@@ -92,7 +92,9 @@ reactEnvironmentVariables:
   REACT_APP_OPENSRP_LOGOUT_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/logout.do"
   REACT_APP_OPENSRP_USER_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/user-details/"
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/"
+  REACT_APP_FHIR_API_BASE_URL: "https://{{ .Values.sharedVars.fhirServer }}/fhir"
   REACT_APP_OPENSRP_CLIENT_ID: "{{ .Values.sharedVars.opensrpClientId }}"
+  REACT_APP_ENABLE_FHIR_PATIENTS: "false"
   REACT_APP_BACKEND_ACTIVE: "true"
   REACT_APP_DISABLE_LOGIN_PROTECTION: "false"
   REACT_APP_ENABLE_OPENSRP_OAUTH: "true"
@@ -105,7 +107,7 @@ reactEnvironmentVariables:
   REACT_APP_ENABLE_LOCATIONS: "false"
   REACT_APP_ENABLE_TEAMS: "false"
   REACT_APP_ENABLE_CARD_SUPPORT: "false"
-  REACT_APP_MAIN_LOGO_SRC: ""
+  REACT_APP_MAIN_LOGO_SRC: "https://github.com/OpenSRP/web/raw/master/app/src/assets/images/opensrp-logo-color.png"
   REACT_APP_DEFAULT_PLAN_DURATION_DAYS: "20"
   REACT_APP_DEFAULT_ACTIVITY_DURATION_DAYS: "7"
   REACT_APP_DATE_FORMAT: "yyyy-mm-dd"
@@ -127,6 +129,7 @@ sharedVars:
   opensrpClientId: "opensrpClientId"
   opensrpServer: "opensrpServer"
   keycloakRealm: "keycloakRealm"
+  fhirServer: "fhirServer"
 
 express:
   opensrpClientId: ""
