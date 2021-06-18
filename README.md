@@ -5,6 +5,7 @@
 This is the OpenSRP community's official repository for [Helm](https://helm.sh) charts. It currently contains charts for deploying the following services on [Kubernetes](https://kubernetes.io/):
 
 1. [OpenSRP Server Web](https://github.com/opensrp/opensrp-server-web)
+2. [OpenSRP Web](https://github.com/opensrp/web)
 
 ## Usage
 
