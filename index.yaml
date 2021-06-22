@@ -1,5 +1,21 @@
 apiVersion: v1
 entries:
+  keycloak:
+  - apiVersion: v2
+    appVersion: 14.0.0
+    created: "2021-06-22T13:33:26.322626195Z"
+    description: Open Source Identity and Access Management For Modern Applications
+      and Services
+    digest: 66f9282b828bd93f74ed37dd34b898c3e6beee8b9efe6fd45d718d1949942b09
+    icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
+    version: 0.1.0
   opensrp-server-web:
   - apiVersion: v2
     appVersion: v2.6.9-SNAPSHOT
@@ -199,4 +215,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-05-24T08:13:08.465403145Z"
+generated: "2021-06-22T13:33:26.322658297Z"
