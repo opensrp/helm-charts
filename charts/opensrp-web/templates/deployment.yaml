@@ -43,7 +43,7 @@ spec:
             {{- $scope := . -}}
             {{- range $key, $value := .Values.containerEnvironmentVariables }}
             - name: {{ $key }}
-              value: {{ tpl $value $scope }}
+              value: {{ (tpl $value $scope) | quote }}
           {{- end }}
           ports:
             - name: http
