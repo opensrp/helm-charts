@@ -121,8 +121,8 @@ readinessProbe:
     port: http
     scheme: "HTTPS"
 
-#Updates the default.json file (Server config file)
-#Reference file https://github.com/jembi/openhim-core-js/blob/master/config/default.json
+# Updates the default.json file (Server config file)
+# Reference file https://github.com/jembi/openhim-core-js/blob/master/config/default.json
 defaultJson: |
   {
     "bindAddress": "0.0.0.0",

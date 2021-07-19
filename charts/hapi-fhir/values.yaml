@@ -101,8 +101,8 @@ readinessProbe:
     port: http
   initialDelaySeconds: 60
 
-#Replaces the the existing application configuration file
-#Reference file: https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml
+# Replaces the the existing application configuration file
+# Reference file: https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml
 applicationConfig: |
   spring:
     datasource:

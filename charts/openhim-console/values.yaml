@@ -110,8 +110,8 @@ openhimCoreConfiguration:
   port: "8080"
   scheme: "https"
 
-#Updates the default.json file (Console config file)
-#Reference file: https://github.com/jembi/openhim-console/blob/master/app/config/default.json
+# Updates the default.json file (Console config file)
+# Reference file: https://github.com/jembi/openhim-console/blob/master/app/config/default.json
 defaultJson: |
   {
     "protocol": "{{ .Values.openhimCoreConfiguration.scheme }}",

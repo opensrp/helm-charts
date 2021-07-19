@@ -1,7 +1,9 @@
 apiVersion: v2
 name: openhim-console
-description: A Helm chart for Kubernetes
-
+description: Openhim Console https://github.com/jembi/openhim-console.
+maintainers:
+  - name: opensrp
+    email: techops@ona.io
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
