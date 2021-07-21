@@ -1,50 +1,42 @@
+{{- if  .Values.deployMcsdMockService }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hapi-fhir.fullname" . }}
+  name: {{ include "instantohie-mcsd-mock-service.fullname" . }}
   labels:
-    {{- include "hapi-fhir.labels" . | nindent 4 }}
+    {{- include "instantohie-mcsd-mock-service.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "hapi-fhir.selectorLabels" . | nindent 6 }}
+      {{- include "instantohie-mcsd-mock-service.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
       annotations:
-        {{- include "hapi-fhir.podAnnotations" . | indent 8 }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        {{- include "hapi-fhir.selectorLabels" . | nindent 8 }}
+        {{- include "instantohie-mcsd-mock-service.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "hapi-fhir.serviceAccountName" . }}
+      serviceAccountName: {{ include "instantohie-mcsd-mock-service.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      volumes:
-        - name: hapi-fhir-application-properties
-          configMap:
-            name: {{ include "hapi-fhir.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          volumeMounts:
-            - name: hapi-fhir-application-properties
-              mountPath: /data/hapi-fhir/config/application.yaml
-              subPath: hapi.application.yaml
-          env:
-            - name: SPRING_CONFIG_LOCATION
-              value: /data/hapi-fhir/config/application.yaml
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 4000
               protocol: TCP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
@@ -64,3 +56,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- end }}

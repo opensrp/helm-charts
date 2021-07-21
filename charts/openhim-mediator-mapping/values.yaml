@@ -1,14 +1,14 @@
-# Default values for openhim-console.
+# Default values for openhim-mediator-mapping.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: jembi/openhim-console
+  repository: jembi/openhim-mediator-mapping
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.14"
+  tag: "v1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 3003
 
 ingress:
   enabled: false
@@ -47,15 +47,14 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: openhim-console.local
+    - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
-
-  tls:
-    - secretName: chart-example-tls
-      hosts:
-        - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -82,26 +81,6 @@ tolerations: []
 
 affinity: {}
 
-recreatePodsWhenConfigMapChange: true
-
-extraInitContainers:
-
-extraVolumes:
-
-extraVolumeMounts:
-
-livenessProbe:
-  initialDelaySeconds: 30
-  httpGet:
-    path: /
-    port: http
-
-readinessProbe:
-  initialDelaySeconds: 20
-  httpGet:
-    path: /
-    port: http
-
 openhimCoreConfiguration:
   username: "root@openhim.org"
   password: "openhim-password"
@@ -110,16 +89,8 @@ openhimCoreConfiguration:
   port: "8080"
   scheme: "https"
 
-# Updates the default.json file (Console config file)
-# Reference file: https://github.com/jembi/openhim-console/blob/master/app/config/default.json
-# Uses tpl function hence it can read values from references
-defaultJson: |
-  {
-    "protocol": "{{ .Values.openhimCoreConfiguration.scheme }}",
-    "host": "{{ .Values.openhimCoreConfiguration.host }}",
-    "port": {{ .Values.openhimCoreConfiguration.port }},
-    "title": "OpenHIM Admin Console",
-    "footerTitle": "OpenHIM Administration Console",
-    "footerPoweredBy": "<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>",
-    "loginBanner": ""
-  }
+mongodb:
+  database: "openhim"
+  username: "openhim"
+  password: ""
+  host: "mongodb.<namespace>.svc.cluster.local"

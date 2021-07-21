@@ -81,6 +81,8 @@ tolerations: []
 
 affinity: {}
 
+recreatePodsWhenConfigMapChange: true
+
 postgres:
   port: 5432
   host: ""
@@ -103,6 +105,7 @@ readinessProbe:
 
 # Replaces the the existing application configuration file
 # Reference file: https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml
+# Uses tpl function hence it can read values from references
 applicationConfig: |
   spring:
     datasource:

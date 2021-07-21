@@ -54,7 +54,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: openhim-core.local
-      #Service port, defaults to the service port (.Values.service.port) if not specified
+      # Service port, defaults to the service port (.Values.service.port) if not specified
       port:
       paths:
         - path: /
@@ -123,6 +123,7 @@ readinessProbe:
 
 # Updates the default.json file (Server config file)
 # Reference file https://github.com/jembi/openhim-core-js/blob/master/config/default.json
+# Uses tpl function hence it can read values from references
 defaultJson: |
   {
     "bindAddress": "0.0.0.0",

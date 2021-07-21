@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ihris.fullname" . }}
+  labels:
+  {{- include "ihris.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+  {{- include "ihris.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+    {{- include "ihris.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "ihris.serviceAccountName" . }}
+      securityContext:
+      {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: check-hapi-fhir-server-status
+          image: busybox
+          command: ['sh', '-c', 'until telnet {{ .Values.hapiFhirServerConfiguration.host }} {{ .Values.hapiFhirServerConfiguration.port }}; do echo hapi-fhir is not running yet; sleep 10; done;']
+        - name: check-es-server-status
+          image: busybox
+          command: ['sh', '-c', 'until telnet {{ .Values.esConfiguration.host }} {{ .Values.esConfiguration.port }}; do echo es server is not running yet; sleep 10; done;']
+        {{ if .Values.initContainerConfig.hapiFhirConfig.enable }}
+        - name: hapi-config
+          image: {{ .Values.initContainerConfig.hapiFhirConfig.image }}
+          command: ["sh","-c", "{{ tpl .Values.initContainerConfig.hapiFhirConfig.command . }}"]
+          env:
+            - name: IHRIS_FHIR__BASE
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme }}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir"
+        {{ end }}
+        {{ if .Values.initContainerConfig.ihirsConfig.enable }}
+        - name: ihris-config
+          image: {{ .Values.initContainerConfig.ihirsConfig.image }}
+          command: ["/bin/sh", "-c" , "{{ tpl .Values.initContainerConfig.ihirsConfig.command . }}"]
+          env:
+            - name: IHRIS_FHIR__BASE
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme }}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir"
+        {{ end }}
+        {{ if .Values.initContainerConfig.ihirsData.enable }}
+        - name: ihris-data
+          image: {{ .Values.initContainerConfig.ihirsData.image }}
+          env:
+            - name: IHRIS_FHIR__BASE
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme }}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir"
+        {{ end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: IHRIS_ELASTICSEARCH__BASE
+              value: "{{ .Values.esConfiguration.scheme }}://{{ .Values.esConfiguration.host }}:{{ .Values.esConfiguration.port }}"
+            - name: IHRIS_FHIR__BASE
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme }}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir"
+            - name: IHRIS_KIBANA__BASE
+              value: "{{ .Values.kibana.scheme }}://{{ .Values.kibana.host }}:{{ .Values.kibana.port }}"
+            - name: IHRIS_REDIS__URL
+              value: "redis://{{ .Values.redis.host }}"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+      {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+  {{- toYaml . | nindent 8 }}
+  {{- end }}

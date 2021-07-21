@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "opencr.fullname" . }}
+  labels:
+    {{- include "opencr.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "opencr.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "opencr.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "opencr.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: opencr-configmap-config-instant
+          configMap:
+            name: {{ include "opencr.fullname" . }}
+        - name: opencr-configmap-decision-rules
+          configMap:
+            name: {{ include "opencr.fullname" . }}
+        - name: opencr-configmap-mediator
+          configMap:
+            name: {{ include "opencr.fullname" . }}
+      initContainers:
+        - name: check-openhim-status
+          image: busybox
+          command: ['sh', '-c', 'until telnet {{ .Values.openhimCoreConfiguration.host }} {{ .Values.openhimCoreConfiguration.port }}; do echo OpenHIM not running yet; sleep 10; done;']
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: NODE_ENV
+              value: {{ .Values.nodeEnvironment | quote }}
+            - name: HAPI_FHIR_URL
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme}}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir/metadata"
+            - name: fhirServer__baseURL
+              value: "{{ .Values.hapiFhirServerConfiguration.scheme}}://{{ .Values.hapiFhirServerConfiguration.host }}:{{ .Values.hapiFhirServerConfiguration.port }}/fhir"
+          volumeMounts:
+            - name: opencr-configmap-config-instant
+              mountPath: /src/server/config/config_instant.json
+              subPath: config-instant
+            - name: opencr-configmap-decision-rules
+              mountPath: /src/server/config/decisionRules.json
+              subPath: decision-rules
+            - name: opencr-configmap-mediator
+              mountPath: /src/server/config/mediator.json
+              subPath: mediator
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
