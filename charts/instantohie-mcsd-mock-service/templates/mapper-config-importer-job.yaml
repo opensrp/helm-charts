@@ -12,7 +12,7 @@ spec:
       initContainers:
         - name: check-openhim-core-status
           image: busybox:1.28
-          command: ['sh', '-c', 'until telnet {{ .Values.hapiFhirServerConfiguration.host }} {{ .Values.hapiFhirServerConfiguration.port }}; do echo OpenHIM Core API not running yet; sleep 10; done;']
+          command: ['sh', '-c', 'until telnet {{ .Values.openhimCoreConfiguration.host }} {{ .Values.openhimCoreConfiguration.port }}; do echo OpenHIM Core API not running yet; sleep 10; done;']
       containers:
         - name: mapper-config-importer
           image: jembi/instantohie-config-importer
