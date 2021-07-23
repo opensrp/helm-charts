@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "instantohie-mcsd-mock-service.fullname" . }}
+  labels:
+  {{- include "instantohie-mcsd-mock-service.labels" . | nindent 4 }}
+data:
+  openhim-import-json: |
+  {{- include "config.openhim-import.json" . | nindent 4 }}
+  openhim-config-js: |
+  {{- include "config.openhimConfig.js" . | nindent 4 }}
+  endpoint-json: |
+  {{- include "config.endpoint.json" . | nindent 4 }}
+  endpoint-js: |
+  {{- include "config.endpoint.js" . | nindent 4 }}
+  endpoint-2-json: |
+  {{- include "config.endpoint-2.json" . | nindent 4 }}

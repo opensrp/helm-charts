@@ -6,6 +6,13 @@ This is the OpenSRP community's official repository for [Helm](https://helm.sh) 
 
 1. [OpenSRP Server Web](https://github.com/opensrp/opensrp-server-web)
 2. [OpenSRP Web](https://github.com/opensrp/web)
+3. [Hapi Fhir](https://github.com/hapifhir/hapi-fhir-jpaserver-starter)
+4. [OpenHim Core](https://github.com/jembi/openhim-core-js)
+5. [OpenHim Console](https://github.com/jembi/openhim-console)
+6. [Dhis2](https://github.com/dhis2/dhis2-core)
+7. [Ihris](https://github.com/iHRIS/iHRIS)
+8. [OpenHim Mediator Mapping](https://github.com/jembi/openhim-mediator-mapping)
+9. OpenHie Helper Tools: Fhir Extractor, OpenCr, Mcsd Mock Service
 
 ## Usage
 

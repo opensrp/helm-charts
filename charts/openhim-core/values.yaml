@@ -1,0 +1,280 @@
+# Default values for openhim-core.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: jembi/openhim-core
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+appPort: 8080
+
+httpApiPort: 5001
+
+httpsApiPort: 5000
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: openhim-core.local
+      # Service port, defaults to the service port (.Values.service.port) if not specified
+      port:
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+extraInitContainers:
+
+extraEnvs:
+
+extraVolumeMounts:
+
+extraVolumes:
+
+recreatePodsWhenConfigMapChange: true
+
+mongodb:
+  database: "openhim"
+  username: "openhim"
+  password: ""
+  host: "mongodb.<namespace>.svc.cluster.local"
+
+livenessProbe:
+  initialDelaySeconds: 30
+  timeoutSeconds: 5
+  httpGet:
+    path: /heartbeat
+    port: http
+    scheme: "HTTPS"
+
+readinessProbe:
+  initialDelaySeconds: 20
+  timeoutSeconds: 5
+  httpGet:
+    path: /heartbeat
+    port: http
+    scheme: "HTTPS"
+
+# Updates the default.json file (Server config file)
+# Reference file https://github.com/jembi/openhim-core-js/blob/master/config/default.json
+# Uses tpl function hence it can read values from references
+defaultJson: |
+  {
+    "bindAddress": "0.0.0.0",
+    "mongo": {
+      "url": "mongodb://{{ .Values.mongodb.username }}:{{ .Values.mongodb.password }}@{{ .Values.mongodb.host }}/{{ .Values.mongodb.database }}",
+      "atnaUrl": "mongodb://{{ .Values.mongodb.username }}:{{ .Values.mongodb.password }}@{{ .Values.mongodb.host }}/{{ .Values.mongodb.database }}",
+      "connectionOptions": {},
+      "openHIMApiReadPreference": "primaryPreferred",
+      "openHIMApiWriteConcern": 1,
+      "openHIMApiReadConcern": "local"
+    },
+    "logger": {
+      "level": "info",
+      "logToDB": true,
+      "capDBLogs": true,
+      "capSize": 10000000
+    },
+    "mongoLogger": {
+      "options": {
+        "w": 0,
+        "useNewUrlParser": true
+      }
+    },
+    "router": {
+      "externalHostname": "localhost",
+      "httpPort": 5001,
+      "httpsPort": 5000,
+      "timeout": 60000
+    },
+    "bodyCull":{
+      "enabled":true,
+      "pollPeriodMins": 60
+    },
+    "api": {
+      "enabled": true,
+      "protocol": "https",
+      "port": {{ .Values.service.port }},
+      "authWindowSeconds": 10,
+      "maxBodiesSizeMB": 15,
+      "maxPayloadSizeMB": 50,
+      "truncateSize": 15000,
+      "truncateAppend": "\n[truncated ...]",
+      "authenticationTypes": ["token","basic"]
+    },
+    "rerun": {
+      "httpPort": 7786,
+      "host": "localhost",
+      "processor": {
+        "enabled": true,
+        "pollPeriodMillis": 2000
+      }
+    },
+    "tcpAdapter": {
+      "httpReceiver": {
+        "httpPort": 7787,
+        "host": "localhost"
+      }
+    },
+    "polling": {
+      "enabled": true,
+      "pollingPort": 7788,
+      "host": "localhost"
+    },
+    "authentication": {
+      "enableMutualTLSAuthentication": true,
+      "enableBasicAuthentication": true,
+      "enableCustomTokenAuthentication": true,
+      "enableJWTAuthentication": false,
+      "jwt": {
+        "secretOrPublicKey": "",
+        "algorithms": "",
+        "audience": "",
+        "issuer": ""
+      }
+    },
+    "email": {
+      "fromAddress": "address@example.com",
+      "nodemailer": {
+        "service": "Gmail",
+        "auth": {
+          "user": "user@gmail.com",
+          "pass": "password"
+        }
+      }
+    },
+    "smsGateway": {
+      "provider": "clickatell",
+      "config": {
+        "user": "user",
+        "pass": "pass",
+        "apiID": "apiID"
+      }
+    },
+    "alerts": {
+      "enableAlerts": true,
+      "pollPeriodMinutes": 1,
+      "himInstance": "Local OpenHIM",
+      "consoleURL": "http://localhost:9000"
+    },
+    "reports": {
+      "enableReports": true,
+      "dailyReportAt": "0 7 * * *",
+      "weeklyReportAt": "0 7 * * 1",
+      "utcOffset": null
+    },
+    "events": {
+      "enableTSNormalization": true
+    },
+    "newUserExpiry": {
+      "duration": 7,
+      "durationType": "days"
+    },
+    "userPasswordResetExpiry": {
+      "duration": 1,
+      "durationType": "hours"
+    },
+    "auditing": {
+      "servers": {
+        "udp": {
+          "enabled": false,
+          "port": 5050
+        },
+        "tls": {
+          "enabled": false,
+          "port": 5051
+        },
+        "tcp": {
+          "enabled": false,
+          "port": 5052
+        }
+      },
+      "auditEvents": {
+        "interface": "internal",
+        "host": "localhost",
+        "port": 5051,
+        "auditSourceID": "OpenHIM"
+      }
+    },
+    "caching": {
+      "enabled": true,
+      "refreshMillis": 1000
+    },
+    "tlsClientLookup": {
+      "type": "strict"
+    },
+    "agenda": {
+      "startupDelay": 500
+    },
+    "certificateManagement": {
+      "watchFSForCert": false,
+      "certPath": "/etc/letsencrypt/live/openhim.jembi.org/cert.pem",
+      "keyPath": "/etc/letsencrypt/live/openhim.jembi.org/privkey.pem"
+    }
+  }

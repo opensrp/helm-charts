@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "openhim-mediator-mapping.fullname" . }}
+  labels:
+    {{- include "openhim-mediator-mapping.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "openhim-mediator-mapping.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "openhim-mediator-mapping.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "openhim-mediator-mapping.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: check-openhim-status
+          image: busybox
+          command: ['sh', '-c', 'until telnet {{ .Values.openhimCoreConfiguration.host }} {{ .Values.openhimCoreConfiguration.port }}; do echo OpenHIM not running yet; sleep 10; done;']
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: OPENHIM_URL
+              value: "{{ .Values.openhimCoreConfiguration.scheme }}://{{ .Values.openhimCoreConfiguration.host }}:{{ .Values.openhimCoreConfiguration.port }}"
+            - name: OPENHIM_USERNAME
+              value: {{ .Values.openhimCoreConfiguration.username }}
+            - name: OPENHIM_PASSWORD
+              value: {{ .Values.openhimCoreConfiguration.password }}
+            - name: MONGO_URL
+              value: "mongodb://{{ .Values.mongodb.username }}:{{ .Values.mongodb.password }}@{{ .Values.mongodb.host }}/{{ .Values.mongodb.database }}"
+            - name: PARSER_LIMIT
+              value: 10mb
+          ports:
+            - name: http
+              containerPort: 3003
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /uptime
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /uptime
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
