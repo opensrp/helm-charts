@@ -74,15 +74,9 @@ spec:
               containerPort: 8080
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /opensrp
-              port: http
-            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+          {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
-            httpGet:
-              path: /opensrp
-              port: http
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+          {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
       {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
