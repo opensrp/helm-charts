@@ -215,8 +215,15 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `postgres.password` |  | `"password"` |  
 | `postgres.database` |  | `"opensrp"` |  
 | `time_zone` |  | `"GMT+0:00"` |  
-| `readinessProbe.initialDelaySeconds` | | `120` |  |
-| `livenessProbe.initialDelaySeconds` |  | `120` | 
+| `livenessProbe.initialDelaySeconds` |  | `120` |
+| `livenessProbe.httpGet.path` |  | `"/opensrp"` |
+| `livenessProbe.httpGet.port` |  | `"http"` |
+| `livenessProbe.timeoutSeconds` |  | `5` |
+| `readinessProbe.initialDelaySeconds` |  | `60` |
+| `readinessProbe.failureThreshold` |  | `10` |
+| `readinessProbe.timeoutSeconds` |  | `5` |
+| `readinessProbe.httpGet.path` |  | `"/opensrp"` |
+| `readinessProbe.httpGet.port` |  | `"http"` |
 | `mybatis.core_tablespace` |  | `"pg_default"` |  
 | `mybatis.error_tablespace` |  | `"pg_default"` |  
 | `mybatis.schedule_tablespace` |  | `"pg_default"` |  
