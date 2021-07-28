@@ -29,6 +29,8 @@ podSecurityContext: {}
 
 securityContext: {}
 
+commonLabels: {}
+
 service:
   type: ClusterIP
   port: 80

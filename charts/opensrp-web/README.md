@@ -100,6 +100,7 @@ reactEnvironmentVariables:
 | `nodeSelector` |  | `{}` |  
 | `tolerations` |  | `[]` |  
 | `affinity` |  | `{}` |  
+| `commonLabels` |  | `{}` |  
 
 ## Opensrp Web  Parameters
 

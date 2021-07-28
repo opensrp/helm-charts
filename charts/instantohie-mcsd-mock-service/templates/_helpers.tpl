@@ -40,6 +40,9 @@ helm.sh/chart: {{ include "instantohie-mcsd-mock-service.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- range $index, $element := .Values.commonLabels }}
+{{ $index }}: {{ $element }}
+{{- end }}
 {{- end }}
 
 {{/*

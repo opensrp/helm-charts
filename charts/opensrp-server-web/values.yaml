@@ -81,6 +81,8 @@ hostOctetPortion: 2
 # Recreates pods when configMap changes, default is true
 recreatePodsWhenConfigMapChange: true
 
+commonLabels: {}
+
 readinessProbe:
   initialDelaySeconds: 60
   failureThreshold: 10

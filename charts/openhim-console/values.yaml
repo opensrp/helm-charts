@@ -90,6 +90,8 @@ extraVolumes:
 
 extraVolumeMounts:
 
+commonLabels: {}
+
 livenessProbe:
   initialDelaySeconds: 30
   httpGet:

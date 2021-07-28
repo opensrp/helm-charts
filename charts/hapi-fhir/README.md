@@ -66,3 +66,4 @@ The following table lists the configurable parameters of the Hapi-fhir chart and
 | `readinessProbe.httpGet.port` |  | `"http"` |
 | `readinessProbe.initialDelaySeconds` |  | `60` |
 | `applicationConfig` |  | [application.yaml](https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml)|
+| `commonLabels` |  | `{}` |  
