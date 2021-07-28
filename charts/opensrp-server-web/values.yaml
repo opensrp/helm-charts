@@ -93,6 +93,7 @@ readinessProbe:
 
 livenessProbe:
   initialDelaySeconds: 120
+  failureThreshold: 30
   timeoutSeconds: 5
   httpGet:
     path: /opensrp
