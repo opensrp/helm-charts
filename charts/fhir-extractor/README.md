@@ -61,3 +61,4 @@ The following table lists the configurable parameters of the Fhir-extractor char
 | `logstashConfiguration.scheme` |  | `"http"` |
 | `logstashConfiguration.host` |  | `""` |
 | `logstashConfiguration.port` |  | `9600` |
+| `commonLabels` |  | `{}` |  

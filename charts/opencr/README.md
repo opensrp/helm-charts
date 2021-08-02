@@ -66,3 +66,4 @@ The following table lists the configurable parameters of the Opencr chart, and t
 | `esConfiguration.scheme` |  | `"http"` |
 | `esConfiguration.host` |  | `""` |
 | `esConfiguration.port` |  | `9200` |
+| `commonLabels` |  | `{}` |  

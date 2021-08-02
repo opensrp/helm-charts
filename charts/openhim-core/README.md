@@ -76,3 +76,4 @@ The following table lists the configurable parameters of the Openhim-core chart 
 | `readinessProbe.httpGet.port` |  | `"http"` |
 | `readinessProbe.httpGet.scheme` |  | `"HTTPS"` |
 | `defaultJson` |  | [default.json](https://github.com/jembi/openhim-core-js/blob/master/config/default.json)|
+| `commonLabels` |  | `{}` |  

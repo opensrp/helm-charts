@@ -69,3 +69,4 @@ The following table lists the configurable parameters of the Openhim-console cha
 | `openhimCoreConfiguration.port` |  | `"8080"` |
 | `openhimCoreConfiguration.scheme` |  | `"https"` |
 | `defaultJson` |  | [default.json](https://github.com/jembi/openhim-console/blob/master/app/config/default.json) |
+| `commonLabels` |  | `{}` |  

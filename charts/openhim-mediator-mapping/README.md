@@ -62,3 +62,4 @@ The following table lists the configurable parameters of the Openhim-mediator-ma
 | `mongodb.username` |  | `"openhim"` |
 | `mongodb.password` |  | `""` |
 | `mongodb.host` |  | `"mongodb.<namespace>.svc.cluster.local"` |
+| `commonLables` |  | `{}` |

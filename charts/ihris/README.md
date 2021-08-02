@@ -73,3 +73,4 @@ The following table lists the configurable parameters of the Ihris chart, and th
 | `kibana.host` | Kibana-kibana.<namespace>.svc.cluster.local | `""` |
 | `kibana.scheme` |  | `"http"` |
 | `kibana.port` |  | `5601` |
+| `commonLabels` |  | `{}` |  
