@@ -166,6 +166,8 @@ couchdb:
 rapidpro:
   url: "https://rapidpro.ona.io"
   token: YOUR_AUTH_TOKEN
+  project: opensrp
+  listener_cron_schedule: 0 0/5 * * * *
 
 redis:
   host: redis

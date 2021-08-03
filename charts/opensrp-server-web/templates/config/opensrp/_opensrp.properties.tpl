@@ -53,6 +53,8 @@ couchdb.atomfeed-db.revision-limit={{ .Values.couchdb.atomfeed_db_revision_limit
 #RapidPro settings
 rapidpro.url={{ .Values.rapidpro.url }}
 rapidpro.token={{ .Values.rapidpro.token }}
+rapidpro.project={{ .Values.rapidpro.project }}
+rapidpro.listener.cron.schedule={{ .Values.rapidpro.listener_cron_schedule }}
 
 #redis settings
 redis.host={{ .Values.redis.host }}
