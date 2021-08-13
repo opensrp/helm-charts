@@ -81,6 +81,11 @@ containerEnvironmentVariables:
   EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.frontEndLogoutUrl }}"
   EXPRESS_FRONTEND_LOGOUT_URL: "{{ .Values.express.sessionFileStorePath }}"
   EXPRESS_PRELOADED_STATE_FILE: "{{ .Values.express.preloadedStateFile }}"
+  EXPRESS_MAXIMUM_LOG_FILES_NUMBER: "5"
+  EXPRESS_ALLOW_TOKEN_RENEWAL: "true"
+  EXPRESS_MAXIMUM_SESSION_LIFE_TIME: "10800"
+  EXRESS_LOGS_FILE_PATH: "{{ .Values.express.logsFilePath }}"
+  EXPRESS_SESSION_FILESTORE_PATH: "{{ .Values.express.sessionFileStorePath }}"
 
 # The react app environment variables
 reactEnvironmentVariables:
