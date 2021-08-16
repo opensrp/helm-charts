@@ -69,7 +69,7 @@ Create the name of the service account to use
 {{/*
 Dynamically add React environment variables
 */}}
-{{- define "opensrp-web.reactEnvironmenVariables" -}}
+{{- define "opensrp-web.reactEnvironmentVariables" -}}
 {{- $scope := . -}}
 {{ range  $key, $value := index .Values.reactEnvironmentVariables }}
 {{- $key -}}:{{- tpl $value $scope | quote -}},
