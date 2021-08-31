@@ -59,6 +59,19 @@ entries:
   hapi-fhir:
   - apiVersion: v2
     appVersion: v5.4.1
+    created: "2021-08-31T07:21:23.652454168Z"
+    description: Hapi Fhir Server Web https://github.com/hapifhir/hapi-fhir-jpaserver-starter.
+    digest: cab440828db7214f09b589941f1bed6c5a49d0e905f71e70aa9a4f8137b085a0
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: hapi-fhir
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/hapi-fhir-0.2.0/hapi-fhir-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: v5.4.1
     created: "2021-08-02T09:16:29.618332255Z"
     description: Hapi Fhir Server Web https://github.com/hapifhir/hapi-fhir-jpaserver-starter.
     digest: c8a57087fd33e4e00056fe2a1a0b02ec2a629f99d8b0d1f1437d7f29ed4f15b1
@@ -571,4 +584,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-27T06:55:08.355157868Z"
+generated: "2021-08-31T07:21:23.652776773Z"
