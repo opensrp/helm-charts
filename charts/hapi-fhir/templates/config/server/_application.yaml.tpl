@@ -1,4 +1,4 @@
 
 {{- define "config.server.application.yaml" }}
-{{ tpl .Values.applicationConfig . }}
+{{ tpl ( toYaml .Values.applicationConfig ) . }}
 {{- end }}
