@@ -93,3 +93,14 @@ Find the podCIDRPattern
 {{- end }}
 {{- end }}
 {{- end }}
+
+{{/*
+Get sentry tags
+*/}}
+{{- define "opensrp-server-web.sentryTags" }}
+{{- $dynamicTagMap := dict "release-name" .Release.Name -}}
+{{- range $index, $element:=.Values.sentry.tags }}
+{{- $_ := set $dynamicTagMap $index $element -}}
+{{- end }}
+{{- $dynamicTagMap | toJson }}
+{{- end }}

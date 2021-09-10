@@ -307,3 +307,8 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `tomcatRemoteIpValve.internalProxies` | `dynamically populated if not specified, control the hostPortion by updating hostOctetPortion e.g for 2 is equivalent to ip/16`  | `nil` |
 | `useTomcatRemoteIpValve` |  | `false` |
 | `commonLabels` |  | `{}` |  
+| `sentry.dsn` |  | `""` |
+| `sentry.environment` |  | `"staging"` |
+| `sentry.minimumEventLevel` |  | `"error"` |
+| `sentry.minimumBreadcrumbLevel` |  | `"info"` |
+| `sentry.tags` |  | `{}` |
