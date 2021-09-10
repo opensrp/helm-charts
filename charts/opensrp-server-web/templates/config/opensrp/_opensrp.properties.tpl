@@ -96,9 +96,13 @@ rabbitmq.reply.timeout={{ .Values.rabbitmq.reply_timeout }}
 rabbitmq.concurrent.consumers={{ .Values.rabbitmq.concurrent_consumers }}
 rabbitmq.max.concurrent.consumers={{ .Values.rabbitmq.max_concurrent_consumers }}
 
+
 sentry.dsn={{ .Values.sentry.dsn }}
-sentry.release={{ .Values.image.tag }}
+sentry.release={{ .Values.sentry.release | default .Values.image.tag }}
 sentry.environment={{ .Values.sentry.environment }}
+sentry.minimumBreadcrumbLevel={{ .Values.sentry.minimumBreadcrumbLevel }}
+sentry.minimumEventLevel={{ .Values.sentry.minimumEventLevel }}
+sentry.tags={{ include "opensrp-server-web.sentryTags" . }}
 
 {{- range $index, $element:=.Values.oauth_profiles }}
 #OAuth Profile {{ $index }}

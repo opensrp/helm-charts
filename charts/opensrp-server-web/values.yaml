@@ -8,7 +8,7 @@ image:
   repository: opensrp/opensrp-server-web
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.5.11-SNAPSHOT"
+  tag: "v3.0.3-SNAPSHOT"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -244,3 +244,6 @@ oauth_profiles:
 sentry:
   dsn: ""
   environment: "staging"
+  minimumEventLevel: "error"
+  minimumBreadcrumbLevel: "info"
+  tags: {}
