@@ -98,7 +98,7 @@ Find the podCIDRPattern
 Get sentry tags
 */}}
 {{- define "opensrp-server-web.sentryTags" }}
-{{- $dynamicTagMap := dict "release-name" .Release.Name -}}
+{{- $dynamicTagMap := dict "release-name" (.Release.Name) "release-namespace" (.Release.Namespace) -}}
 {{- range $index, $element:=.Values.sentry.tags }}
 {{- $_ := set $dynamicTagMap $index $element -}}
 {{- end }}
