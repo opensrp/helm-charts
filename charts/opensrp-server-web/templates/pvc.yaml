@@ -11,7 +11,11 @@ spec:
   volumeMode: {{ .Values.pvc.volumeMode }}
   resources:
     {{- toYaml .Values.pvc.resources | nindent 4 }}
-  storageClassName: {{ .Values.pvc.storageClassName | default "default" }}
+  {{- if .Values.pvc.storageClassName }}
+  storageClassName: {{ .Values.pvc.storageClassName }}
+  {{- end }}
+  {{- if .Values.pvc.selector }}
   selector:
     {{- toYaml .Values.pvc.selector | nindent 4 }}
+  {{- end  }}
 {{- end -}}
