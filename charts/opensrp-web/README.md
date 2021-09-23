@@ -37,16 +37,22 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    cert-manager.io/cluster-issuer: "<cluster-issuer>"
+    cert-manager.io/cluster-issuer: <YourClusterIssuer>
     cert-manager.io/acme-challenge-type: http01
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  hosts:
-    - host: <website-url>
-      paths: ["/"]
-  tls:
-    - secretName: <website-tls-name>
-      hosts:
-        - <website-url>
+    annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: opensrp-web.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+
+    tls:
+      - secretName: opensrp-web-tls
+        hosts:
+          - opensrp-web.local
 
 sharedVars:
   keycloakUrl: "keycloak-url"
@@ -89,9 +95,10 @@ reactEnvironmentVariables:
 | `service.type` |  | `"ClusterIP"` |  
 | `service.port` |  | `8080` |  
 | `ingress.enabled` |  | `false` |  
-| `ingress.annotations` |  | `{}` |  
-| `ingress.hosts` |  | `[{"host": "opensrp-web.local", "paths": []}]` |  
-| `ingress.tls` |  | `[]` |  
+| `ingress.className` |  | `""` |
+| `ingress.annotations` |  | `{}` |
+| `ingress.hosts` |  | `[{"host": "opensrp-web.local", "paths": [{"path": "/", "pathType": "ImplementationSpecific"}]}]` |
+| `ingress.tls` |  | `[]` |
 | `resources` |  | `{}` |  
 | `autoscaling.enabled` |  | `false` |  
 | `autoscaling.minReplicas` |  | `1` |  
