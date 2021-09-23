@@ -256,3 +256,18 @@ sentry:
   minimumEventLevel: "error"
   minimumBreadcrumbLevel: "info"
   tags: {}
+
+extraVolumeMounts:
+
+extraVolumes:
+
+pvc:
+  enabled: false
+  volumeMode: Filesystem
+  storageClassName:
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  selector: {}

@@ -1,0 +1,17 @@
+{{- if .Values.pvc.enabled -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "opensrp-server-web.fullname" . }}
+  labels:
+    {{- include "opensrp-server-web.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    {{- toYaml .Values.pvc.accessModes | nindent 4 }}
+  volumeMode: {{ .Values.pvc.volumeMode }}
+  resources:
+    {{- toYaml .Values.pvc.resources | nindent 4 }}
+  storageClassName: {{ .Values.pvc.storageClassName | default "default" }}
+  selector:
+    {{- toYaml .Values.pvc.selector | nindent 4 }}
+{{- end -}}
