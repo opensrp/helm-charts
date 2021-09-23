@@ -42,11 +42,20 @@ service:
 
 ingress:
   enabled: false
+  className: ""
   annotations: {}
+  # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
   hosts:
     - host: opensrp-server-web.local
-      paths: []
+      paths:
+        - path: /opensrp
+          pathType: ImplementationSpecific
   tls: []
+#    - secretName: opensrp-server-web-tls
+#      hosts:
+#        - opensrp-server-web.local
+
 resources: {}
 
 autoscaling:

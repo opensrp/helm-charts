@@ -44,22 +44,24 @@ Then update `values.yaml` as such:
 for example in `v2.1.*` 
 ```yaml
 image:  
-  tag: "v2.1.53.1-SNAPSHOT"  
+  tag: "v2.1.53.3-SNAPSHOT"  
 ingress:  
   enabled: true  
   annotations:  
     kubernetes.io/ingress.class: nginx  
     kubernetes.io/tls-acme: "true"  
-  cert-manager.io/cluster-issuer: "YourClusterIssuer"  
-  cert-manager.io/acme-challenge-type: http01  
+    cert-manager.io/cluster-issuer: <YourClusterIssuer>
+    cert-manager.io/acme-challenge-type: http01  
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"  
-  hosts:  
-    - host: <host-domain>  
-      paths: ["/opensrp"] 
-  tls:  
-    - secretName: opensp-server-web-org-tls  
-      hosts:  
-        - <https-url>
+    hosts:
+      - host: opensrp-server-web.local
+        paths:
+          - path: /opensrp
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: opensrp-server-web-tls
+        hosts:
+          - opensrp-server-web.local
   
 postgres:  
   host: "<host>"  
@@ -107,22 +109,24 @@ oauth_profiles:
 for `v2.2.* and above` 
 ```yaml
 image:  
-  tag: "v2.6.1-SNAPSHOT"  
+  tag: "v2.8.20-SNAPSHOT"  
 ingress:  
   enabled: true  
   annotations:  
     kubernetes.io/ingress.class: nginx  
     kubernetes.io/tls-acme: "true"  
-  cert-manager.io/cluster-issuer: "YourClusterIssuer"  
-  cert-manager.io/acme-challenge-type: http01  
+    cert-manager.io/cluster-issuer: <YourClusterIssuer>
+    cert-manager.io/acme-challenge-type: http01  
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"  
-  hosts:  
-    - host: <host-domain>  
-      paths: ["/opensrp"] 
-  tls:  
-    - secretName: opensp-server-web-org-tls  
-      hosts:  
-        - <https-url>
+    hosts:
+      - host: opensrp-server-web.local
+        paths:
+          - path: /opensrp
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: opensrp-server-web-tls
+        hosts:
+          - opensrp-server-web.local
   
 postgres:  
   host: "<host>"  
@@ -193,9 +197,10 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `service.type` |  | `"ClusterIP"` |  
 | `service.port` |  | `8080` |  
 | `ingress.enabled` |  | `false` |  
-| `ingress.annotations` |  | `{}` |  
-| `ingress.hosts` |  | `[{"host": "opensrp-server-web.local", "paths": []}]` |  
-| `ingress.tls` |  | `[]` |  
+| `ingress.className` |  | `""` |
+| `ingress.annotations` |  | `{}` |
+| `ingress.hosts` |  | `[{"host": "opensrp-server-web.local", "paths": [{"path": "/opensrp", "pathType": "ImplementationSpecific"}]}]` |
+| `ingress.tls` |  | `[]` |
 | `resources` |  | `{}` |  
 | `autoscaling.enabled` |  | `false` |  
 | `autoscaling.minReplicas` |  | `1` |  
