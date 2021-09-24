@@ -256,3 +256,26 @@ sentry:
   minimumEventLevel: "error"
   minimumBreadcrumbLevel: "info"
   tags: {}
+
+extraVolumeMounts:
+
+extraVolumes:
+
+# PVC for multimedia stored on the server disabled by default.
+# To use this enable it and update the multimedia file manager like below
+# ...
+# opensrp:
+#  multimedia_file_manager: FileSystemMultimediaFileManager
+# ...
+# Default multimedia file manager is S3MultimediaFileManager
+multimediaPvc:
+  enabled: false
+  volumeMode: Filesystem
+  storageClassName:
+  resources:
+    requests:
+      # update accordingly
+      storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  selector: {}

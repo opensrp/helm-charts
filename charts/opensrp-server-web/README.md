@@ -317,3 +317,33 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `sentry.minimumEventLevel` |  | `"error"` |
 | `sentry.minimumBreadcrumbLevel` |  | `"info"` |
 | `sentry.tags` |  | `{}` |
+| `extraVolumeMounts` |  | `null` |
+| `extraVolumes` |  | `null` |
+| `multimediaPvc.enabled` |  | `false` |
+| `multimediaPvc.volumeMode` |  | `"Filesystem"` |
+| `multimediaPvc.storageClassName` |  | `null` |
+| `multimediaPvc.resources.requests.storage` |  | `"2Gi"` |
+| `multimediaPvc.accessModes` |  | `["ReadWriteOnce"]` |
+| `multimediaPvc.selector` |  | `{}` |
+
+## Multimedia Storage
+By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
+````yaml
+object_storage:
+  access_key_id: dummy
+  secret_access_key: dummy
+  region: dummy
+  bucket_name: dummy
+  bucket_folder_path: dummy
+````
+If S3 storage is not available one can volumes instead. The configurations are as follows:
+1. Enable PVC mode.
+    - ````yaml
+      multimediaPvc:
+        enabled: true
+      ````
+2. Set multimedia file manager to FileSystem Manager.
+   - ````yaml
+     opensrp:
+       multimedia_file_manager: FileSystemMultimediaFileManager
+     ````

@@ -41,6 +41,14 @@ spec:
         - name: opensrp-server-config-web
           configMap:
             name: {{ include "opensrp-server-web.fullname" . }}
+        {{- if .Values.multimediaPvc.enabled }}
+        - name: opensrp-server-multimedia-dir
+          persistentVolumeClaim:
+            claimName: {{ include "opensrp-server-web.fullname" . }}
+        {{- end }}
+        {{- if  .Values.extraVolumes }}
+        {{- toYaml .Values.extraVolumes | nindent 8 -}}
+        {{- end }}
       initContainers:
         - name: {{ .Chart.Name }}-mybatis
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -69,6 +77,13 @@ spec:
             - name: opensrp-server-config-web
               mountPath: /usr/local/tomcat/webapps/opensrp/WEB-INF/web.xml
               subPath: opensrp.web.xml
+              {{- if .Values.multimediaPvc.enabled }}
+            - name: opensrp-server-multimedia-dir
+              mountPath: /opt/multimedia
+              {{- end }}
+              {{- if  .Values.extraVolumeMounts }}
+              {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+              {{- end }}
           ports:
             - name: http
               containerPort: 8080
