@@ -209,6 +209,8 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `nodeSelector` |  | `{}` |  
 | `tolerations` |  | `[]` |  
 | `affinity` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
 
 ## Opensrp Server Web  Parameters
 | Parameter                | Description             | Default        |  
