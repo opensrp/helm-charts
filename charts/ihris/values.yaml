@@ -135,3 +135,9 @@ kibana:
   host: ""
   scheme: "http"
   port: 5601
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

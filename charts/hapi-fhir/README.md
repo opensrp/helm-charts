@@ -67,3 +67,5 @@ The following table lists the configurable parameters of the Hapi-fhir chart and
 | `readinessProbe.initialDelaySeconds` |  | `60` |
 | `applicationConfig` |  | [application.yaml](https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml)|
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

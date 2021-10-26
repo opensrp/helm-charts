@@ -96,3 +96,9 @@ mongodb:
   username: "openhim"
   password: ""
   host: "mongodb.<namespace>.svc.cluster.local"
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

@@ -70,3 +70,5 @@ The following table lists the configurable parameters of the Openhim-console cha
 | `openhimCoreConfiguration.scheme` |  | `"https"` |
 | `defaultJson` |  | [default.json](https://github.com/jembi/openhim-console/blob/master/app/config/default.json) |
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

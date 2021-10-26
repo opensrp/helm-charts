@@ -94,3 +94,9 @@ logstashConfiguration:
   scheme: "http"
   host: ""
   port: 9600
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

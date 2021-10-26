@@ -67,3 +67,5 @@ The following table lists the configurable parameters of the Opencr chart, and t
 | `esConfiguration.host` |  | `""` |
 | `esConfiguration.port` |  | `9200` |
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
