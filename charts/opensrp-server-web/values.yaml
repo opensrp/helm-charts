@@ -279,3 +279,9 @@ multimediaPvc:
   accessModes:
     - ReadWriteOnce
   selector: {}
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}
