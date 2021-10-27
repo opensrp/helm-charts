@@ -3,6 +3,20 @@ entries:
   dhis2:
   - apiVersion: v2
     appVersion: 2.35.3
+    created: "2021-10-27T06:07:55.156947108Z"
+    description: DHIS 2 is a flexible information system for data capture, management,
+      validation, analytics and visualization. https://github.com/dhis2/dhis2-core
+    digest: be7a424c221cb67bccd2401ee8eab6f13296c0ed36e3cacebdba06e14979c425
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: dhis2
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/dhis2-0.2.0/dhis2-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 2.35.3
     created: "2021-08-02T09:16:29.216415462Z"
     description: DHIS 2 is a flexible information system for data capture, management,
       validation, analytics and visualization. https://github.com/dhis2/dhis2-core
@@ -32,6 +46,19 @@ entries:
   fhir-extractor:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-10-27T06:07:55.296503832Z"
+    description: A Helm chart for Kubernetes
+    digest: 563e9f0988542197e43c0c29a054cff43d9fad4a7c3aa1dec19e8250d69d35fc
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: fhir-extractor
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/fhir-extractor-0.2.0/fhir-extractor-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-08-02T09:16:29.428951291Z"
     description: A Helm chart for Kubernetes
     digest: f1e1efce09bf5c04ae1ee2a22e196ae26a93fd3090b3e460f036854c51ceb48b
@@ -57,6 +84,19 @@ entries:
     - https://github.com/opensrp/helm-charts/releases/download/fhir-extractor-0.1.0/fhir-extractor-0.1.0.tgz
     version: 0.1.0
   hapi-fhir:
+  - apiVersion: v2
+    appVersion: v5.4.1
+    created: "2021-10-27T06:07:55.408877357Z"
+    description: Hapi Fhir Server Web https://github.com/hapifhir/hapi-fhir-jpaserver-starter.
+    digest: 33e1e05395c4c76ffd28e06fcc04994aa36b7b3b52e64e85aa0644a9c9a1e84d
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: hapi-fhir
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/hapi-fhir-0.3.0/hapi-fhir-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: v5.4.1
     created: "2021-08-31T07:21:23.652454168Z"
@@ -99,6 +139,19 @@ entries:
   ihris:
   - apiVersion: v2
     appVersion: 03a377ab604bf6c6e0593c72b650f3f2b6da1935
+    created: "2021-10-27T06:07:55.557991551Z"
+    description: iHris https://github.com/iHRIS/iHRIS
+    digest: 6e2e9d487f81e7ca5e04fdb66ee1500fa420f297302ff20d6c95d5e3be9771ce
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: ihris
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/ihris-0.2.0/ihris-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 03a377ab604bf6c6e0593c72b650f3f2b6da1935
     created: "2021-08-02T09:16:29.804887187Z"
     description: iHris https://github.com/iHRIS/iHRIS
     digest: cb6731321b92dec02241c00d4735be72752710b2730b25e788cdba6e5a19d7b4
@@ -124,6 +177,19 @@ entries:
     - https://github.com/opensrp/helm-charts/releases/download/ihris-0.1.0/ihris-0.1.0.tgz
     version: 0.1.0
   instantohie-mcsd-mock-service:
+  - apiVersion: v2
+    appVersion: v1.1.1
+    created: "2021-10-27T06:07:55.703177117Z"
+    description: A Helm chart for Kubernetes
+    digest: d9a18b239840dd537c6b79545c2639bfed4becff6c783b6f262c8acfb43a837d
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: instantohie-mcsd-mock-service
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/instantohie-mcsd-mock-service-0.2.0/instantohie-mcsd-mock-service-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: v1.1.1
     created: "2021-08-02T09:16:30.005250876Z"
@@ -169,6 +235,19 @@ entries:
   opencr:
   - apiVersion: v2
     appVersion: 6d88f7e
+    created: "2021-10-27T06:07:55.849772293Z"
+    description: OpenCR is an open source and standards-based client registry. https://github.com/intrahealth/client-registry
+    digest: 478a4959d86cadcfc75b79c971f0595f9a3ed27a01791ba175701d947384b28a
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: opencr
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/opencr-0.2.0/opencr-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 6d88f7e
     created: "2021-08-02T09:16:30.200307505Z"
     description: OpenCR is an open source and standards-based client registry. https://github.com/intrahealth/client-registry
     digest: 8500964c6144e99b7c9aa97d058a746b7596ad6b85384bf8c83180e759ffc4bb
@@ -194,6 +273,19 @@ entries:
     - https://github.com/opensrp/helm-charts/releases/download/opencr-0.1.0/opencr-0.1.0.tgz
     version: 0.1.0
   openhim-console:
+  - apiVersion: v2
+    appVersion: "1.14"
+    created: "2021-10-27T06:07:55.978402037Z"
+    description: Openhim Console https://github.com/jembi/openhim-console.
+    digest: f582beafba9307961306399caf6c30bb4cbb95bc8fb81fbadfa41f08b6a0e25d
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: openhim-console
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/openhim-console-0.2.0/openhim-console-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: "1.14"
     created: "2021-08-02T09:16:30.45795755Z"
@@ -223,6 +315,19 @@ entries:
   openhim-core:
   - apiVersion: v2
     appVersion: "7"
+    created: "2021-10-27T06:07:56.128828441Z"
+    description: Openhim Core https://github.com/jembi/openhim-core-js.
+    digest: 587049bb3ff316c3bb66b1d2f5fac6ebff4c2bc4a92d37808356c427f8e0b719
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: openhim-core
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/openhim-core-0.2.0/openhim-core-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "7"
     created: "2021-08-02T09:16:30.655134803Z"
     description: Openhim Core https://github.com/jembi/openhim-core-js.
     digest: c41db76a1d2c304d45584ce70d85b792199006bdbb635d9fb94ea388ff18a1f1
@@ -248,6 +353,20 @@ entries:
     - https://github.com/opensrp/helm-charts/releases/download/openhim-core-0.1.0/openhim-core-0.1.0.tgz
     version: 0.1.0
   openhim-mediator-mapping:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-10-27T06:07:56.262943125Z"
+    description: The Mapping Mediator's function is to allow data validation, mapping,
+      and orchestration between previously disparate systems.
+    digest: d17188187de671dfd941583bd8a07df74d504c5121aa6e6f91de5c208f5c373b
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: openhim-mediator-mapping
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/openhim-mediator-mapping-0.2.0/openhim-mediator-mapping-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-08-02T09:16:30.836691377Z"
@@ -517,6 +636,22 @@ entries:
   opensrp-web:
   - apiVersion: v2
     appVersion: v1.1.12
+    created: "2021-10-27T06:07:56.393566284Z"
+    description: OpenSRP Web is the default frontend for the OpenSRP Server API, providing
+      access to the data collected on the server, configuration options as well as
+      any functionality provided by the API server.
+    digest: a02bdbce0737fa21058afb83a4771caca861da71621d6f25e4c5b2cdb75f612e
+    icon: https://avatars2.githubusercontent.com/u/7898027?s=200&v=4
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: opensrp-web
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/opensrp-web-0.3.0/opensrp-web-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: v1.1.12
     created: "2021-09-23T08:46:34.547082029Z"
     description: OpenSRP Web is the default frontend for the OpenSRP Server API, providing
       access to the data collected on the server, configuration options as well as
@@ -675,4 +810,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-26T15:17:05.822708045Z"
+generated: "2021-10-27T06:07:56.393769685Z"
