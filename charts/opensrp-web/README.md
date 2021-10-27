@@ -108,6 +108,8 @@ reactEnvironmentVariables:
 | `tolerations` |  | `[]` |  
 | `affinity` |  | `{}` |  
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
 
 ## Opensrp Web  Parameters
 

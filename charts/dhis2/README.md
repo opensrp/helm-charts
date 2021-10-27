@@ -70,3 +70,5 @@ The following table lists the configurable parameters of the Dhis2 chart and the
 | `postgres.database` |  | `""` |
 | `dhisConf` |  | `"connection.dialect = org.hibernate.dialect.PostgreSQLDialect\nconnection.driver_class = org.postgresql.Driver\n\n# \"db\" maps to service name defined in Docker Compose\n# \"dhis2\" maps to POSTGRES_DB defined in Docker Compose\nconnection.url = jdbc:postgresql://{{ .Values.postgres.host }}:{{ .Values.postgres.port }}/{{ .Values.postgres.database}}\n\n# maps to POSTGRES_USER environment variable in Docker Compose.\nconnection.username = {{ .Values.postgres.username }}\n\n# maps to POSTGRES_PASSWORD environment variable in Docker Compose.\nconnection.password =  {{ .Values.postgres.password }}\n"` |
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

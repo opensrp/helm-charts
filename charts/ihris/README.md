@@ -74,3 +74,5 @@ The following table lists the configurable parameters of the Ihris chart, and th
 | `kibana.scheme` |  | `"http"` |
 | `kibana.port` |  | `5601` |
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

@@ -63,3 +63,5 @@ The following table lists the configurable parameters of the Openhim-mediator-ma
 | `mongodb.password` |  | `""` |
 | `mongodb.host` |  | `"mongodb.<namespace>.svc.cluster.local"` |
 | `commonLables` |  | `{}` |
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

@@ -125,3 +125,9 @@ defaultJson: |
     "footerPoweredBy": "<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>",
     "loginBanner": ""
   }
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

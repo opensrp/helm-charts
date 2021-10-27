@@ -161,3 +161,9 @@ express:
   reactBuildPath: "/usr/src/web"
   nodeEnv: "development"
   frontEndLogoutUrl: "/logout"
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

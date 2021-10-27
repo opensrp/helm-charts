@@ -77,3 +77,5 @@ The following table lists the configurable parameters of the Openhim-core chart 
 | `readinessProbe.httpGet.scheme` |  | `"HTTPS"` |
 | `defaultJson` |  | [default.json](https://github.com/jembi/openhim-core-js/blob/master/config/default.json)|
 | `commonLabels` |  | `{}` |  
+| `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
+| `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |

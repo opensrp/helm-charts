@@ -105,3 +105,9 @@ esConfiguration:
   scheme: "http"
   host: ""
   port: 9200
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

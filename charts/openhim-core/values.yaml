@@ -280,3 +280,9 @@ defaultJson: |
       "keyPath": "/etc/letsencrypt/live/openhim.jembi.org/privkey.pem"
     }
   }
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

@@ -119,3 +119,9 @@ dhisConf: |
 
   # maps to POSTGRES_PASSWORD environment variable in Docker Compose.
   connection.password =  {{ .Values.postgres.password }}
+
+vpa:
+  enabled: true
+  updatePolicy:
+    updateMode: "Off"
+  resourcePolicy: {}

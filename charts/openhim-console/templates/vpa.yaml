@@ -1,0 +1,19 @@
+{{- if .Values.vpa.enabled }}
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: {{ include "openhim-console.fullname" . }}
+  labels:
+    {{- include "openhim-console.labels" . | nindent 4 }}
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: {{ include "openhim-console.fullname" . }}
+  updatePolicy:
+    {{- toYaml .Values.vpa.updatePolicy | nindent 4 }}
+  {{- if .Values.vpa.resourcePolicy }}
+  resourcePolicy:
+    {{- toYaml .Values.vpa.resourcePolicy | nindent 4 }}
+  {{- end }}
+{{- end }}
