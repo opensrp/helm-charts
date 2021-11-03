@@ -97,7 +97,7 @@ readinessProbe:
   failureThreshold: 10
   timeoutSeconds: 5
   httpGet:
-    path: /opensrp
+    path: /opensrp/health
     port: http
 
 livenessProbe:
@@ -105,7 +105,7 @@ livenessProbe:
   failureThreshold: 30
   timeoutSeconds: 5
   httpGet:
-    path: /opensrp
+    path: /opensrp/health
     port: http
 
 postgres:
