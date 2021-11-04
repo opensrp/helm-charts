@@ -328,6 +328,11 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `multimediaPvc.resources.requests.storage` |  | `"2Gi"` |
 | `multimediaPvc.accessModes` |  | `["ReadWriteOnce"]` |
 | `multimediaPvc.selector` |  | `{}` |
+| `health.endpoint.openmrs.connectionTimeout` |  | `null` |
+| `health.endpoint.openmrs.readTimeout` |  | `null` |
+| `health.endpoint.postgres.queryTimeout` |  | `null` |
+| `health.endpoint.keycloak.connectionTimeout` |  | `null` |
+| `health.endpoint.keycloak.readTimeout` |  | `null` |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:

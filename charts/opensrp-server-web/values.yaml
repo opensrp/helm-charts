@@ -286,3 +286,14 @@ vpa:
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
+
+health:
+  endpoint:
+    openmrs:
+      connectionTimeout:
+      readTimeout:
+    postgres:
+      queryTimeout:
+    keycloak:
+      connectionTimeout:
+      readTimeout:
