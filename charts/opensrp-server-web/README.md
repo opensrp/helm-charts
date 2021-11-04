@@ -350,3 +350,7 @@ If S3 storage is not available one can volumes instead. The configurations are a
      opensrp:
        multimedia_file_manager: FileSystemMultimediaFileManager
      ````
+
+## Health Endpoint
+From chart `v0.4.0` the health endpoint will now be `/opensrp/health`, read more on it [here](https://github.com/opensrp/opensrp-server-web#health-endpoint). This supports only opensrp server versions v2.8.29 and above for v2.2, v3.0.6 and above for v3 and v2.1.53.5 and above for v2.1. The previous endpoint can still be used by overriding the probes paths.
+ 
