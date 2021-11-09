@@ -116,4 +116,7 @@ oauth.default.roles={{ .roles | join "," }}
 #end
 {{ end }}
 
+
+# Run case triggered plan generation every 5 minutes
+schedule.plan.generate.cron = {{ .Values.schedule.plan_generate_cron }}
 {{- end }}

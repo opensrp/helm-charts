@@ -284,6 +284,7 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `schedule.openmrs_sync_interval` |  | `300000` |  
 | `schedule.openmrs_validate_interval` |  | `420000` |  
 | `schedule.dhis2_sync_interval` |  | `600000` |  
+| `schedule.plan_generate_cron` |  | `"0 0/5 * * * *"` |
 | `keycloak.configuration_endpoint` |  | `"{0}realms/{1}/.well-known/openid-configuration"` |  
 | `keycloak.password_reset_endpoint` |  | `"{0}realms/{1}/account/credentials/password"` |  
 | `keycloak.users_endpoint` |  | `"{0}/admin/realms/{1}/users"` |  
