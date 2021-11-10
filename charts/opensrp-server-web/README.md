@@ -228,8 +228,8 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `livenessProbe.timeoutSeconds` |  | `5` |
 | `readinessProbe.initialDelaySeconds` |  | `60` |
 | `readinessProbe.failureThreshold` |  | `10` |
-| `readinessProbe.timeoutSeconds` |  | `5` |
-| `readinessProbe.httpGet.path` |  | `"/opensrp"` |
+| `readinessProbe.timeoutSeconds` |  | `10` |
+| `readinessProbe.httpGet.path` |  | `"/opensrp/health"` |
 | `readinessProbe.httpGet.port` |  | `"http"` |
 | `mybatis.core_tablespace` |  | `"pg_default"` |  
 | `mybatis.error_tablespace` |  | `"pg_default"` |  
@@ -328,6 +328,11 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `multimediaPvc.resources.requests.storage` |  | `"2Gi"` |
 | `multimediaPvc.accessModes` |  | `["ReadWriteOnce"]` |
 | `multimediaPvc.selector` |  | `{}` |
+| `health.endpoint.openmrs.connectionTimeout` |  | `null` |
+| `health.endpoint.openmrs.readTimeout` |  | `null` |
+| `health.endpoint.postgres.queryTimeout` |  | `null` |
+| `health.endpoint.keycloak.connectionTimeout` |  | `null` |
+| `health.endpoint.keycloak.readTimeout` |  | `null` |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
@@ -350,3 +355,7 @@ If S3 storage is not available one can volumes instead. The configurations are a
      opensrp:
        multimedia_file_manager: FileSystemMultimediaFileManager
      ````
+
+## Health Endpoint
+From chart `v0.4.0` the health endpoint will now be `/opensrp/health`, read more on it [here](https://github.com/opensrp/opensrp-server-web#health-endpoint). This supports only opensrp server versions v2.8.29 and above for v2.2, v3.0.6 and above for v3 and v2.1.53.5 and above for v2.1. The previous endpoint can still be used by overriding the probes paths.
+ 

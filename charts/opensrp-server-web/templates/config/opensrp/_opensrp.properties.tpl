@@ -116,6 +116,12 @@ oauth.default.roles={{ .roles | join "," }}
 #end
 {{ end }}
 
+health.endpoint.openmrs.connectionTimeout={{ .Values.health.endpoint.openmrs.connectionTimeout }}
+health.endpoint.openmrs.readTimeout={{ .Values.health.endpoint.openmrs.readTimeout }}
+health.endpoint.postgres.queryTimeout={{ .Values.health.endpoint.postgres.queryTimeout }}
+health.endpoint.keycloak.connectionTimeout={{ .Values.health.endpoint.keycloak.connectionTimeout }}
+health.endpoint.keycloak.readTimeout={{ .Values.health.endpoint.keycloak.readTimeout }}
+
 
 # Run case triggered plan generation every 5 minutes
 schedule.plan.generate.cron = {{ .Values.schedule.plan_generate_cron }}

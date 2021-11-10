@@ -95,9 +95,9 @@ commonLabels: {}
 readinessProbe:
   initialDelaySeconds: 60
   failureThreshold: 10
-  timeoutSeconds: 5
+  timeoutSeconds: 10
   httpGet:
-    path: /opensrp
+    path: /opensrp/health
     port: http
 
 livenessProbe:
@@ -286,3 +286,14 @@ vpa:
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
+
+health:
+  endpoint:
+    openmrs:
+      connectionTimeout:
+      readTimeout:
+    postgres:
+      queryTimeout:
+    keycloak:
+      connectionTimeout:
+      readTimeout:
