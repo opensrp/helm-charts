@@ -223,9 +223,9 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `postgres.database` |  | `"opensrp"` |  
 | `time_zone` |  | `"GMT+0:00"` |  
 | `livenessProbe.initialDelaySeconds` |  | `120` |
-| `livenessProbe.httpGet.path` |  | `"/opensrp/health"` |
+| `livenessProbe.httpGet.path` |  | `"/opensrp"` |
 | `livenessProbe.httpGet.port` |  | `"http"` |
-| `livenessProbe.timeoutSeconds` |  | `10` |
+| `livenessProbe.timeoutSeconds` |  | `5` |
 | `readinessProbe.initialDelaySeconds` |  | `60` |
 | `readinessProbe.failureThreshold` |  | `10` |
 | `readinessProbe.timeoutSeconds` |  | `10` |
