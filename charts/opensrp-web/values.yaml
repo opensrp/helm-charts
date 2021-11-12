@@ -139,6 +139,7 @@ reactEnvironmentVariables:
   REACT_APP_SUPPORTED_LANGUAGES: "en"
   REACT_APP_ENABLE_LANGUAGE_SWITCHER: "false"
   REACT_APP_OPENSRP_API_V2_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/v2/"
+  REACT_APP_OPENSRP_WEB_VERSION: "{{ .Values.image.tag }}"
 
 sharedVars:
   keycloakUrl: "keycloakUrl"
