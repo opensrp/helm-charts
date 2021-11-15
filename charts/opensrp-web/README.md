@@ -64,7 +64,6 @@ sharedVars:
   
 express:
   opensrpClientId: "<opensrp-client-id>"
-  sessionName: "<session-name>"
   opensrpClientSecret: sample
   sessionSecret: sample-secret
   
@@ -124,7 +123,7 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `containerEnvironmentVariables.EXPRESS_OPENSRP_USER_URL` |  | `"https://{{ .sharedVars.opensrpServer  }}/opensrp/user-details/"` |
 | `containerEnvironmentVariables.EXPRESS_OPENSRP_CLIENT_ID` |  | `"{{ .sharedVars.opensrpClientId }}"` |
 | `containerEnvironmentVariables.EXPRESS_OPENSRP_CLIENT_SECRET` |  | `"{{ .sharedVars.opensrpClientSecret }}"` |
-| `containerEnvironmentVariables.EXPRESS_SESSION_NAME` |  | `"{{ .express.sessionName }}"` |
+| `containerEnvironmentVariables.EXPRESS_SESSION_NAME` |  | `"{{ .sharedVars.opensrpClientId }}"` |
 | `containerEnvironmentVariables.EXPRESS_OAUTH_GET_STATE_URL` |  | `"https://{{ .sharedVars.appDomainName }}/oauth/state"` |
 | `containerEnvironmentVariables.EXPRESS_SESSION_SECRET` |  | `"{{ .express.sessionSecret }}"` |
 | `containerEnvironmentVariables.EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL` |  | `"https://{{ .sharedVars.appDomainName }}/fe/oauth/callback/opensrp"` |
@@ -135,7 +134,7 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `containerEnvironmentVariables.EXPRESS_SESSION_PATH` |  | `"{{ .express.sessionPath }}"` |
 | `containerEnvironmentVariables.EXPRESS_SESSION_LOGIN_URL` |  | `"{{ .express.sessionLoginUrl }}"` |
 | `containerEnvironmentVariables.EXPRESS_SESSION_FILESTORE_PATH` |  | `"{{ .express.frontEndLogoutUrl }}"` |
-| `containerEnvironmentVariables.EXPRESS_FRONTEND_LOGOUT_URL` |  | `"{{ .express.sessionFileStorePath }}"` |
+| `containerEnvironmentVariables.EXPRESS_FRONTEND_LOGOUT_URL` |  | `"/tmp/{{ sharedVars.releaseNamespace }}-express-sessions"` |
 | `containerEnvironmentVariables.EXPRESS_PRELOADED_STATE_FILE` |  | `"{{ .express.preloadedStateFile }}"` |
 | `reactEnvironmentVariables.REACT_APP_DOMAIN_NAME` |  | `"https://{{ .sharedVars.appDomainName }}"` |
 | `reactEnvironmentVariables.REACT_APP_EXPRESS_OAUTH_GET_STATE_URL` |  | `"https://{{ .sharedVars.appDomainName }}/oauth/state"` |
@@ -177,6 +176,8 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `reactEnvironmentVariables.REACT_APP_LANGUAGE_CODE` |  | `"en"` |
 | `reactEnvironmentVariables.REACT_APP_SUPPORTED_LANGUAGES` |  | `"en"` |
 | `reactEnvironmentVariables.REACT_APP_ENABLE_LANGUAGE_SWITCHER` |  | `"false"` |
+| `reactEnvironmentVariables.EXPRESS_LOGS_FILE_PATH` |  | `"/tmp/logs/{{ .sharedVars.releaseNamespace }}-express-server.log"` |
+| `reactEnvironmentVariables.EXPRESS_COMBINED_LOGS_FILE_PATH` |  | `"/tmp/logs/{{ .sharedVars.releaseNamespace }}-express-server-combined.log"` |
 | `sharedVars.keycloakUrl` |  | `"keycloakUrl"` |
 | `sharedVars.appDomainName` |  | `"appDomainName"` |
 | `sharedVars.opensrpClientId` |  | `"opensrpClientId"` |
@@ -185,15 +186,12 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `sharedVars.fhirServer` |  | `"fhirServer"` |
 | `express.opensrpClientId` |  | `""` |
 | `express.opensrpClientSecret` |  | `""` |
-| `express.sessionName` |  | `"express_sessionName"` |
 | `express.sessionSecret` |  | `"express_sessionSecret"` |
 | `express.opensrpOauthState` |  | `"opensrp"` |
 | `express.sessionLoginUrl` |  | `"/login"` |
 | `express.preloadedStateFile` |  | `"/tmp/opensrpState.json"` |
-| `express.sessionFileStorePath` |  | `"/tmp/express-sessions"` |
 | `express.frontEndLoginUrl` |  | `"/fe/login"` |
 | `express.sessionPath` |  | `"/"` |
 | `express.reactBuildPath` |  | `"/usr/src/web"` |
 | `express.nodeEnv` |  | `"development"` |
 | `express.frontEndLogoutUrl` |  | `"/logout"` |
-

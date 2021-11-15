@@ -153,12 +153,10 @@ sharedVars:
 express:
   opensrpClientId: ""
   opensrpClientSecret: ""
-  sessionName: "express_sessionName"
   sessionSecret: "express_sessionSecret"
   opensrpOauthState: "opensrp"
   sessionLoginUrl: "/login"
   preloadedStateFile: "/tmp/opensrpState.json"
-  sessionFileStorePath: "/tmp/express-sessions"
   frontEndLoginUrl: "/fe/login"
   sessionPath: "/"
   reactBuildPath: "/usr/src/web"
