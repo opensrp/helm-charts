@@ -78,7 +78,7 @@ containerEnvironmentVariables:
   EXPRESS_OPENSRP_USER_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/user-details/"
   EXPRESS_OPENSRP_CLIENT_ID: "{{ .Values.sharedVars.opensrpClientId }}"
   EXPRESS_OPENSRP_CLIENT_SECRET: "{{ .Values.sharedVars.opensrpClientSecret }}"
-  EXPRESS_SESSION_NAME: "{{ .Values.sharedVars.releaseNameAndNamespace }}"
+  EXPRESS_SESSION_NAME: "{{ .Release.Name }}-{{ .Release.NameSpace }}"
   EXPRESS_OAUTH_GET_STATE_URL: "https://{{ .Values.sharedVars.appDomainName }}/oauth/state"
   EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
   EXPRESS_FRONTEND_OPENSRP_CALLBACK_URL: "https://{{ .Values.sharedVars.appDomainName }}/fe/oauth/callback/opensrp"
@@ -88,14 +88,15 @@ containerEnvironmentVariables:
   EXPRESS_OPENSRP_OAUTH_STATE: "{{ .Values.express.opensrpOauthState }}"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_LOGIN_URL: "{{ .Values.express.sessionLoginUrl }}"
-  EXPRESS_FRONTEND_LOGOUT_URL: "/tmp/{{ .Values.sharedVars.releaseNameAndNamespace }}-express-sessions"
+  EXPRESS_OPENSRP_LOGOUT_URL: "https://{{ .Values.sharedVars.opensrpServer  }}/opensrp/logout.do"
+  EXPRESS_KEYCLOAK_LOGOUT_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"
   EXPRESS_PRELOADED_STATE_FILE: "{{ .Values.express.preloadedStateFile }}"
   EXPRESS_MAXIMUM_LOG_FILES_NUMBER: "5"
   EXPRESS_ALLOW_TOKEN_RENEWAL: "true"
   EXPRESS_MAXIMUM_SESSION_LIFE_TIME: "10800"
-  EXPRESS_LOGS_FILE_PATH: "/tmp/logs/{{ .Values.sharedVars.releaseNameAndNamespace }}-express-server.log"
-  EXPRESS_COMBINED_LOGS_FILE_PATH: "/tmp/logs/{{ .Values.sharedVars.releaseNameAndNamespace }}-express-server-combined.log"
-  EXPRESS_SESSION_FILESTORE_PATH: "/tmp/{{ .Values.sharedVars.releaseNameAndNamespace }}-express-sessions"
+  EXPRESS_LOGS_FILE_PATH: "/var/log/express-server-errors.log"
+  EXPRESS_COMBINED_LOGS_FILE_PATH: "/var/log/express-server-combined.log"
+  EXPRESS_SESSION_FILESTORE_PATH: "/tmp/express-sessions"
 
 # The react app environment variables
 reactEnvironmentVariables:
@@ -149,11 +150,8 @@ sharedVars:
   opensrpServer: "opensrpServer"
   keycloakRealm: "keycloakRealm"
   fhirServer: "fhirServer"
-  releaseNameAndNamespace: "{{ .Release.Name }}-{{ .Release.NameSpace }}"
 
 express:
-  opensrpClientId: ""
-  opensrpClientSecret: ""
   sessionSecret: "express_sessionSecret"
   opensrpOauthState: "opensrp"
   sessionLoginUrl: "/login"
@@ -162,7 +160,6 @@ express:
   sessionPath: "/"
   reactBuildPath: "/usr/src/web"
   nodeEnv: "production"
-  frontEndLogoutUrl: "/logout"
 
 vpa:
   enabled: true
