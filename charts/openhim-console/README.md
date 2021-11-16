@@ -72,3 +72,16 @@ The following table lists the configurable parameters of the Openhim-console cha
 | `commonLabels` |  | `{}` |  
 | `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
 | `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
+
+## Important!!
+Kindly refer to this [documentation](../openhim-core/README.md#known-deployment-issue) to get up to speed with openHIM deployment.
+  
+### TL;DR
+Update the following:
+```yaml
+openhimCoreConfiguration:
+  trustSelfSigned: "true"
+  host: "<openhIM core domain>"
+  port: "443"
+  scheme: "https"
+```
