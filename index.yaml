@@ -275,6 +275,19 @@ entries:
   openhim-console:
   - apiVersion: v2
     appVersion: "1.14"
+    created: "2021-11-16T14:24:57.922941185Z"
+    description: Openhim Console https://github.com/jembi/openhim-console.
+    digest: 0122f694af94992e1f29987d1146244e47ff437dfa6cc5878c179f843b9238f4
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: openhim-console
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/openhim-console-0.2.1/openhim-console-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: "1.14"
     created: "2021-10-27T06:07:55.978402037Z"
     description: Openhim Console https://github.com/jembi/openhim-console.
     digest: f582beafba9307961306399caf6c30bb4cbb95bc8fb81fbadfa41f08b6a0e25d
@@ -313,6 +326,19 @@ entries:
     - https://github.com/opensrp/helm-charts/releases/download/openhim-console-0.1.0/openhim-console-0.1.0.tgz
     version: 0.1.0
   openhim-core:
+  - apiVersion: v2
+    appVersion: "7"
+    created: "2021-11-16T14:24:58.065668617Z"
+    description: Openhim Core https://github.com/jembi/openhim-core-js.
+    digest: 1e1929458b09f201d647bbc18e0f16608cc2d6d36f5211e5221ffed148585997
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: openhim-core
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/openhim-core-0.2.1/openhim-core-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     appVersion: "7"
     created: "2021-10-27T06:07:56.128828441Z"
@@ -872,4 +898,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-15T11:44:34.518361466Z"
+generated: "2021-11-16T14:24:58.065986021Z"
