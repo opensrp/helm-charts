@@ -1,6 +1,6 @@
 # Openhim-core
 
-Openhim Core https://github.com/jembi/openhim-core-js.
+OpenHIM Core https://github.com/jembi/openhim-core-js.
 
 ## TL;DR
 
@@ -79,3 +79,69 @@ The following table lists the configurable parameters of the Openhim-core chart 
 | `commonLabels` |  | `{}` |  
 | `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
 | `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
+
+## Known deployment issue
+Kindly refer to this [documentation](https://smartregister.atlassian.net/wiki/spaces/Documentation/pages/2976153601/Instant+OpenHIE+Setup#OpenHIM) to get up to speed with openHIM deployment.  
+### TL;DR
+OpenHIM core comes with inbuilt self signed certificate which should be updated prior to use.
+There are two ways to do this:
+1. Use ingress
+    ```yaml
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        cert-manager.io/acme-challenge-type: http01
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    
+      hosts:
+        - host: <openHIM core domain>
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+        - host: <openHIM core router domain>
+          port: 5001
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+    
+    livenessProbe:
+      httpGet:
+        scheme: "HTTP"
+    
+    readinessProbe:
+      httpGet:
+        scheme: "HTTP"
+    ```
+    The second host block belongs to router api & http port.
+    
+    Below is a snippet of default.json config that should be updated. (**Note** the * is https by default now its http )
+    ```text
+    defaultJson: |
+      {
+        ...
+        "api": {
+          "enabled": true,
+          "protocol": "http", *
+          "port": 8080,
+            ...
+        },
+        ...
+    ```
+2. Use LoadBalancer service type and assign a domain to the external ip given.  
+    Assumptions here is that https route will be routed to `ip:port` of openHIM core.
+    Below is a snippet of default.json config that should be updated. (**Note** the * is https by default now its http )
+    ```text
+    defaultJson: |
+      {
+        ...
+        "api": {
+          "enabled": true,
+          "protocol": "http", *
+          "port": 8080,
+            ...
+        },
+        ...
+    ```
