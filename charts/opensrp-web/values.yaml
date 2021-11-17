@@ -94,8 +94,8 @@ containerEnvironmentVariables:
   EXPRESS_MAXIMUM_LOG_FILES_NUMBER: "5"
   EXPRESS_ALLOW_TOKEN_RENEWAL: "true"
   EXPRESS_MAXIMUM_SESSION_LIFE_TIME: "10800"
-  EXPRESS_LOGS_FILE_PATH: "/var/log/express-server-errors.log"
-  EXPRESS_COMBINED_LOGS_FILE_PATH: "/var/log/express-server-combined.log"
+  EXPRESS_LOGS_FILE_PATH: "/tmp/logs/express-server/{{ .Release.Name }}-{{ .Release.NameSpace }}-errors.log"
+  EXPRESS_COMBINED_LOGS_FILE_PATH: "/tmp/logs/express-server/{{ .Release.Name }}-{{ .Release.NameSpace }}-combined.log"
   EXPRESS_SESSION_FILESTORE_PATH: "/tmp/express-sessions"
 
 # The react app environment variables
