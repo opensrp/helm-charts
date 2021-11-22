@@ -299,7 +299,8 @@ health:
       readTimeout:
 
 # metrics configurations
-# if additional_ip_allowed not specified if defaults to podCIDR subnet with new subnet of /additional_ip_allowed_octet
+# if additional_ip_allowed not specified it defaults to first podCIDR subnet with new subnet of /additional_ip_allowed_octet
+# assumption here is that all nodes PodCIDRS can belong in the same subnet
 metrics:
   health_check_updater:
     cron: "0 0/1 * * * *"
