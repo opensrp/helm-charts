@@ -339,6 +339,7 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `metrics.additional_ip_allowed` |  | `null` |
 | `metrics.include` |  | `"all"` |
 | `metrics.exclude` |  | `null` |
+| `metrics.permitAll` |  | `false` |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
@@ -373,4 +374,5 @@ podAnnotations:
   prometheus.io/port: 8080
   prometheus.io/path: /opensrp/metrics
 ```
+The endpoint is included in `v2.8.33` and above for `v2.2`, `v3.0.10` and above for `v3` and `v2.1.54.0` for v2.1.
 Read more [here](https://github.com/opensrp/opensrp-server-web/tree/master#metrics-endpoint).
