@@ -333,6 +333,13 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `health.endpoint.postgres.queryTimeout` |  | `null` |
 | `health.endpoint.keycloak.connectionTimeout` |  | `null` |
 | `health.endpoint.keycloak.readTimeout` |  | `null` |
+| `metrics.health_check_updater.cron` |  | `"0 0/1 * * * *"` |
+| `metrics.tags` |  | `null` |
+| `metrics.additional_ip_allowed_octet` |  | `16` |
+| `metrics.additional_ip_allowed` |  | `null` |
+| `metrics.include` |  | `"all"` |
+| `metrics.exclude` |  | `null` |
+| `metrics.permitAll` |  | `false` |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
@@ -359,3 +366,13 @@ If S3 storage is not available one can volumes instead. The configurations are a
 ## Health Endpoint
 From chart `v0.4.0` the health endpoint will now be `/opensrp/health`, read more on it [here](https://github.com/opensrp/opensrp-server-web#health-endpoint). This supports only opensrp server versions v2.8.29 and above for v2.2, v3.0.6 and above for v3 and v2.1.53.5 and above for v2.1. The previous endpoint can still be used by overriding the probes paths.
  
+## Metrics
+Opensrp server metrics can be scraped by prometheus by adding the following snippet:
+```yaml
+podAnnotations:
+  prometheus.io/scrape: true
+  prometheus.io/port: 8080
+  prometheus.io/path: /opensrp/metrics
+```
+The endpoint is included in `v2.8.33` and above for `v2.2`, `v3.0.10` and above for `v3` and `v2.1.54.0` for v2.1.
+Read more [here](https://github.com/opensrp/opensrp-server-web/tree/master#metrics-endpoint).
