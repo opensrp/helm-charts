@@ -122,6 +122,12 @@ mybatis:
   schedule_tablespace: "pg_default"
   feed_tablespace: "pg_default"
   form_tablespace: "pg_default"
+  resources:
+    requests:
+      cpu: "11m"
+      memory: "50Mi"
+    limits:
+      memory: "100Mi"
 
 opensrp:
   sms_can_be_sent: false
