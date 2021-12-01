@@ -125,4 +125,12 @@ health.endpoint.keycloak.readTimeout={{ .Values.health.endpoint.keycloak.readTim
 
 # Run case triggered plan generation every 5 minutes
 schedule.plan.generate.cron = {{ .Values.schedule.plan_generate_cron }}
+
+# Metrics config
+metrics.additional_ip_allowed={{ include "opensrp-server-web.metricsAdditionalIpAllowed" . }}
+metrics.tags={{ .Values.metrics.tags }}
+metrics.health_check_updater.cron={{ .Values.metrics.health_check_updater.cron }}
+metrics.include={{ .Values.metrics.include }}
+metrics.exclude={{ .Values.metrics.exclude }}
+metrics.permitAll={{ .Values.metrics.permitAll }}
 {{- end }}
