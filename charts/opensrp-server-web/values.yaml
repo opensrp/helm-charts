@@ -317,3 +317,8 @@ metrics:
   include: "all"
   exclude:
   permitAll: false
+
+# env: |
+#   - name: JAVA_OPTS
+#     value: "-XX:+UseStringDeduplication -XX:+UseG1GC -XX:InitialHeapSize=1g -XX:MaxHeapSize=1g"
+env:

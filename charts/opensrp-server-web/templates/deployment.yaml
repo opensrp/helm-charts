@@ -86,6 +86,10 @@ spec:
               {{- if  .Values.extraVolumeMounts }}
               {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
               {{- end }}
+          {{- if  .Values.env }}
+          env:
+            {{- .Values.env  | nindent 12 }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080
