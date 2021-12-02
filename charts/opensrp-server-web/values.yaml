@@ -322,3 +322,9 @@ metrics:
 #   - name: JAVA_OPTS
 #     value: "-XX:+UseStringDeduplication -XX:+UseG1GC -XX:InitialHeapSize=1g -XX:MaxHeapSize=1g"
 env:
+
+thread:
+  pool:
+    coreSize: 50
+    maxSize: 100
+    queueCapacity: 250
