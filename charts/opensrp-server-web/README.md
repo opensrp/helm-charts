@@ -344,6 +344,9 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `mybatis.resources.limits.memory` |  | `"100Mi"` |
 | `mybatis.resources.requests.cpu` |  | `"11m"` |
 | `env` |  | `""` |
+| `thread.pool.coreSize` |  | `50` |
+| `thread.pool.maxSize` |  | `100` |
+| `thread.pool.queueCapacity` |  | `250` |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
