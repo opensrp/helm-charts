@@ -423,6 +423,21 @@ entries:
     version: 0.1.0
   opensrp-server-web:
   - apiVersion: v2
+    appVersion: v3.0.11-SNAPSHOT
+    created: "2021-12-02T15:34:32.644894656Z"
+    description: OpenSRP is an open-source, mobile-first platform, built to enable
+      data-driven decision making at all levels of the health system.
+    digest: d016c18a584fe12fe4bdb7e41c249144f703e9159f501b931b06440301ada2df
+    icon: https://avatars2.githubusercontent.com/u/7898027?s=200&v=4
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: opensrp-server-web
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/opensrp-server-web-0.4.4/opensrp-server-web-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
     appVersion: v3.0.10-SNAPSHOT
     created: "2021-12-02T12:49:58.736718393Z"
     description: OpenSRP is an open-source, mobile-first platform, built to enable
@@ -943,4 +958,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-02T12:49:58.737012693Z"
+generated: "2021-12-02T15:34:32.645311059Z"
