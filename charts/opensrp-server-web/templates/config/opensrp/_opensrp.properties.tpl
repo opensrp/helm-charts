@@ -133,4 +133,10 @@ metrics.health_check_updater.cron={{ .Values.metrics.health_check_updater.cron }
 metrics.include={{ .Values.metrics.include }}
 metrics.exclude={{ .Values.metrics.exclude }}
 metrics.permitAll={{ .Values.metrics.permitAll }}
+
+# For load testing you might want to increase
+thread.pool.core.size={{ .Values.thread.pool.coreSize }}
+thread.pool.max.size={{ .Values.thread.pool.maxSize }}
+thread.pool.queue.capacity={{ .Values.thread.pool.queueCapacity }}
+
 {{- end }}
