@@ -94,9 +94,12 @@ containerEnvironmentVariables:
   EXPRESS_MAXIMUM_LOG_FILES_NUMBER: "5"
   EXPRESS_ALLOW_TOKEN_RENEWAL: "true"
   EXPRESS_MAXIMUM_SESSION_LIFE_TIME: "10800"
+  EXPRESS_MAXIMUM_LOGS_FILE_SIZE: "5242880"
   EXPRESS_LOGS_FILE_PATH: "./logs/error.log"
   EXPRESS_COMBINED_LOGS_FILE_PATH: "./logs/error-and-info.log"
   EXPRESS_SESSION_FILESTORE_PATH: "/tmp/express-sessions"
+  EXPRESS_SERVER_LOGOUT_URL: "https://{{ .Values.sharedVars.appDomainName }}/logout"
+  EXPRESS_PORT: "3000"
 
 # The react app environment variables
 reactEnvironmentVariables:
