@@ -96,7 +96,7 @@ containerEnvironmentVariables:
   EXPRESS_SERVER_LOGOUT_URL: "https://{{ .Values.sharedVars.appDomainName }}/logout"
   EXPRESS_SESSION_FILESTORE_PATH: "/tmp/express-sessions"
   EXPRESS_SESSION_LOGIN_URL: "{{ .Values.express.sessionLoginUrl }}"
-  EXPRESS_SESSION_NAME: "{{ .Release.Namespace }}"
+  EXPRESS_SESSION_NAME: "express-server-session"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
