@@ -153,7 +153,6 @@ reactEnvironmentVariables:
   REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL: "0"
   REACT_APP_PLAN_UUID_NAMESPACE: "85f7dbbf-07d0-4c92-aa2d-d50d141dde00"
   REACT_APP_PROJECT_LANGUAGE_CODE: "core"
-  REACT_APP_SENTRY_DSN: ""
   REACT_APP_SUPPORTED_LANGUAGES: "en"
   REACT_APP_TASK_GENERATION_STATUS: "False"
   REACT_APP_USER_FORM_HIDDEN_FIELDS: ""
@@ -184,3 +183,8 @@ vpa:
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
+
+sentry:
+  dsn: ""
+  environment: "staging"
+  tags: {}
