@@ -73,7 +73,22 @@ Dynamically add React environment variables
 {{- $scope := . -}}
 {{ range  $key, $value := index .Values.reactEnvironmentVariables }}
 {{- $key -}}:{{- tpl $value $scope | quote -}},
-{{ end }}
+{{ end -}}
+REACT_APP_SENTRY_CONFIG_JSON: {{ (include "opensrp-web.sentryConfig" $scope ) | quote }},
+{{- end }}
+
+
+{{/*
+Get opensrp-webs sentry tags
+*/}}
+{{- define "opensrp-web.sentryConfig" }}
+{{- $sentryMap := omit .Values.sentry "tags" -}}
+{{- $tagsMap := pick .Values.sentry "tags" -}}
+{{- $_ := set $tagsMap "release-name" (.Release.Name) -}}
+{{- $_ := set $tagsMap "release-namespace" (.Release.Namespace) -}}
+{{- $sentryConfigs := merge $sentryMap $tagsMap -}}
+{{- $_ := set $sentryConfigs "release" .Values.image.tag -}}
+{{- $sentryConfigs | toJson -}}
 {{- end }}
 
 {{/*
