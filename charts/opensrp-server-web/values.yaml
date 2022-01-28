@@ -169,6 +169,8 @@ dhis2:
   url: "http://dhis2-url/api/"
   username: path
   password: Path@123
+  opensrp:
+    location: false
 
 couchdb:
   server: localhost

@@ -261,6 +261,7 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `dhis2.url` |  | `"http://dhis2-url/api/"` |  
 | `dhis2.username` |  | `"path"` |  
 | `dhis2.password` |  | `"Path@123"` |  
+| `dhis2.opensrp.location` |  | `false` |
 | `couchdb.server` |  | `"localhost"` |  
 | `couchdb.port` |  | `5984` |  
 | `couchdb.username` |  | `"rootuser"` |  
