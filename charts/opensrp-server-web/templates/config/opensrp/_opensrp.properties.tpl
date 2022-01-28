@@ -41,6 +41,7 @@ openmrs.scheduletracker.syncer.interval-min={{ .Values.openmrs.scheduletracker_s
 dhis2.url={{ .Values.dhis2.url }}
 dhis2.username={{ .Values.dhis2.username }}
 dhis2.password={{ .Values.dhis2.password }}
+dhis2.opensrp.location={{ .Values.dhis2.opensrp.location }}
 
 #database configuration that is not likely to change unless massive refactoring are in build/maven.properties
 #couchdb properties
