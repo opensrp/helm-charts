@@ -109,6 +109,7 @@ Get sentry tags
 Find the metricsAdditionalIpAllowedPattern
 */}}
 {{- define "opensrp-server-web.metricsAdditionalIpAllowed"  -}}
+{{- if not .Values.metrics.permitAll -}}
 {{- $ipPatternAllowed := .Values.metrics.additional_ip_allowed -}}
 {{- if empty $ipPatternAllowed -}}
 {{- $node := (lookup "v1" "Node" .Release.Namespace "") -}}
@@ -119,4 +120,5 @@ Find the metricsAdditionalIpAllowedPattern
 {{- end }}
 {{- end }}
 {{- $ipPatternAllowed -}}
+{{- end }}
 {{- end }}
