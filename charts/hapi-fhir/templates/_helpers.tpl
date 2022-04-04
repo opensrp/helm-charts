@@ -75,3 +75,14 @@ Populate the pod annotations
 checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{- end }}
 {{- end }}
+
+{{/*
+Build sentry tags
+*/}}
+{{- define "hapi-fhir.sentryTags" }}
+{{- $dynamicTagMap := dict "release-name" (.Release.Name) "release-namespace" (.Release.Namespace) -}}
+{{- range $index, $element:=.Values.applicationConfig.sentry.options.additionalTags }}
+{{- $_ := set $dynamicTagMap $index $element -}}
+{{- end }}
+{{- $dynamicTagMap | toJson }}
+{{- end }}
