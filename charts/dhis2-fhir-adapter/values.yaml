@@ -100,7 +100,7 @@ readinessProbe:
   failureThreshold: 10
   timeoutSeconds: 5
   httpGet:
-    path: /
+    path: /actuator/health
     port: http
 
 livenessProbe:
