@@ -51,7 +51,7 @@ spec:
           {{- end }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: {{ .Values.applicationConfig.server.port | default 8080 }}
               protocol: TCP
           livenessProbe:
           {{- toYaml .Values.livenessProbe | nindent 12 }}

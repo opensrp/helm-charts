@@ -96,27 +96,35 @@ extraVolumeMounts:
 extraVolumes:
 
 readinessProbe:
-  initialDelaySeconds: 30
-  failureThreshold: 10
+  initialDelaySeconds: 120
+  failureThreshold: 30
   timeoutSeconds: 5
   httpGet:
     path: /actuator/health
     port: http
 
 livenessProbe:
-  initialDelaySeconds: 60
-  failureThreshold: 10
-  timeoutSeconds: 5
+  initialDelaySeconds: 120
+  failureThreshold: 60
+  timeoutSeconds: 10
   httpGet:
-    path: /
+    path: /actuator/info
     port: http
 
-env:
+# Enables dev spring profile to allow spring boot STD_OUT logging, which is crucial for kubectl logs
+# At the moment the purpose of dev profile is to update root loggers
+env: |
+  - name: SPRING_PROFILES_ACTIVE
+    value: dev
 
 # Replace with you application configurations
 # Pick sample from https://github.com/opensrp/dhis2-fhir-adapter/blob/master/app/src/main/resources/default-application.yml
 # Uses tpl function hence it can read values from references
 applicationConfig:
+  server:
+    # The default port on which HTTP connections will be available when starting
+    # the Adapter as a standalone application.
+    port: 8080
 #  spring:
 #    datasource:
 #      # The JDBC URL of the database in which the Adapter tables are located.

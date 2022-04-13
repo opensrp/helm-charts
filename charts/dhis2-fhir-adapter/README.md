@@ -15,8 +15,8 @@ This chart bootstraps `DHIS2 FHIR Adapter` deployment on a [Kubernetes](http://k
 
 ## Prerequisites
 
-- Kubernetes 1.12+
-- Helm 3.1.0
+*   Kubernetes 1.12+
+*   Helm 3.1.0
 
 ## Configuration
 
@@ -59,15 +59,24 @@ The following table lists the configurable parameters of the chart, and their de
 | `vpa.resourcePolicy` |  | `{}` |
 | `extraVolumeMounts` |  | `null` |
 | `extraVolumes` |  | `null` |
-| `readinessProbe.initialDelaySeconds` |  | `30` |
-| `readinessProbe.failureThreshold` |  | `10` |
+| `readinessProbe.initialDelaySeconds` |  | `120` |
+| `readinessProbe.failureThreshold` |  | `30` |
 | `readinessProbe.timeoutSeconds` |  | `5` |
-| `readinessProbe.httpGet.path` |  | `"/"` |
+| `readinessProbe.httpGet.path` |  | `"/actuator/health"` |
 | `readinessProbe.httpGet.port` |  | `"http"` |
-| `livenessProbe.initialDelaySeconds` |  | `60` |
-| `livenessProbe.failureThreshold` |  | `10` |
-| `livenessProbe.timeoutSeconds` |  | `5` |
-| `livenessProbe.httpGet.path` |  | `"/"` |
+| `livenessProbe.initialDelaySeconds` |  | `120` |
+| `livenessProbe.failureThreshold` |  | `60` |
+| `livenessProbe.timeoutSeconds` |  | `10` |
+| `livenessProbe.httpGet.path` |  | `"/actuator/info"` |
 | `livenessProbe.httpGet.port` |  | `"http"` |
-| `env` |  | `null` |
+| `env` |  | `"- name: SPRING_PROFILES_ACTIVE\n  value: dev\n"` |
 | `applicationConfig` |  | [application.yaml](https://github.com/opensrp/dhis2-fhir-adapter/blob/master/app/src/main/resources/default-application.yml)|
+
+## Logging Configuration
+
+At the moment logging configuration which specifies the log appenders (`CONSOLE` or `FILE`) to be used is `dev` spring profile. This can be seen [here](https://github.com/opensrp/dhis2-fhir-adapter/blob/master/app/src/main/resources/logback-spring.xml#L53-L63). From code overview `dev` profile is only used for this logging configuration, for that reason its added on the env like below:
+```yaml
+env: |
+  - name: SPRING_PROFILES_ACTIVE
+    value: dev
+```
