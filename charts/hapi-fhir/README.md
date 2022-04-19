@@ -66,9 +66,12 @@ The following table lists the configurable parameters of the Hapi-fhir chart and
 | `readinessProbe.httpGet.port` |  | `"http"` |
 | `readinessProbe.initialDelaySeconds` |  | `60` |
 | `applicationConfig` |  | [application.yaml](https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml)|
-| `commonLabels` |  | `{}` |  
+| `commonLabels` |  | `{}` |
 | `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
 | `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
+| `pda.enabled` | `Whether to enable pod disruption budget` | `false` |
+| `pda.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
+| `pda.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
 
 ## Sentry Configuration
 Sentry logging has been added to opensrp/hapi-fhir-jpaserver-starter [v5.8.0](https://github.com/opensrp/hapi-fhir-jpaserver-starter/releases/tag/v5.8.0-SNAPSHOT). To enable it update the following configurations:
@@ -81,12 +84,12 @@ applicationConfig:
       dsn: https://valid-sentry-dsn
       release: "{{ .Values.image.tag }}"
       environment: staging
-      tags: '{{ include "hapi-fhir.sentryTags" . }}' # Only modify if one does not need release name and namespace tags. 
-      additionalTags: 
+      tags: '{{ include "hapi-fhir.sentryTags" . }}' # Only modify if one does not need release name and namespace tags.
+      additionalTags:
 #        key: value
       debug: false
     minimumEventLevel: ERROR
     minimumBreadcrumbLevel: INFO
  ...
 ```
-The default sentry tags are `release-namespace` and `release-name` obtained from .Release.Namespace and .Release.Name respectively. To add on the default tags include the new tags under `additionalTags`. 
+The default sentry tags are `release-namespace` and `release-name` obtained from .Release.Namespace and .Release.Name respectively. To add on the default tags include the new tags under `additionalTags`.

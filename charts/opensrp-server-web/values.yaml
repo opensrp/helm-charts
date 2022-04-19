@@ -330,3 +330,8 @@ thread:
     coreSize: 50
     maxSize: 100
     queueCapacity: 250
+
+pdb:
+  enabled: false
+  minAvailable: ""
+  maxUnavailable: 1
