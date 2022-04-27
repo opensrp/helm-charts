@@ -197,3 +197,8 @@ sentry:
   dsn: ""
   environment: "staging"
   tags: {}
+
+pdb:
+  enabled: false
+  minAvailable: ""
+  maxUnavailable: 1

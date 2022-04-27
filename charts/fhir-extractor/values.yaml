@@ -100,3 +100,8 @@ vpa:
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
+
+pdb:
+  enabled: false
+  minAvailable: ""
+  maxUnavailable: 1

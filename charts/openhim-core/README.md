@@ -76,12 +76,15 @@ The following table lists the configurable parameters of the Openhim-core chart 
 | `readinessProbe.httpGet.port` |  | `"http"` |
 | `readinessProbe.httpGet.scheme` |  | `"HTTPS"` |
 | `defaultJson` |  | [default.json](https://github.com/jembi/openhim-core-js/blob/master/config/default.json)|
-| `commonLabels` |  | `{}` |  
+| `commonLabels` |  | `{}` |
 | `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
 | `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
+| `pda.enabled` | `Whether to enable pod disruption budget` | `false` |
+| `pda.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
+| `pda.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
 
 ## Known deployment issue
-Kindly refer to this [documentation](https://smartregister.atlassian.net/wiki/spaces/Documentation/pages/2976153601/Instant+OpenHIE+Setup#OpenHIM) to get up to speed with openHIM deployment.  
+Kindly refer to this [documentation](https://smartregister.atlassian.net/wiki/spaces/Documentation/pages/2976153601/Instant+OpenHIE+Setup#OpenHIM) to get up to speed with openHIM deployment.
 ### TL;DR
 OpenHIM core comes with inbuilt self signed certificate which should be updated prior to use.
 There are two ways to do this:
@@ -95,7 +98,7 @@ There are two ways to do this:
         cert-manager.io/cluster-issuer: "letsencrypt-staging"
         cert-manager.io/acme-challenge-type: http01
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    
+
       hosts:
         - host: <openHIM core domain>
           paths:
@@ -106,17 +109,17 @@ There are two ways to do this:
           paths:
             - path: /
               pathType: ImplementationSpecific
-    
+
     livenessProbe:
       httpGet:
         scheme: "HTTP"
-    
+
     readinessProbe:
       httpGet:
         scheme: "HTTP"
     ```
     The second host block belongs to router api & http port.
-    
+
     Below is a snippet of default.json config that should be updated. (**Note** the * is https by default now its http )
     ```text
     defaultJson: |
@@ -130,7 +133,7 @@ There are two ways to do this:
         },
         ...
     ```
-2. Use LoadBalancer service type and assign a domain to the external ip given.  
+2. Use LoadBalancer service type and assign a domain to the external ip given.
     Assumptions here is that https route will be routed to `ip:port` of openHIM core.
     Below is a snippet of default.json config that should be updated. (**Note** the * is https by default now its http )
     ```text
