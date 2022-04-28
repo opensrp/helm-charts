@@ -82,7 +82,7 @@ REACT_APP_SENTRY_CONFIG_JSON: {{ (include "opensrp-web.sentryConfig" $scope ) | 
 Get opensrp-webs sentry tags
 */}}
 {{- define "opensrp-web.sentryConfig" }}
-{{- $sentryMap := omit .Values.sentry "tags" -}}
+{{- $sentryMap := omit .Values.sentry "tags" "projectDescription" -}}
 {{- $tagsMap := pick .Values.sentry "tags" -}}
 {{- $_ := set $tagsMap "release-name" (.Release.Name) -}}
 {{- $_ := set $tagsMap "release-namespace" (.Release.Namespace) -}}

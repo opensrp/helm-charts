@@ -179,7 +179,6 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `reactEnvironmentVariables.REACT_APP_DEFAULT_PLAN_ID`                 |             | `"27362060-0309-411a-910c-64f55ede3758"`                                                                                           |
 | `reactEnvironmentVariables.SKIP_PREFLIGHT_CHECK`                      |             | `"true"`                                                                                                                           |
 | `reactEnvironmentVariables.REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL`    |             | `"0"`                                                                                                                              |
-| `reactEnvironmentVariables.REACT_APP_SENTRY_DSN`                      |             | `""`                                                                                                                               |
 | `reactEnvironmentVariables.REACT_APP_DEFAULT_PLAN_VERSION`            |             | `"1"`                                                                                                                              |
 | `reactEnvironmentVariables.REACT_APP_TASK_GENERATION_STATUS`          |             | `"False"`                                                                                                                          |
 | `reactEnvironmentVariables.REACT_APP_PROJECT_LANGUAGE_CODE`           |             | `"core"`                                                                                                                           |
@@ -209,6 +208,12 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `express.sessionPath`                                                 |             | `"/"`                                                                                                                              |
 | `express.reactBuildPath`                                              |             | `"/usr/src/web"`                                                                                                                   |
 | `express.nodeEnv`                                                     |             | `"production"`                                                                                                                     |
+| `sentry.dsn`                                                          |              | `""`                                                                                                                               |
+| `sentry.environment`                                                  |             | `"staging"`                                                                                                                        |
+| `sentry.tags`                                                         |             | `{}`                                                                                                                               |
+| `sentry.projectDescription.domain`                                    | `projectDescription` hold configs that define the sentry api to related project            | `"https://sentry.k8s.onalabs.org"`                                                                                                                               |
+| `sentry.projectDescription.projectId`                                 |             | `"54"`                                                                                                                        |
+| `sentry.projectDescription.sentryKey`                                 |             | `sentryKey`                                                                                                                               |
 | `express.redisStandAloneUrl`                                           | Redis connection string for a stand alone redis instance. see <https://github.com/luin/ioredis#connect-to-redis>                                                      |                                                                                                                                    |
 | `express.redisSentinelConfig`                                          | Redis connection config object for a redis sentinel instance. see <https://github.com/luin/ioredis#sentinel>                                                          |                                                                                                                                    |
 | `sentry.dsn`                                                          |             | `""`                                                                                                                               |
@@ -241,3 +246,4 @@ express:
       - host: "redis-node-2.redis-headless.redis-sentinel.svc.cluster.local"
         port: "6379"
 ```
+
