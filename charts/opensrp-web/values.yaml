@@ -40,7 +40,7 @@ ingress:
   className: ""
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      more_set_headers "Content-Security-Policy: default-src 'self' https://*.smartregister.org https://{{ .Values.sentry.projectDescription.domain }}; img-src 'self' https://github.com https://*.githubusercontent.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; report-uri https://{{ .Values.sentry.projectDescription.domain }}/api/{{ .Values.sentry.projectDescription.projectId }}/security/?sentry_key={{ .Values.sentry.projectDescription.sentryKey }}?sentry_environment={{ .Values.sentry.environment }}?sentry_release={{ .Release.Name }}"
+      more_set_headers "Content-Security-Policy: default-src 'self' https://*.smartregister.org https://{{ .Values.sentry.projectDescription.domain }}; img-src 'self' https://github.com/opensrp https://*.githubusercontent.com/opensrp; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; report-uri https://{{ .Values.sentry.projectDescription.domain }}/api/{{ .Values.sentry.projectDescription.projectId }}/security/?sentry_key={{ .Values.sentry.projectDescription.sentryKey }}?sentry_environment={{ .Values.sentry.environment }}?sentry_release={{ .Release.Name }}"
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
