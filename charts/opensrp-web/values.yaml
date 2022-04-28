@@ -39,7 +39,6 @@ ingress:
   enabled: false
   className: ""
   annotations:
-  annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Content-Security-Policy: default-src 'self' *.smartregister.org/ https://{{ .Values.sentry.projectDescription.domain }}/; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' https://github.com/OpenSRP/ https://*.githubusercontent.com/OpenSRP/; report-uri https://{{ .Values.sentry.projectDescription.domain }}/api/{{ .Values.sentry.projectDescription.projectId }}/security/?sentry_key={{ .Values.sentry.projectDescription.sentryKey }}&sentry_environment={{ .Values.sentry.environment }}&sentry_release={{ .Release.Name }}";
   # kubernetes.io/ingress.class: nginx
