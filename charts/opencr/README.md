@@ -69,6 +69,6 @@ The following table lists the configurable parameters of the Opencr chart, and t
 | `commonLabels` |  | `{}` |
 | `vpa.enabled` | `Whether to enable vertical pod autoscaling` | `true` |
 | `vpa.updatePolicy` | `The update policy to use with the vertical pod autoscaler` | `updateMode: "Off"` |
-| `pda.enabled` | `Whether to enable pod disruption budget` | `false` |
-| `pda.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
-| `pda.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
+| `pdb.enabled` | `Whether to enable pod disruption budget` | `false` |
+| `pdb.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
+| `pdb.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
