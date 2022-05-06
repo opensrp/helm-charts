@@ -99,7 +99,7 @@ containerEnvironmentVariables:
   EXPRESS_SESSION_NAME: "express-server-session"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
-  EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ .Values.express.csp | toJson }}"
+  EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ (tpl (.Values.express.csp | toJson) .) }}"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
 
 # The react app environment variables
