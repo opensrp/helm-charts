@@ -204,7 +204,7 @@ express:
       - "https://*.githubusercontent.com/OpenSRP/"
 
 vpa:
-  enabled: false
+  enabled: true
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
