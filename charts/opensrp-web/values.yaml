@@ -188,17 +188,17 @@ express:
   reactBuildPath: "/usr/src/web"
   nodeEnv: "production"
   csp:
-    reportUri: "https://{{ .Values.sentry.domain }}/api/{{ .Values.sentry.projectId }}/security/?sentry_key={{ .Values.sentry.sentryKey }}&sentry_environment={{ .Values.sentry.environment }}&sentry_release={{ .Release.Name }}"
-    defaultSrc:
+    report-uri: "https://{{ .Values.sentry.domain }}/api/{{ .Values.sentry.projectId }}/security/?sentry_key={{ .Values.sentry.sentryKey }}&sentry_environment={{ .Values.sentry.environment }}&sentry_release={{ .Release.Name }}"
+    defualt-src:
       - "'self'"
       - "'unsafe-inline'"
       - "https://*.smartregister.org"
-      - "{{ .Values.sentry.domain }}"
-    scriptSrc:
-      - "'self"
+      - "https://{{ .Values.sentry.domain }}"
+    script-src:
+      - "'self'"
       - "'unsafe-inline'"
       - "https://cdnjs.cloudflare.com"
-    imgSrc:
+    img-src:
       - "'self'"
       - "https://github.com/OpenSRP/"
       - "https://*.githubusercontent.com/OpenSRP/"
@@ -212,7 +212,7 @@ vpa:
 sentry:
   environment: "staging"
   tags: {}
-  domain: "https://sentry.k8s.onalabs.org"
+  domain: "sentry.k8s.onalabs.org"
   projectId: "54"
   sentryKey: "sentryKey"
 
