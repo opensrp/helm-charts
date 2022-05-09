@@ -192,12 +192,12 @@ express:
     defualt-src:
       - "'self'"
       - "'unsafe-inline'"
-      - "https://*.smartregister.org"
+      - "https://*.smartregister.org/"
       - "https://{{ .Values.sentry.domain }}"
     script-src:
       - "'self'"
       - "'unsafe-inline'"
-      - "https://cdnjs.cloudflare.com"
+      - "https://cdnjs.cloudflare.com/"
     img-src:
       - "'self'"
       - "https://github.com/OpenSRP/"
@@ -212,8 +212,8 @@ vpa:
 sentry:
   environment: "staging"
   tags: {}
-  domain: "sentry.k8s.onalabs.org"
-  projectId: "54"
+  domain: ""
+  projectId: ""
   sentryKey: "sentryKey"
 
 pdb:
