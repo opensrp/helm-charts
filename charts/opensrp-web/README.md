@@ -214,7 +214,7 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `sentry.tags`                                                         |             | `{}`                                                                                                                               |
 | `sentry.domain`                                                       |             | `""`                                                                                                                               |
 | `sentry.projectId`                                                    | id of the associated project on the sentry server             | `""`                                                                                        |
-| `sentry.sentryKey`                                                    | dsn key that for the associated sentry project            | `sentryKey`                                                                          |
+| `sentry.sentryKey`                                                    | public client key that for the associated sentry project            | `sentryKey`                                                                          |
 
 ## Session Storage
 
@@ -242,6 +242,7 @@ express:
       - host: "redis-node-2.redis-headless.redis-sentinel.svc.cluster.local"
         port: "6379"
 ```
+
 
 
 
