@@ -189,7 +189,7 @@ express:
   nodeEnv: "production"
   csp:
     report-uri: "https://{{ .Values.sentry.domain }}/api/{{ .Values.sentry.projectId }}/security/?sentry_key={{ .Values.sentry.sentryKey }}&sentry_environment={{ .Values.sentry.environment }}&sentry_release={{ .Release.Name }}"
-    defualt-src:
+    default-src:
       - "'self'"
       - "'unsafe-inline'"
       - "https://*.smartregister.org/"
