@@ -307,14 +307,11 @@ health:
       readTimeout:
 
 # metrics configurations
-# if additional_ip_allowed not specified it defaults to first podCIDR subnet with new subnet of /additional_ip_allowed_octet
-# assumption here is that all nodes PodCIDRS can belong in the same subnet
-# permitAll will ignore additional_ip_allowed and additional_ip_allowed_octet and permit all ips, Kindly add ingress config to block the metrics endpoint
+# permitAll will ignore additional_ip_allowed and permit all ips, Kindly add ingress config to block the metrics endpoint
 metrics:
   health_check_updater:
     cron: "0 0/1 * * * *"
   tags:
-  additional_ip_allowed_octet: 16
   additional_ip_allowed:
   include: "all"
   exclude:
