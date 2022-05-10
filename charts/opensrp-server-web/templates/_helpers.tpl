@@ -110,15 +110,6 @@ Find the metricsAdditionalIpAllowedPattern
 */}}
 {{- define "opensrp-server-web.metricsAdditionalIpAllowed"  -}}
 {{- if not .Values.metrics.permitAll -}}
-{{- $ipPatternAllowed := .Values.metrics.additional_ip_allowed -}}
-{{- if empty $ipPatternAllowed -}}
-{{- $node := (lookup "v1" "Node" .Release.Namespace "") -}}
-{{- if and $node $node.items -}}
-{{- $firstNode := ($node.items | first) -}}
-{{- $ipPatternAllowed =  (regexFind  (repeat 4 "\\d{1,3}." | trimSuffix ".") $firstNode.spec.podCIDR ) -}}
-{{- $ipPatternAllowed = nospace (cat $ipPatternAllowed  "/" .Values.metrics.additional_ip_allowed_octet) -}}
-{{- end }}
-{{- end }}
-{{- $ipPatternAllowed -}}
+{{- .Values.metrics.additional_ip_allowed -}}
 {{- end }}
 {{- end }}

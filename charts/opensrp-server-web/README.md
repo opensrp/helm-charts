@@ -339,7 +339,6 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `health.endpoint.keycloak.readTimeout` |  | `null` |
 | `metrics.health_check_updater.cron` |  | `"0 0/1 * * * *"` |
 | `metrics.tags` |  | `null` |
-| `metrics.additional_ip_allowed_octet` |  | `16` |
 | `metrics.additional_ip_allowed` |  | `null` |
 | `metrics.include` |  | `"all"` |
 | `metrics.exclude` |  | `null` |
