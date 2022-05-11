@@ -113,3 +113,16 @@ Find the metricsAdditionalIpAllowedPattern
 {{- .Values.metrics.additional_ip_allowed -}}
 {{- end }}
 {{- end }}
+
+{{/*
+Build tomcat host valves
+*/}}
+{{- define "opensrp-server-web.tomcatHostValves"  -}}
+{{- range $valve:=.Values.tomcatHostValves }}
+<Valve
+{{- range $valvePropertyKey, $valvePropertyValue:=$valve }}
+{{ $valvePropertyKey }}={{ $valvePropertyValue | quote -}}
+{{- end -}}
+/>
+{{- end }}
+{{- end }}

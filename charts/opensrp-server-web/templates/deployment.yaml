@@ -41,6 +41,9 @@ spec:
         - name: opensrp-server-config-web
           configMap:
             name: {{ include "opensrp-server-web.fullname" . }}
+        - name: opensrp-server-config-server-xml
+          configMap:
+            name: {{ include "opensrp-server-web.fullname" . }}
         {{- if .Values.multimediaPvc.enabled }}
         - name: opensrp-server-multimedia-dir
           persistentVolumeClaim:
@@ -79,6 +82,9 @@ spec:
             - name: opensrp-server-config-web
               mountPath: /usr/local/tomcat/webapps/opensrp/WEB-INF/web.xml
               subPath: opensrp.web.xml
+            - name: opensrp-server-config-server-xml
+              mountPath: /usr/local/tomcat/conf/server.xml
+              subPath: opensrp.server.xml
               {{- if .Values.multimediaPvc.enabled }}
             - name: opensrp-server-multimedia-dir
               mountPath: /opt/multimedia
