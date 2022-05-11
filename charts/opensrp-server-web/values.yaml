@@ -332,3 +332,11 @@ pdb:
   enabled: false
   minAvailable: ""
   maxUnavailable: 1
+
+# Tomcat valves to be placed under the host section on the server.xml
+# By default ErrorReportValve is added to hide stacktrace returned with HTML response for security reasons. Read more here https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html.
+tomcatHostValves:
+  ErrorReportValve:
+    className: org.apache.catalina.valves.ErrorReportValve
+    showReport: false
+    showServerInfo: false

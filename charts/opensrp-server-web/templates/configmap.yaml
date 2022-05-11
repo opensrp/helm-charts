@@ -15,3 +15,5 @@ data:
     {{- include "config.mybatis.deployment.properties" . | nindent 4 }}
   opensrp.web.xml: |
     {{- include "config.opensrp.web.xml" . | indent 4 }}
+  opensrp.server.xml: |
+    {{- include "config.opensrp.server.xml" . | indent 4 }}
