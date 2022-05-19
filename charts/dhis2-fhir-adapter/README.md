@@ -70,7 +70,12 @@ The following table lists the configurable parameters of the chart, and their de
 | `livenessProbe.httpGet.path` |  | `"/actuator/info"` |
 | `livenessProbe.httpGet.port` |  | `"http"` |
 | `env` |  | `"- name: SPRING_PROFILES_ACTIVE\n  value: dev\n"` |
+| `applicationConfig.server.port` |  | `8080` |
 | `applicationConfig` |  | [application.yaml](https://github.com/opensrp/dhis2-fhir-adapter/blob/master/app/src/main/resources/default-application.yml)|
+| `pdb.enabled` |  | `false` |
+| `pdb.minAvailable` |  | `""` |
+| `pdb.maxUnavailable` |  | `1` |
+
 
 ## Logging Configuration
 

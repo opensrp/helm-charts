@@ -175,3 +175,8 @@ applicationConfig:
 #
 #  logging:
 #    file: ${dhis2.home}/services/fhir-adapter/logs/dhis2-fhir-adapter.log
+
+pdb:
+  enabled: false
+  minAvailable: ""
+  maxUnavailable: 1
