@@ -71,6 +71,20 @@ entries:
     urls:
     - https://github.com/opensrp/helm-charts/releases/download/dhis2-0.1.0/dhis2-0.1.0.tgz
     version: 0.1.0
+  dhis2-fhir-adapter:
+  - apiVersion: v2
+    appVersion: 1.1.0-SNAPSHOT
+    created: "2022-05-19T11:18:59.711298618Z"
+    description: Imports FHIR Resources into DHIS2 Tracker by using FHIR Subscriptions.
+    digest: d8aa0e7a41f7491e00289de82ff6308ad4c8c51bfad9f5b173f606396983c45a
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: dhis2-fhir-adapter
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/dhis2-fhir-adapter-0.0.1/dhis2-fhir-adapter-0.0.1.tgz
+    version: 0.0.1
   fhir-extractor:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -1379,4 +1393,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-11T11:10:31.592388703Z"
+generated: "2022-05-19T11:18:59.712045523Z"
