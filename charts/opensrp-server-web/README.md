@@ -239,6 +239,10 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `mybatis.schedule_tablespace` |  | `"pg_default"` |
 | `mybatis.feed_tablespace` |  | `"pg_default"` |
 | `mybatis.form_tablespace` |  | `"pg_default"` |
+| `mybatis.resources.requests.memory` |  | `"50Mi"` |
+| `mybatis.resources.limits.memory` |  | `"100Mi"` |
+| `mybatis.resources.requests.cpu` |  | `"11m"` |
+| `mybatis.version` |  | `"3.3.4"` |
 | `opensrp.sms_can_be_sent` |  | `false` |
 | `opensrp.number_of_audit_messages` |  | `1000` |
 | `opensrp.use_opensrp_team_module` |  | `false` |
@@ -343,9 +347,6 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `metrics.include` |  | `"all"` |
 | `metrics.exclude` |  | `null` |
 | `metrics.permitAll` |  | `false` |
-| `mybatis.resources.requests.memory` |  | `"50Mi"` |
-| `mybatis.resources.limits.memory` |  | `"100Mi"` |
-| `mybatis.resources.requests.cpu` |  | `"11m"` |
 | `env` |  | `""` |
 | `thread.pool.coreSize` |  | `50` |
 | `thread.pool.maxSize` |  | `100` |

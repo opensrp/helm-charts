@@ -128,6 +128,7 @@ mybatis:
       memory: "50Mi"
     limits:
       memory: "100Mi"
+  version: 3.3.4
 
 opensrp:
   sms_can_be_sent: false
