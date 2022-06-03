@@ -60,7 +60,7 @@ spec:
             - name: opensrp-server-mybatis-properties
               mountPath: /migrations/environments/deployment.properties
               subPath: mybatis.properties
-          command: ["/opt/mybatis/mybatis-migrations-3.3.4/bin/migrate", "up", "--path=/migrations", "--env=deployment"]
+          command: ["/opt/mybatis/mybatis-migrations-{{ .Values.mybatis.version }}/bin/migrate", "up", "--path=/migrations", "--env=deployment"]
           resources:
       {{- toYaml .Values.mybatis.resources | nindent 12 }}
       containers:
