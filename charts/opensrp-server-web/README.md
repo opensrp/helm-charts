@@ -214,6 +214,7 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `pdb.enabled` | `Whether to enable pod disruption budget` | `false` |
 | `pdb.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
 | `pdb.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
+| `initContainers` |  | `null` |
 
 ## Opensrp Server Web  Parameters
 | Parameter                | Description             | Default        |
@@ -234,15 +235,6 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `readinessProbe.timeoutSeconds` |  | `10` |
 | `readinessProbe.httpGet.path` |  | `"/opensrp/health"` |
 | `readinessProbe.httpGet.port` |  | `"http"` |
-| `mybatis.core_tablespace` |  | `"pg_default"` |
-| `mybatis.error_tablespace` |  | `"pg_default"` |
-| `mybatis.schedule_tablespace` |  | `"pg_default"` |
-| `mybatis.feed_tablespace` |  | `"pg_default"` |
-| `mybatis.form_tablespace` |  | `"pg_default"` |
-| `mybatis.resources.requests.memory` |  | `"50Mi"` |
-| `mybatis.resources.limits.memory` |  | `"100Mi"` |
-| `mybatis.resources.requests.cpu` |  | `"11m"` |
-| `mybatis.version` |  | `"3.3.4"` |
 | `opensrp.sms_can_be_sent` |  | `false` |
 | `opensrp.number_of_audit_messages` |  | `1000` |
 | `opensrp.use_opensrp_team_module` |  | `false` |

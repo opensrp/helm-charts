@@ -35,9 +35,6 @@ spec:
         - name: opensrp-server-config-keycloak
           configMap:
             name: {{ include "opensrp-server-web.fullname" . }}
-        - name: opensrp-server-mybatis-properties
-          configMap:
-            name: {{ include "opensrp-server-web.fullname" . }}
         - name: opensrp-server-config-web
           configMap:
             name: {{ include "opensrp-server-web.fullname" . }}
@@ -52,17 +49,10 @@ spec:
         {{- if  .Values.extraVolumes }}
         {{- toYaml .Values.extraVolumes | nindent 8 -}}
         {{- end }}
+      {{- if .Values.initContainers }}
       initContainers:
-        - name: {{ .Chart.Name }}-mybatis
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          volumeMounts:
-            - name: opensrp-server-mybatis-properties
-              mountPath: /migrations/environments/deployment.properties
-              subPath: mybatis.properties
-          command: ["/opt/mybatis/mybatis-migrations-{{ .Values.mybatis.version }}/bin/migrate", "up", "--path=/migrations", "--env=deployment"]
-          resources:
-      {{- toYaml .Values.mybatis.resources | nindent 12 }}
+        {{- toYaml .Values.initContainers | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
