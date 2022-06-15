@@ -192,7 +192,6 @@ express:
   cspHeaderConfig:
     default-src:
       - "'self'"
-      - "https://*.smartregister.org/"
     script-src:
       - "'self'"
     img-src:
