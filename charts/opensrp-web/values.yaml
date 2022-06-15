@@ -99,7 +99,7 @@ containerEnvironmentVariables:
   EXPRESS_SESSION_NAME: "express-server-session"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
-  EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ (tpl (.Values.express.csp | toJson) .) }}"
+  EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ (tpl (.Values.express.cspHeaderConfig | toJson) .) }}"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
 
 # The react app environment variables
@@ -187,24 +187,21 @@ express:
   sessionPath: "/"
   reactBuildPath: "/usr/src/web"
   nodeEnv: "production"
-  csp:
-    report-uri: "https://{{ .Values.sentry.domain }}/api/{{ .Values.sentry.projectId }}/security/?sentry_key={{ .Values.sentry.sentryKey }}&sentry_environment={{ .Values.sentry.environment }}&sentry_release={{ .Release.Name }}"
+  expressHeaders:
+    report-to: []
+  cspHeaderConfig:
     default-src:
       - "'self'"
-      - "'unsafe-inline'"
       - "https://*.smartregister.org/"
-      - "https://{{ .Values.sentry.domain }}"
     script-src:
       - "'self'"
-      - "'unsafe-inline'"
-      - "https://cdnjs.cloudflare.com/"
     img-src:
       - "'self'"
       - "https://github.com/OpenSRP/"
       - "https://*.githubusercontent.com/OpenSRP/"
 
 vpa:
-  enabled: true
+  enabled: false # TODO
   updatePolicy:
     updateMode: "Off"
   resourcePolicy: {}
