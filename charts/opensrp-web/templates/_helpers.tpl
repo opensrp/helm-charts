@@ -86,11 +86,45 @@ Get opensrp-webs sentry tags
 {{- $tagsMap := pick .Values.sentry "tags" -}}
 {{- $_ := set $tagsMap "release-name" (.Release.Name) -}}
 {{- $_ := set $tagsMap "release-namespace" (.Release.Namespace) -}}
+{{- if and .Values.sentry.sentryKey .Values.sentry.domain .Values.sentry.projectId -}}
 {{- $_ := set $sentryMap "dsn" (printf "https://%s@%s/%s" .Values.sentry.sentryKey .Values.sentry.domain .Values.sentry.projectId) -}}
+{{- end -}}
 {{- $sentryConfigs := merge $sentryMap $tagsMap -}}
 {{- $_ := set $sentryConfigs "release" .Values.image.tag -}}
 {{- $sentryConfigs | toJson -}}
 {{- end }}
+
+{{/*
+Define express headers config, helps with reformatting where needed.
+*/}}
+{{- define "opensrp-web.expressResponseHeaders" -}}
+{{- $scope := . -}}
+{{- $expressHeaderConfig := get .Values.express "expressHeaders" -}}
+{{- $reportTo := get $expressHeaderConfig "report-to" -}}
+{{- $otherHeaders := omit $expressHeaderConfig "report-to" -}}
+{{- if $reportTo -}}
+{{- $stringified := "" -}}
+{{- range $index, $reportEndpoint := $reportTo }}
+{{- $stringified = print $stringified ", " (tpl ($reportEndpoint | toJson) $scope) -}}
+{{- end -}}
+{{- $_ := set $otherHeaders "report-to" $stringified  -}}
+{{- end -}}
+{{ $otherHeaders | toJson | quote }}
+{{- end -}}
+
+
+{{/*
+Dynamically add express environment variables
+*/}}
+{{- define "opensrp-web.containerEnvironmentVariables" -}}
+{{- $scope := . -}}
+{{- range  $key, $value := .Values.containerEnvironmentVariables }}
+- name: {{ $key }}
+  value: {{ (tpl $value $scope) | quote }}
+{{- end }}
+- name: "EXPRESS_RESPONSE_HEADERS"
+  value: {{ include "opensrp-web.expressResponseHeaders" $scope }}
+{{- end -}}
 
 {{/*
 Populate the pod annotations

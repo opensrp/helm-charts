@@ -40,11 +40,7 @@ spec:
               mountPath: /etc/confd/templates/config.js.tmpl
               subPath: config.js.tpl
           env:
-            {{- $scope := . -}}
-            {{- range $key, $value := .Values.containerEnvironmentVariables }}
-            - name: {{ $key }}
-              value: {{ (tpl $value $scope) | quote }}
-          {{- end }}
+            {{- include "opensrp-web.containerEnvironmentVariables" . | nindent 12 }}
           ports:
             - name: http
               containerPort: 3000
