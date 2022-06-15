@@ -382,3 +382,6 @@ podAnnotations:
 ```
 The endpoint is included in `v2.8.33` and above for `v2.2`, `v3.0.10` and above for `v3` and `v2.1.54.0` for v2.1.
 Read more [here](https://github.com/opensrp/opensrp-server-web/tree/master#metrics-endpoint).
+
+## From 0.7.0
+Mybatis init-containers, volumes and configurations have been removed. Mybatis runtime configuration has been added from v2.10.x, v3.2.x, v2.1.7x and meaning migrations will run when during application start up. 
