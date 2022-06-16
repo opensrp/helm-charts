@@ -11,8 +11,6 @@ data:
     {{- include "config.opensrp.context.xml" . | nindent 4 }}
   opensrp.properties: |
     {{- include "config.opensrp.properties" . | nindent 4 }}
-  mybatis.properties: |
-    {{- include "config.mybatis.deployment.properties" . | nindent 4 }}
   opensrp.web.xml: |
     {{- include "config.opensrp.web.xml" . | indent 4 }}
   opensrp.server.xml: |
