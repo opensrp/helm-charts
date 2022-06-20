@@ -193,7 +193,7 @@ express:
       - "'self'"
     script-src:
       - "'self'"
-      - "''unsafe-inline''"
+      - "'unsafe-inline'"
       - "https://cdnjs.cloudflare.com"
     img-src:
       - "'self'"
