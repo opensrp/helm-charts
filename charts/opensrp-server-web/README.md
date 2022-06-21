@@ -214,6 +214,7 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `pdb.enabled` | `Whether to enable pod disruption budget` | `false` |
 | `pdb.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
 | `pdb.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
+| `initContainers` |  | `null` |
 
 ## Opensrp Server Web  Parameters
 | Parameter                | Description             | Default        |
@@ -234,15 +235,6 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `readinessProbe.timeoutSeconds` |  | `10` |
 | `readinessProbe.httpGet.path` |  | `"/opensrp/health"` |
 | `readinessProbe.httpGet.port` |  | `"http"` |
-| `mybatis.core_tablespace` |  | `"pg_default"` |
-| `mybatis.error_tablespace` |  | `"pg_default"` |
-| `mybatis.schedule_tablespace` |  | `"pg_default"` |
-| `mybatis.feed_tablespace` |  | `"pg_default"` |
-| `mybatis.form_tablespace` |  | `"pg_default"` |
-| `mybatis.resources.requests.memory` |  | `"50Mi"` |
-| `mybatis.resources.limits.memory` |  | `"100Mi"` |
-| `mybatis.resources.requests.cpu` |  | `"11m"` |
-| `mybatis.version` |  | `"3.3.4"` |
 | `opensrp.sms_can_be_sent` |  | `false` |
 | `opensrp.number_of_audit_messages` |  | `1000` |
 | `opensrp.use_opensrp_team_module` |  | `false` |
@@ -390,3 +382,6 @@ podAnnotations:
 ```
 The endpoint is included in `v2.8.33` and above for `v2.2`, `v3.0.10` and above for `v3` and `v2.1.54.0` for v2.1.
 Read more [here](https://github.com/opensrp/opensrp-server-web/tree/master#metrics-endpoint).
+
+## From 0.7.0
+Mybatis init-containers, volumes and configurations have been removed. Mybatis runtime configuration has been added from v2.10.x, v3.2.x, v2.1.7x and meaning migrations will run when during application start up. 
