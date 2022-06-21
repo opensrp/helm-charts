@@ -169,7 +169,6 @@ reactEnvironmentVariables:
   REACT_APP_ENABLE_REPORTS: "false"
   REACT_APP_ENABLE_FHIR_GROUP: "false"
 
-
 sharedVars:
   keycloakUrl: "keycloakUrl"
   appDomainName: "appDomainName"
@@ -194,10 +193,17 @@ express:
       - "'self'"
     script-src:
       - "'self'"
+      - "'unsafe-inline'"
+      - "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"
     img-src:
       - "'self'"
       - "https://github.com/OpenSRP/"
       - "https://*.githubusercontent.com/OpenSRP/"
+    connect-src:
+      - "'self'"
+      - "https://*.k8s.onalabs.org"
+      - "https://{{ .Values.sharedVars.keycloakUrl }}"
+      - "https://{{ .Values.sharedVars.opensrpServer }}"
 
 vpa:
   enabled: true
