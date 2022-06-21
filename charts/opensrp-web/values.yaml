@@ -194,7 +194,7 @@ express:
     script-src:
       - "'self'"
       - "'unsafe-inline'"
-      - "'sha512-yrjEr6HY46i3hW7imuklZtRM7q1wyNUz8smKl2130OHTFHGbXGpHN4nYxrIeu0uJprDsLhycYY+xQ368d9OiaQ=='"
+      - "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"
     img-src:
       - "'self'"
       - "https://github.com/OpenSRP/"
