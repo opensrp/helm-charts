@@ -146,6 +146,6 @@ checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sh
 {{- end -}}
 {{- if .Values.express.redisSentinelConfig -}}
 - name: EXPRESS_REDIS_SENTINEL_CONFIG
-value: "{{ .Values.express.redisSentinelConfig }}"
-{{- end -}}  
+  value: {{ .Values.express.redisSentinelConfig | toJson | quote }}
+{{- end -}}
 {{- end -}}
