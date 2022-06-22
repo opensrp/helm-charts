@@ -41,14 +41,7 @@ spec:
               subPath: config.js.tpl
           env:
             {{- include "opensrp-web.containerEnvironmentVariables" . | nindent 12 }}
-            {{- if .Values.express.redisSingleNodeUrl }}
-            - name: EXPRESS_REDIS_URL
-              value: "{{ .Values.express.redisSingleNodeUrl }}"
-            {{- end }}
-            {{- if .Values.express.redisSentinelConfig }}
-            - name: EXPRESS_REDIS_SENTINEL_CONFIG
-              value: "{{ (tpl (.Values.express.redisSentinelConfig | toJson) .) }}"
-            {{- end }}           
+            {{- include "opensrp-web.optionalRedisEnvs" . | nindent 12 }}          
           ports:
             - name: http
               containerPort: 3000
