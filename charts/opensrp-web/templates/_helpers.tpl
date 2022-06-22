@@ -138,8 +138,8 @@ checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sh
 {{- end }}
 {{- end }}
 
-{{/* inject optional redis configs if available*/}}
-{{- define "opensrp-web.optionalRedisEnvs" -}}
+{{/* inject optional redis environment variable configs if available*/}}
+{{- define "opensrp-web.optionalRedisEnvironmentVariables" -}}
 {{- if .Values.express.redisSingleNodeUrl -}}
 - name: EXPRESS_REDIS_URL
   value: "{{ .Values.express.redisSingleNodeUrl -}}"
