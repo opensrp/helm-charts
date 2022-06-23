@@ -145,6 +145,8 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `containerEnvironmentVariables.EXPRESS_COMBINED_LOGS_FILE_PATH`        |                                                                                                                                                                       | `"./logs/error-and-info.log"`                                                                                                      |
 | `containerEnvironmentVariables.EXPRESS_KEYCLOAK_LOGOUT_URL`            |                                                                                                                                                                       | `"https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"` |
 | `containerEnvironmentVariables.EXPRESS_CONTENT_SECURITY_POLICY_CONFIG` |                                                                                                                                                                       | `"(.Values.express.csp \| toJson)"`                                                                                                |
+| `containerEnvironmentVariables.EXPRESS_REDIS_STAND_ALONE_URL`          | this env is only injected if .Values.express.redisStandAloneUrl is defined. Not injected by default                                                                   |                                                                                                                                    |
+| `containerEnvironmentVariables.EXPRESS_REDIS_SENTINEL_CONFIG`          | this env is only injected if .Values.express.redisSentinelConfig is defined. Not injected by default                                                                  |                                                                                                                                    |
 | `reactEnvironmentVariables.REACT_APP_DOMAIN_NAME`                      |                                                                                                                                                                       | `"https://{{ .sharedVars.appDomainName }}"`                                                                                        |
 | `reactEnvironmentVariables.REACT_APP_EXPRESS_OAUTH_GET_STATE_URL`      |                                                                                                                                                                       | `"https://{{ .sharedVars.appDomainName }}/oauth/state"`                                                                            |
 | `reactEnvironmentVariables.REACT_APP_EXPRESS_OAUTH_LOGOUT_URL`         |                                                                                                                                                                       | `"https://{{ .sharedVars.appDomainName }}/logout"`                                                                                 |
@@ -216,3 +218,30 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `sentry.domain`                                                        |                                                                                                                                                                       | `""`                                                                                                                               |
 | `sentry.projectId`                                                     | id of the associated project on the sentry server                                                                                                                     | `""`                                                                                                                               |
 | `sentry.sentryKey`                                                     | public client key that for the associated sentry project                                                                                                              | `sentryKey`                                                                                                                        |
+
+## Session Storage
+
+The default session storage mechanism is file store. This however, prevents pods from being scaled.
+
+You can use a standalone redis deployment for session storage by defining the express.redisStandAloneUrl config:
+
+```yaml
+express:
+  redisStandAloneUrl: "redis://username:password@redis-master.opensrp.svc.cluster.local:6379/4"
+```
+
+You can also use a redis sentinel instance for session storage by defining the express.redisSentinelConfig config:
+
+```yaml
+express:
+  redisSentinelConfig:
+    name: "sentinelMasterName"
+    sentinelPassword: "password"
+    sentinels:
+      - host: "redis-node-0.redis-headless.redis-sentinel.svc.cluster.local"
+        port: "6379"
+      - host: "redis-node-1.redis-headless.redis-sentinel.svc.cluster.local"
+        port: "6379"
+      - host: "redis-node-2.redis-headless.redis-sentinel.svc.cluster.local"
+        port: "6379"
+```
