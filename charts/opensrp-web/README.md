@@ -5,8 +5,8 @@ OpenSRP Web is the default frontend for the OpenSRP Server API, providing access
 ## TL;DR
 
 ```bash
-helm repo add opensrp https://helm.smartregister.org
-helm install opensrp-web opensrp/opensrp-web
+$ helm repo add opensrp https://helm.smartregister.org
+$ helm install opensrp-web opensrp/opensrp-web
 ```
 
 ## Introduction
