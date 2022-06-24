@@ -240,3 +240,4 @@ express:
         port: "6379"
       - host: "redis-node-2.redis-headless.redis-sentinel.svc.cluster.local"
         port: "6379"
+```
