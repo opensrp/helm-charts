@@ -217,16 +217,16 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 
 ## Session Storage
 
-The default session storage mechanism is file store. This however, prevents pods from being scaled.
+The default session storage mechanism is file store. This however, prevents pods from being scaled. OpenSRP Web >= `v2.1.0` (Opensrp express-server >= `v1.4.0`) now supports session storage on redis (both standalone and sentinel instances).
 
-You can use a standalone redis deployment for session storage by defining the express.redisStandAloneUrl config:
+You can use a standalone redis deployment by defining the express.redisStandAloneUrl config:
 
 ```yaml
 express:
   redisStandAloneUrl: "redis://username:password@redis-master.opensrp.svc.cluster.local:6379/4"
 ```
 
-You can also use a redis sentinel instance for session storage by defining the express.redisSentinelConfig config:
+Or a redis sentinel instance by defining the express.redisSentinelConfig config:
 
 ```yaml
 express:
