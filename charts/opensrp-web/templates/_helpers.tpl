@@ -102,3 +102,15 @@ Populate the pod annotations
 checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{- end }}
 {{- end }}
+
+{{/* inject optional redis environment variable configs if available*/}}
+{{- define "opensrp-web.optionalRedisEnvironmentVariables" -}}
+{{- if .Values.express.redisStandAloneUrl -}}
+- name: EXPRESS_REDIS_STAND_ALONE_URL
+  value: "{{ .Values.express.redisStandAloneUrl -}}"
+{{- end -}}
+{{- if .Values.express.redisSentinelConfig -}}
+- name: EXPRESS_REDIS_SENTINEL_CONFIG
+  value: {{ .Values.express.redisSentinelConfig | toJson | quote }}
+{{- end -}}
+{{- end -}}
