@@ -217,6 +217,24 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `sentry.projectId`                                                    | id of the associated project on the sentry server             | `""`                                                                                        |
 | `sentry.sentryKey`                                                    | public client key that for the associated sentry project            | `sentryKey`                                                                          |
 
+## Express Headers
+The express application response headers can be configured from the envs via the `expressHeaders` config. This config is a map whose keys represent an actual header key.
+
+This chart comes with a bit of support for the `report-to` header, whilst you can define the different reporting endpoints configs as a json array, its further formatted into a comma delimited string, however all other envs are passed to the environment as defined.
+
+### examples
+
+```yaml
+express:
+    expressHeaders:
+      report-to:
+        - group: "csp-endpoint"
+          max_age: 10886400
+          endpoints:
+            - url: "https://example.com/csp-reporting"
+      cache-control: "max-age=604800"
+```
+
 ## Session Storage
 
 The default session storage mechanism is file store. This however, prevents pods from being scaled. OpenSRP Web >= `v2.1.0` (Opensrp express-server >= `v1.4.0`) now supports session storage on redis (both standalone and sentinel instances).
