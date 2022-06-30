@@ -40,6 +40,7 @@ spec:
               mountPath: /etc/confd/templates/config.js.tmpl
               subPath: config.js.tpl
           env:
+            {{- include "opensrp-web.expressResponseHeadersConfig" . | nindent 12 }}
             {{- include "opensrp-web.optionalRedisEnvironmentVariables" . | nindent 12 }}
             {{- $scope := . -}}
             {{- range $key, $value := .Values.containerEnvironmentVariables }}

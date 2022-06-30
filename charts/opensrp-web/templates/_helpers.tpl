@@ -116,12 +116,8 @@ Define express headers config, helps with reformatting where needed.
 {{/*
 Dynamically add express environment variables
 */}}
-{{- define "opensrp-web.containerEnvironmentVariables" -}}
+{{- define "opensrp-web.expressResponseHeadersConfig" -}}
 {{- $scope := . -}}
-{{- range  $key, $value := .Values.containerEnvironmentVariables }}
-- name: {{ $key }}
-  value: {{ (tpl $value $scope) | quote }}
-{{- end }}
 - name: "EXPRESS_RESPONSE_HEADERS"
   value: {{ include "opensrp-web.expressResponseHeaders" $scope }}
 {{- end -}}
