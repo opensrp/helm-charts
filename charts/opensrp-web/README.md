@@ -218,9 +218,9 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `sentry.sentryKey`                                                    | public client key that for the associated sentry project            | `sentryKey`                                                                          |
 
 ## Express Headers
-The express application response headers can be configured from the envs via the `expressHeaders` config. This config is a map whose keys represent an actual header key.
+The express application response headers can be configured from the envs via the `expressHeaders` config. This config is a map whose keys represents an actual header key.
 
-This chart comes with a bit of support for the `report-to` header, whilst you can define the different reporting endpoints configs as a json array, its further formatted into a comma delimited string, however all other envs are passed to the environment as defined.
+This chart comes with a bit of support for the `report-to` header, whilst you can define the different reporting endpoints configs as a json array, its further formatted into a comma delimited string, however all other envs are passed to the environment as they are.
 
 ### examples
 
