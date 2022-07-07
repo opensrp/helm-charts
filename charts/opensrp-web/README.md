@@ -146,6 +146,7 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `containerEnvironmentVariables.EXPRESS_KEYCLOAK_LOGOUT_URL`           |             | `"https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"` |
 | `containerEnvironmentVariables.EXPRESS_REDIS_STAND_ALONE_URL`          | this env is only injected if .Values.express.redisStandAloneUrl is defined. Not injected by default                                                                   |                                                                                                                                    |
 | `containerEnvironmentVariables.EXPRESS_REDIS_SENTINEL_CONFIG`          | this env is only injected if .Values.express.redisSentinelConfig is defined. Not injected by default                                                                  |                                                                                                                                    |
+| `containerEnvironmentVariables.EXPRESS_CONTENT_SECURITY_POLICY_CONFIG`|             | `"(.Values.express.csp \| toJson)"` |
 | `reactEnvironmentVariables.REACT_APP_DOMAIN_NAME`                     |             | `"https://{{ .sharedVars.appDomainName }}"`                                                                                        |
 | `reactEnvironmentVariables.REACT_APP_EXPRESS_OAUTH_GET_STATE_URL`     |             | `"https://{{ .sharedVars.appDomainName }}/oauth/state"`                                                                            |
 | `reactEnvironmentVariables.REACT_APP_EXPRESS_OAUTH_LOGOUT_URL`        |             | `"https://{{ .sharedVars.appDomainName }}/logout"`                                                                                 |
@@ -179,7 +180,6 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `reactEnvironmentVariables.REACT_APP_DEFAULT_PLAN_ID`                 |             | `"27362060-0309-411a-910c-64f55ede3758"`                                                                                           |
 | `reactEnvironmentVariables.SKIP_PREFLIGHT_CHECK`                      |             | `"true"`                                                                                                                           |
 | `reactEnvironmentVariables.REACT_APP_PLAN_ASSIGNMENT_AT_GEO_LEVEL`    |             | `"0"`                                                                                                                              |
-| `reactEnvironmentVariables.REACT_APP_SENTRY_DSN`                      |             | `""`                                                                                                                               |
 | `reactEnvironmentVariables.REACT_APP_DEFAULT_PLAN_VERSION`            |             | `"1"`                                                                                                                              |
 | `reactEnvironmentVariables.REACT_APP_TASK_GENERATION_STATUS`          |             | `"False"`                                                                                                                          |
 | `reactEnvironmentVariables.REACT_APP_PROJECT_LANGUAGE_CODE`           |             | `"core"`                                                                                                                           |
@@ -211,9 +211,31 @@ The following table lists the configurable parameters of the Opensrp-web chart a
 | `express.nodeEnv`                                                     |             | `"production"`                                                                                                                     |
 | `express.redisStandAloneUrl`                                           | Redis connection string for a stand alone redis instance. see <https://github.com/luin/ioredis#connect-to-redis>                                                      |                                                                                                                                    |
 | `express.redisSentinelConfig`                                          | Redis connection config object for a redis sentinel instance. see <https://github.com/luin/ioredis#sentinel>                                                          |                                                                                                                                    |
-| `sentry.dsn`                                                          |             | `""`                                                                                                                               |
+| `express.expressHeaders`                                              | Additional configurable response headers that the express server should return, templates help with re-formatting `report-to`, others will be passed to express as is | `"{report-to: []}"`                                  |
+| `express.cspHeaderConfig`                                             |             | `"{}"`                                                                                                                             |
 | `sentry.environment`                                                  |             | `"staging"`                                                                                                                        |
 | `sentry.tags`                                                         |             | `{}`                                                                                                                               |
+| `sentry.domain`                                                       |             | `""`                                                                                                                               |
+| `sentry.projectId`                                                    | id of the associated project on the sentry server             | `""`                                                                                        |
+| `sentry.sentryKey`                                                    | public client key that for the associated sentry project            | `sentryKey`                                                                          |
+
+## Express Headers
+The express application response headers can be configured from the envs via the `expressHeaders` config. This config is a map whose keys represents an actual header key.
+
+This chart comes with a bit of support for the `report-to` header, whilst you can define the different reporting endpoints configs as a json array, its further formatted into a comma delimited string, however all other envs are passed to the environment as they are.
+
+### examples
+
+```yaml
+express:
+    expressHeaders:
+      report-to:
+        - group: "csp-endpoint"
+          max_age: 10886400
+          endpoints:
+            - url: "https://example.com/csp-reporting"
+      cache-control: "max-age=604800"
+```
 
 ## Session Storage
 

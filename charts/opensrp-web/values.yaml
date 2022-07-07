@@ -99,6 +99,7 @@ containerEnvironmentVariables:
   EXPRESS_SESSION_NAME: "express-server-session"
   EXPRESS_SESSION_PATH: "{{ .Values.express.sessionPath }}"
   EXPRESS_SESSION_SECRET: "{{ .Values.express.sessionSecret }}"
+  EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ (tpl (.Values.express.cspHeaderConfig | toJson) .) }}"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
 
 # The react app environment variables
@@ -168,7 +169,6 @@ reactEnvironmentVariables:
   REACT_APP_ENABLE_REPORTS: "false"
   REACT_APP_ENABLE_FHIR_GROUP: "false"
 
-
 sharedVars:
   keycloakUrl: "keycloakUrl"
   appDomainName: "appDomainName"
@@ -186,6 +186,23 @@ express:
   sessionPath: "/"
   reactBuildPath: "/usr/src/web"
   nodeEnv: "production"
+  expressHeaders:
+    report-to: []
+  cspHeaderConfig:
+    default-src:
+      - "'self'"
+    script-src:
+      - "'self'"
+      - "'unsafe-inline'"
+    img-src:
+      - "'self'"
+      - "https://github.com/OpenSRP/"
+      - "https://*.githubusercontent.com/OpenSRP/"
+    connect-src:
+      - "'self'"
+      - "{{ if .Values.sentry.domain }}{{ .Values.sentry.domain }}{{ end }}"
+      - "https://{{ .Values.sharedVars.keycloakUrl }}"
+      - "https://{{ .Values.sharedVars.opensrpServer }}"
 
 vpa:
   enabled: true
@@ -194,9 +211,11 @@ vpa:
   resourcePolicy: {}
 
 sentry:
-  dsn: ""
   environment: "staging"
   tags: {}
+  domain: ""
+  projectId: ""
+  sentryKey: "sentryKey"
 
 pdb:
   enabled: false
