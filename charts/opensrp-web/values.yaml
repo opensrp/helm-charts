@@ -200,7 +200,7 @@ express:
       - "https://*.githubusercontent.com/OpenSRP/"
     connect-src:
       - "'self'"
-      - "https://*.k8s.onalabs.org"
+      - "{{ if .Values.sentry.domain }}{{ .Values.sentry.domain }}{{ end }}"
       - "https://{{ .Values.sharedVars.keycloakUrl }}"
       - "https://{{ .Values.sharedVars.opensrpServer }}"
 
