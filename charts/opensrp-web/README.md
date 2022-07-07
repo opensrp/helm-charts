@@ -261,7 +261,3 @@ express:
       - host: "redis-node-2.redis-headless.redis-sentinel.svc.cluster.local"
         port: "6379"
 ```
-
-
-
-
