@@ -174,9 +174,9 @@ sharedVars:
   keycloakUrl: "keycloakUrl"
   appDomainName: "appDomainName"
   opensrpClientId: "opensrpClientId"
-  opensrpServer: "opensrpServer"
+  opensrpServer: ""
   keycloakRealm: "keycloakRealm"
-  fhirServer: "fhirServer"
+  fhirServer: ""
   userDetailsUrl: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/userinfo"
 
 express:
@@ -198,11 +198,13 @@ express:
       - "'unsafe-inline'"
     img-src:
       - "'self'"
-      - "https://github.com/OpenSRP/"
-      - "https://*.githubusercontent.com/OpenSRP/"
+      - "https://github.com/opensrp/"
+      - "https://*.githubusercontent.com/opensrp"
     connect-src:
       - "'self'"
       - "{{ if .Values.sentry.domain }}{{ .Values.sentry.domain }}{{ end }}"
+      - "{{ if .Values.sharedVars.fhirServer }}{{ .Values.sharedVars.fhirServer }}{{ end }}"
+      - "{{ if .Values.sharedVars.opensrpServer }}{{ .Values.sharedVars.opensrpServer  }}{{ end }}"
       - "https://{{ .Values.sharedVars.keycloakUrl }}"
       - "https://{{ .Values.sharedVars.opensrpServer }}"
 
