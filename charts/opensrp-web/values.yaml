@@ -206,7 +206,6 @@ express:
       - "{{ if .Values.sharedVars.fhirServer }}{{ .Values.sharedVars.fhirServer }}{{ end }}"
       - "{{ if .Values.sharedVars.opensrpServer }}{{ .Values.sharedVars.opensrpServer  }}{{ end }}"
       - "https://{{ .Values.sharedVars.keycloakUrl }}"
-      - "https://{{ .Values.sharedVars.opensrpServer }}"
 
 vpa:
   enabled: true
