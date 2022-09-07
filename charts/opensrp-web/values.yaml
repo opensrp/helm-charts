@@ -172,11 +172,11 @@ reactEnvironmentVariables:
   REACT_APP_ENABLE_FHIR_COMMODITY: "false"
 
 sharedVars:
-  keycloakUrl: "keycloakUrl"
-  appDomainName: "appDomainName"
-  opensrpClientId: "opensrpClientId"
+  keycloakUrl: ""
+  appDomainName: ""
+  opensrpClientId: ""
   opensrpServer: ""
-  keycloakRealm: "keycloakRealm"
+  keycloakRealm: ""
   fhirServer: ""
   userDetailsUrl: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/userinfo"
 
@@ -200,12 +200,11 @@ express:
     img-src:
       - "'self'"
       - "https://github.com/opensrp/"
-      - "https://*.githubusercontent.com/opensrp"
+      - "https://*.githubusercontent.com/opensrp/"
     connect-src:
       - "'self'"
       - "{{ if .Values.sentry.domain }}{{ .Values.sentry.domain }}{{ end }}"
-      - "{{ if .Values.sharedVars.fhirServer }}{{ .Values.sharedVars.fhirServer }}{{ end }}"
-      - "{{ if .Values.sharedVars.opensrpServer }}{{ .Values.sharedVars.opensrpServer  }}{{ end }}"
+      - "{{ if .Values.sharedVars.opensrpServer }}{{ .Values.sharedVars.opensrpServer }}{{ else if .Values.sharedVars.fhirServer }}{{ .Values.sharedVars.fhirServer }}{{ end }}"
       - "https://{{ .Values.sharedVars.keycloakUrl }}"
 
 vpa:
