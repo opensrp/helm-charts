@@ -139,7 +139,7 @@ reactEnvironmentVariables:
   REACT_APP_KEYCLOAK_LOGOUT_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"
   REACT_APP_KEYCLOAK_USERS_PAGE_SIZE: "20"
   REACT_APP_LANGUAGE_CODE: "en"
-  REACT_APP_MAIN_LOGO_SRC: "https://github.com/OpenSRP/web/raw/master/app/src/assets/images/opensrp-logo-color.png"
+  REACT_APP_MAIN_LOGO_SRC: "https://github.com/opensrp/web/raw/master/app/src/assets/images/opensrp-logo-color.png"
   REACT_APP_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/token"
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/"
   REACT_APP_OPENSRP_API_V2_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/v2/"
