@@ -161,6 +161,9 @@ reactEnvironmentVariables:
   REACT_APP_USER_FORM_RENDER_FIELDS: ""
   REACT_APP_WEBSITE_NAME: "opensrp-web"
   SKIP_PREFLIGHT_CHECK: "true"
+  GENERATE_SOURCEMAP: "false"
+  INLINE_RUNTIME_CHUNK: "false"
+  IMAGE_INLINE_SIZE_LIMIT: "0"
   REACT_APP_ENABLE_FHIR_HEALTHCARE_SERVICES: "false"
   REACT_APP_ENABLE_USER_MANAGEMENT: "false"
   REACT_APP_ENABLE_FHIR_USER_MANAGEMENT: "false"
@@ -194,9 +197,6 @@ express:
   cspHeaderConfig:
     default-src:
       - "'self'"
-    script-src:
-      - "'self'"
-      - "'unsafe-inline'"
     img-src:
       - "'self'"
       - "https://github.com/opensrp/"
