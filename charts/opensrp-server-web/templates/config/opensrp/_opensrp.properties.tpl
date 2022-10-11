@@ -62,6 +62,9 @@ redis.host={{ .Values.redis.host }}
 redis.port={{ .Values.redis.port }}
 redis.password={{ .Values.redis.password }}
 redis.pool.max.connections={{ .Values.redis.pool_max_connections }}
+redis.architecture={{ .Values.redis.architecture | default "standalone" }}
+redis.master={{ .Values.redis.master | default "mymaster" }}
+redis.sentinels={{ include "opensrp-server-web.redisSentinels" . | trimSuffix "," }}
 
 # Object storage configuration (should be populated for deployments using object storage multimedia storage)
 object.storage.access.key.id={{ .Values.object_storage.access_key_id }}

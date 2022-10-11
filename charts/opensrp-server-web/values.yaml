@@ -177,6 +177,11 @@ redis:
   port: 6379
   password: ""
   pool_max_connections: 25
+  sentinels:
+#    - host: "localhost"
+#      port: 26379
+  master: "mymaster"
+  architecture: "standalone"
 
 # Object storage configuration (should be populated for deployments using object storage multimedia storage)
 object_storage:

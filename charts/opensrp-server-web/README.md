@@ -217,135 +217,138 @@ The following table lists the configurable parameters of the Opensrp-server-web 
 | `initContainers` |  | `null` |
 
 ## Opensrp Server Web  Parameters
-| Parameter                | Description             | Default        |
-| ------------------------ | ----------------------- | -------------- |
-| `recreatePodsWhenConfigMapChange` | `If true will recreate pods when any of the config maps parameter change` | `true` |
-| `postgres.host` |  `url or ip to your postgres db`  | `"db"` |
-| `postgres.port` |  | `5432` |
-| `postgres.username` |  | `"opensrp"` |
-| `postgres.password` |  | `"password"` |
-| `postgres.database` |  | `"opensrp"` |
-| `time_zone` |  | `"GMT+0:00"` |
-| `livenessProbe.initialDelaySeconds` |  | `120` |
-| `livenessProbe.httpGet.path` |  | `"/opensrp"` |
-| `livenessProbe.httpGet.port` |  | `"http"` |
-| `livenessProbe.timeoutSeconds` |  | `5` |
-| `readinessProbe.initialDelaySeconds` |  | `60` |
-| `readinessProbe.failureThreshold` |  | `10` |
-| `readinessProbe.timeoutSeconds` |  | `10` |
-| `readinessProbe.httpGet.path` |  | `"/opensrp/health"` |
-| `readinessProbe.httpGet.port` |  | `"http"` |
-| `opensrp.sms_can_be_sent` |  | `false` |
-| `opensrp.number_of_audit_messages` |  | `1000` |
-| `opensrp.use_opensrp_team_module` |  | `false` |
-| `opensrp.plan_evaluation_enabled` |  | `false` |
-| `opensrp.multimedia_file_manager` |  | `"S3MultimediaFileManager"` |
-| `opensrp.multimedia_allowed_file_types` |  | `"application/octet-stream,image/jpeg,image/gif,image/png"` |
-| `opensrp.file_max_upload_size` |  | `"20971520"` |
-| `opensrp.cors_allowed_source` |  | `null` |
-| `opensrp.cors_max_age` |  | `60` |
-| `opensrp.sync_search_missing_client` |  | `false` |
-| `opensrp.authencation_cache_ttl` |  | `120` |
-| `opensrp.config_global_id` |  | `"OPENSRP_ID"` |
-| `openmrs.url` |  | `"http://localhost:8080/openmrs/"` |
-| `openmrs.username` |  | `"admin"` |
-| `openmrs.password` |  | `"Admin123"` |
-| `openmrs.idgen_url` |  | `"/module/idgen/exportIdentifiers.form"` |
-| `openmrs.idgen_initial_batchsize` |  | `300000` |
-| `openmrs.idgen_batchsize` |  | `100` |
-| `openmrs.idgen_idsource` |  | `1` |
-| `openmrs.version` |  | `"2.1.3"` |
-| `openmrs.test_make_rest_call` |  | `false` |
-| `openmrs.scheduletracker_syncer_interval_min` |  | `2` |
-| `dhis2.url` |  | `"http://dhis2-url/api/"` |
-| `dhis2.username` |  | `"path"` |
-| `dhis2.password` |  | `"Path@123"` |
-| `dhis2.opensrp.location` |  | `false` |
-| `couchdb.server` |  | `"localhost"` |
-| `couchdb.port` |  | `5984` |
-| `couchdb.username` |  | `"rootuser"` |
-| `couchdb.password` |  | `"adminpass"` |
-| `couchdb.atomfeed_db_revision_limit` |  | `2` |
-| `rapidpro.url` |  | `"https://rapidpro-url/"` |
-| `rapidpro.token` |  | `"YOUR_AUTH_TOKEN"` |
-| `redis.host` |  | `"redis"` |
-| `redis.port` |  | `6379` |
-| `redis.password` |  | `""` |
-| `redis.pool_max_connections` |  | `25` |
-| `object_storage.access_key_id` |  | `"dummy"` |
-| `object_storage.secret_access_key` |  | `"dummy"` |
-| `object_storage.region` |  | `"dummy"` |
-| `object_storage.bucket_name` |  | `"dummy"` |
-| `object_storage.bucket_folder_path` |  | `"dummy"` |
-| `schedule.event_add_serverVersion_interval` |  | `180000` |
-| `schedule.view_add_serverVersion_interval` |  | `120000` |
-| `schedule.task_add_serverVersion_interval` |  | `120000` |
-| `schedule.location_add_serverVersion_interval` |  | `120000` |
-| `schedule.openmrs_sync_interval` |  | `300000` |
-| `schedule.openmrs_validate_interval` |  | `420000` |
-| `schedule.dhis2_sync_interval` |  | `600000` |
-| `schedule.plan_generate_cron` |  | `"0 0/5 * * * *"` |
-| `keycloak.configuration_endpoint` |  | `"{0}realms/{1}/.well-known/openid-configuration"` |
-| `keycloak.password_reset_endpoint` |  | `"{0}realms/{1}/account/credentials/password"` |
-| `keycloak.users_endpoint` |  | `"{0}/admin/realms/{1}/users"` |
-| `keycloak_json.realm` |  | `""` |
-| `keycloak_json.auth-server-url` |  | `"https://keycloak-url/auth/"` |
-| `keycloak_json.ssl-required` |  | `"external"` |
-| `keycloak_json.resource` |  | `""` |
-| `keycloak_json.credentials.secret` |  | `""` |
-| `keycloak_json.confidential-port` |  | `0` |
-| `rabbitmq.host` |  | `"localhost"` |
-| `rabbitmq.virtualhost` |  | `"/"` |
-| `rabbitmq.port` |  | `5672` |
-| `rabbitmq.username` |  | `""` |
-| `rabbitmq.password` |  | `""` |
-| `rabbitmq.exchange` |  | `"exchange"` |
-| `rabbitmq.queue` |  | `"task.queue"` |
-| `rabbitmq.routingkey` |  | `"rabbitmq.routingkey"` |
-| `rabbitmq.reply_timeout` |  | `60000` |
-| `rabbitmq.concurrent_consumers` |  | `1` |
-| `rabbitmq.max_concurrent_consumers` |  | `1` |
-| `spring_active_profiles` |  | `["postgres", "jedis", "oauth2"]` |
-| `oauth_profiles` | `(Array)` | `null` |
-| `tomcatRemoteIpValve.className` | | `"org.apache.catalina.valves.RemoteIpValve"` |
-| `tomcatRemoteIpValve.protocolHeader` |  | `"x-forwarded-proto"` |
-| `tomcatRemoteIpValve.proxiesHeader` |  | `"x-forwarded-by"` |
-| `tomcatRemoteIpValve.remoteIpHeader` |  | `"x-forwarded-for"` |
-| `hostOctetPortion` | `hostOctetPortion (4 < x > 0 )` | `2` |
-| `tomcatRemoteIpValve.internalProxies` | `dynamically populated if not specified, control the hostPortion by updating hostOctetPortion e.g for 2 is equivalent to ip/16`  | `nil` |
-| `useTomcatRemoteIpValve` |  | `false` |
-| `commonLabels` |  | `{}` |
-| `sentry.dsn` |  | `""` |
-| `sentry.environment` |  | `"staging"` |
-| `sentry.minimumEventLevel` |  | `"error"` |
-| `sentry.minimumBreadcrumbLevel` |  | `"info"` |
-| `sentry.tags` |  | `{}` |
-| `extraVolumeMounts` |  | `null` |
-| `extraVolumes` |  | `null` |
-| `multimediaPvc.enabled` |  | `false` |
-| `multimediaPvc.volumeMode` |  | `"Filesystem"` |
-| `multimediaPvc.storageClassName` |  | `null` |
-| `multimediaPvc.resources.requests.storage` |  | `"2Gi"` |
-| `multimediaPvc.accessModes` |  | `["ReadWriteOnce"]` |
-| `multimediaPvc.selector` |  | `{}` |
-| `health.endpoint.openmrs.connectionTimeout` |  | `null` |
-| `health.endpoint.openmrs.readTimeout` |  | `null` |
-| `health.endpoint.postgres.queryTimeout` |  | `null` |
-| `health.endpoint.keycloak.connectionTimeout` |  | `null` |
-| `health.endpoint.keycloak.readTimeout` |  | `null` |
-| `metrics.health_check_updater.cron` |  | `"0 0/1 * * * *"` |
-| `metrics.tags` |  | `null` |
-| `metrics.additional_ip_allowed` |  | `null` |
-| `metrics.include` |  | `"all"` |
-| `metrics.exclude` |  | `null` |
-| `metrics.permitAll` |  | `false` |
-| `env` |  | `""` |
-| `thread.pool.coreSize` |  | `50` |
-| `thread.pool.maxSize` |  | `100` |
-| `thread.pool.queueCapacity` |  | `250` |
-| `tomcatHostValves.ErrorReportValve.className` |  | `"org.apache.catalina.valves.ErrorReportValve"` |
-| `tomcatHostValves.ErrorReportValve.showReport` |  | `false` |
-| `tomcatHostValves.ErrorReportValve.showServerInfo` |  | `false` |
+| Parameter                                          | Description                                                                                                                     | Default                                                     |
+|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| `recreatePodsWhenConfigMapChange`                  | `If true will recreate pods when any of the config maps parameter change`                                                       | `true`                                                      |
+| `postgres.host`                                    | `url or ip to your postgres db`                                                                                                 | `"db"`                                                      |
+| `postgres.port`                                    |                                                                                                                                 | `5432`                                                      |
+| `postgres.username`                                |                                                                                                                                 | `"opensrp"`                                                 |
+| `postgres.password`                                |                                                                                                                                 | `"password"`                                                |
+| `postgres.database`                                |                                                                                                                                 | `"opensrp"`                                                 |
+| `time_zone`                                        |                                                                                                                                 | `"GMT+0:00"`                                                |
+| `livenessProbe.initialDelaySeconds`                |                                                                                                                                 | `120`                                                       |
+| `livenessProbe.httpGet.path`                       |                                                                                                                                 | `"/opensrp"`                                                |
+| `livenessProbe.httpGet.port`                       |                                                                                                                                 | `"http"`                                                    |
+| `livenessProbe.timeoutSeconds`                     |                                                                                                                                 | `5`                                                         |
+| `readinessProbe.initialDelaySeconds`               |                                                                                                                                 | `60`                                                        |
+| `readinessProbe.failureThreshold`                  |                                                                                                                                 | `10`                                                        |
+| `readinessProbe.timeoutSeconds`                    |                                                                                                                                 | `10`                                                        |
+| `readinessProbe.httpGet.path`                      |                                                                                                                                 | `"/opensrp/health"`                                         |
+| `readinessProbe.httpGet.port`                      |                                                                                                                                 | `"http"`                                                    |
+| `opensrp.sms_can_be_sent`                          |                                                                                                                                 | `false`                                                     |
+| `opensrp.number_of_audit_messages`                 |                                                                                                                                 | `1000`                                                      |
+| `opensrp.use_opensrp_team_module`                  |                                                                                                                                 | `false`                                                     |
+| `opensrp.plan_evaluation_enabled`                  |                                                                                                                                 | `false`                                                     |
+| `opensrp.multimedia_file_manager`                  |                                                                                                                                 | `"S3MultimediaFileManager"`                                 |
+| `opensrp.multimedia_allowed_file_types`            |                                                                                                                                 | `"application/octet-stream,image/jpeg,image/gif,image/png"` |
+| `opensrp.file_max_upload_size`                     |                                                                                                                                 | `"20971520"`                                                |
+| `opensrp.cors_allowed_source`                      |                                                                                                                                 | `null`                                                      |
+| `opensrp.cors_max_age`                             |                                                                                                                                 | `60`                                                        |
+| `opensrp.sync_search_missing_client`               |                                                                                                                                 | `false`                                                     |
+| `opensrp.authencation_cache_ttl`                   |                                                                                                                                 | `120`                                                       |
+| `opensrp.config_global_id`                         |                                                                                                                                 | `"OPENSRP_ID"`                                              |
+| `openmrs.url`                                      |                                                                                                                                 | `"http://localhost:8080/openmrs/"`                          |
+| `openmrs.username`                                 |                                                                                                                                 | `"admin"`                                                   |
+| `openmrs.password`                                 |                                                                                                                                 | `"Admin123"`                                                |
+| `openmrs.idgen_url`                                |                                                                                                                                 | `"/module/idgen/exportIdentifiers.form"`                    |
+| `openmrs.idgen_initial_batchsize`                  |                                                                                                                                 | `300000`                                                    |
+| `openmrs.idgen_batchsize`                          |                                                                                                                                 | `100`                                                       |
+| `openmrs.idgen_idsource`                           |                                                                                                                                 | `1`                                                         |
+| `openmrs.version`                                  |                                                                                                                                 | `"2.1.3"`                                                   |
+| `openmrs.test_make_rest_call`                      |                                                                                                                                 | `false`                                                     |
+| `openmrs.scheduletracker_syncer_interval_min`      |                                                                                                                                 | `2`                                                         |
+| `dhis2.url`                                        |                                                                                                                                 | `"http://dhis2-url/api/"`                                   |
+| `dhis2.username`                                   |                                                                                                                                 | `"path"`                                                    |
+| `dhis2.password`                                   |                                                                                                                                 | `"Path@123"`                                                |
+| `dhis2.opensrp.location`                           |                                                                                                                                 | `false`                                                     |
+| `couchdb.server`                                   |                                                                                                                                 | `"localhost"`                                               |
+| `couchdb.port`                                     |                                                                                                                                 | `5984`                                                      |
+| `couchdb.username`                                 |                                                                                                                                 | `"rootuser"`                                                |
+| `couchdb.password`                                 |                                                                                                                                 | `"adminpass"`                                               |
+| `couchdb.atomfeed_db_revision_limit`               |                                                                                                                                 | `2`                                                         |
+| `rapidpro.url`                                     |                                                                                                                                 | `"https://rapidpro-url/"`                                   |
+| `rapidpro.token`                                   |                                                                                                                                 | `"YOUR_AUTH_TOKEN"`                                         |
+| `redis.host`                                       |                                                                                                                                 | `"redis"`                                                   |
+| `redis.port`                                       |                                                                                                                                 | `6379`                                                      |
+| `redis.password`                                   |                                                                                                                                 | `""`                                                        |
+| `redis.pool_max_connections`                       |                                                                                                                                 | `25`                                                        |
+| `redis.sentinels`                                  | List of sentinel urls                                                                                                           | ``                                                          |
+| `redis.architecture`                               | Can be standalone or sentinel.                                                                                                  | `standalone`                                                |
+| `redis.master`                                     | Used with sentinel to specify the redis master to monitor                                                                       | `mymaster`                                                  |
+| `object_storage.access_key_id`                     |                                                                                                                                 | `"dummy"`                                                   |
+| `object_storage.secret_access_key`                 |                                                                                                                                 | `"dummy"`                                                   |
+| `object_storage.region`                            |                                                                                                                                 | `"dummy"`                                                   |
+| `object_storage.bucket_name`                       |                                                                                                                                 | `"dummy"`                                                   |
+| `object_storage.bucket_folder_path`                |                                                                                                                                 | `"dummy"`                                                   |
+| `schedule.event_add_serverVersion_interval`        |                                                                                                                                 | `180000`                                                    |
+| `schedule.view_add_serverVersion_interval`         |                                                                                                                                 | `120000`                                                    |
+| `schedule.task_add_serverVersion_interval`         |                                                                                                                                 | `120000`                                                    |
+| `schedule.location_add_serverVersion_interval`     |                                                                                                                                 | `120000`                                                    |
+| `schedule.openmrs_sync_interval`                   |                                                                                                                                 | `300000`                                                    |
+| `schedule.openmrs_validate_interval`               |                                                                                                                                 | `420000`                                                    |
+| `schedule.dhis2_sync_interval`                     |                                                                                                                                 | `600000`                                                    |
+| `schedule.plan_generate_cron`                      |                                                                                                                                 | `"0 0/5 * * * *"`                                           |
+| `keycloak.configuration_endpoint`                  |                                                                                                                                 | `"{0}realms/{1}/.well-known/openid-configuration"`          |
+| `keycloak.password_reset_endpoint`                 |                                                                                                                                 | `"{0}realms/{1}/account/credentials/password"`              |
+| `keycloak.users_endpoint`                          |                                                                                                                                 | `"{0}/admin/realms/{1}/users"`                              |
+| `keycloak_json.realm`                              |                                                                                                                                 | `""`                                                        |
+| `keycloak_json.auth-server-url`                    |                                                                                                                                 | `"https://keycloak-url/auth/"`                              |
+| `keycloak_json.ssl-required`                       |                                                                                                                                 | `"external"`                                                |
+| `keycloak_json.resource`                           |                                                                                                                                 | `""`                                                        |
+| `keycloak_json.credentials.secret`                 |                                                                                                                                 | `""`                                                        |
+| `keycloak_json.confidential-port`                  |                                                                                                                                 | `0`                                                         |
+| `rabbitmq.host`                                    |                                                                                                                                 | `"localhost"`                                               |
+| `rabbitmq.virtualhost`                             |                                                                                                                                 | `"/"`                                                       |
+| `rabbitmq.port`                                    |                                                                                                                                 | `5672`                                                      |
+| `rabbitmq.username`                                |                                                                                                                                 | `""`                                                        |
+| `rabbitmq.password`                                |                                                                                                                                 | `""`                                                        |
+| `rabbitmq.exchange`                                |                                                                                                                                 | `"exchange"`                                                |
+| `rabbitmq.queue`                                   |                                                                                                                                 | `"task.queue"`                                              |
+| `rabbitmq.routingkey`                              |                                                                                                                                 | `"rabbitmq.routingkey"`                                     |
+| `rabbitmq.reply_timeout`                           |                                                                                                                                 | `60000`                                                     |
+| `rabbitmq.concurrent_consumers`                    |                                                                                                                                 | `1`                                                         |
+| `rabbitmq.max_concurrent_consumers`                |                                                                                                                                 | `1`                                                         |
+| `spring_active_profiles`                           |                                                                                                                                 | `["postgres", "jedis", "oauth2"]`                           |
+| `oauth_profiles`                                   | `(Array)`                                                                                                                       | `null`                                                      |
+| `tomcatRemoteIpValve.className`                    |                                                                                                                                 | `"org.apache.catalina.valves.RemoteIpValve"`                |
+| `tomcatRemoteIpValve.protocolHeader`               |                                                                                                                                 | `"x-forwarded-proto"`                                       |
+| `tomcatRemoteIpValve.proxiesHeader`                |                                                                                                                                 | `"x-forwarded-by"`                                          |
+| `tomcatRemoteIpValve.remoteIpHeader`               |                                                                                                                                 | `"x-forwarded-for"`                                         |
+| `hostOctetPortion`                                 | `hostOctetPortion (4 < x > 0 )`                                                                                                 | `2`                                                         |
+| `tomcatRemoteIpValve.internalProxies`              | `dynamically populated if not specified, control the hostPortion by updating hostOctetPortion e.g for 2 is equivalent to ip/16` | `nil`                                                       |
+| `useTomcatRemoteIpValve`                           |                                                                                                                                 | `false`                                                     |
+| `commonLabels`                                     |                                                                                                                                 | `{}`                                                        |
+| `sentry.dsn`                                       |                                                                                                                                 | `""`                                                        |
+| `sentry.environment`                               |                                                                                                                                 | `"staging"`                                                 |
+| `sentry.minimumEventLevel`                         |                                                                                                                                 | `"error"`                                                   |
+| `sentry.minimumBreadcrumbLevel`                    |                                                                                                                                 | `"info"`                                                    |
+| `sentry.tags`                                      |                                                                                                                                 | `{}`                                                        |
+| `extraVolumeMounts`                                |                                                                                                                                 | `null`                                                      |
+| `extraVolumes`                                     |                                                                                                                                 | `null`                                                      |
+| `multimediaPvc.enabled`                            |                                                                                                                                 | `false`                                                     |
+| `multimediaPvc.volumeMode`                         |                                                                                                                                 | `"Filesystem"`                                              |
+| `multimediaPvc.storageClassName`                   |                                                                                                                                 | `null`                                                      |
+| `multimediaPvc.resources.requests.storage`         |                                                                                                                                 | `"2Gi"`                                                     |
+| `multimediaPvc.accessModes`                        |                                                                                                                                 | `["ReadWriteOnce"]`                                         |
+| `multimediaPvc.selector`                           |                                                                                                                                 | `{}`                                                        |
+| `health.endpoint.openmrs.connectionTimeout`        |                                                                                                                                 | `null`                                                      |
+| `health.endpoint.openmrs.readTimeout`              |                                                                                                                                 | `null`                                                      |
+| `health.endpoint.postgres.queryTimeout`            |                                                                                                                                 | `null`                                                      |
+| `health.endpoint.keycloak.connectionTimeout`       |                                                                                                                                 | `null`                                                      |
+| `health.endpoint.keycloak.readTimeout`             |                                                                                                                                 | `null`                                                      |
+| `metrics.health_check_updater.cron`                |                                                                                                                                 | `"0 0/1 * * * *"`                                           |
+| `metrics.tags`                                     |                                                                                                                                 | `null`                                                      |
+| `metrics.additional_ip_allowed`                    |                                                                                                                                 | `null`                                                      |
+| `metrics.include`                                  |                                                                                                                                 | `"all"`                                                     |
+| `metrics.exclude`                                  |                                                                                                                                 | `null`                                                      |
+| `metrics.permitAll`                                |                                                                                                                                 | `false`                                                     |
+| `env`                                              |                                                                                                                                 | `""`                                                        |
+| `thread.pool.coreSize`                             |                                                                                                                                 | `50`                                                        |
+| `thread.pool.maxSize`                              |                                                                                                                                 | `100`                                                       |
+| `thread.pool.queueCapacity`                        |                                                                                                                                 | `250`                                                       |
+| `tomcatHostValves.ErrorReportValve.className`      |                                                                                                                                 | `"org.apache.catalina.valves.ErrorReportValve"`             |
+| `tomcatHostValves.ErrorReportValve.showReport`     |                                                                                                                                 | `false`                                                     |
+| `tomcatHostValves.ErrorReportValve.showServerInfo` |                                                                                                                                 | `false`                                                     |
 
 ## Multimedia Storage
 By default, multimedia (patient images, csv import files, e.t.c) collected on the opensrp server are stored on an S3 bucket. The S3 credentials have the following configurations:
@@ -385,3 +388,17 @@ Read more [here](https://github.com/opensrp/opensrp-server-web/tree/master#metri
 
 ## From 0.7.0
 Mybatis init-containers, volumes and configurations have been removed. Mybatis runtime configuration has been added from v2.10.x, v3.2.x, v2.1.7x and meaning migrations will run when during application start up. 
+
+## From 0.7.2
+Redis sentinel support has been added. Use the following configuration snippet to get started:
+````yaml
+redis:
+  password: ""
+  pool_max_connections: 25
+  sentinels:
+    - host: "localhost"
+      port: 26379
+  master: "mymaster"
+  architecture: "sentinel"
+````
+Read more [here](https://github.com/opensrp/opensrp-server-web#redis-for-high-availability).

@@ -126,3 +126,12 @@ Build tomcat host valves
 />
 {{- end }}
 {{- end }}
+
+{{/*
+Build redis sentinels string
+*/}}
+{{- define "opensrp-server-web.redisSentinels"  -}}
+{{- range  $sentinel := .Values.redis.sentinels }}
+{{- $sentinel.host }}:{{ $sentinel.port }},
+{{- end }}
+{{- end }}
