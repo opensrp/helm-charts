@@ -72,6 +72,7 @@ The following table lists the configurable parameters of the Hapi-fhir chart and
 | `pdb.enabled` | `Whether to enable pod disruption budget` | `false` |
 | `pdb.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
 | `pdb.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
+| `env` |  | `null` |
 
 ## Sentry Configuration
 Sentry logging has been added to opensrp/hapi-fhir-jpaserver-starter [v5.8.0](https://github.com/opensrp/hapi-fhir-jpaserver-starter/releases/tag/v5.8.0-SNAPSHOT). To enable it update the following configurations:

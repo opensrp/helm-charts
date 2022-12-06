@@ -105,7 +105,7 @@ readinessProbe:
     port: http
   initialDelaySeconds: 60
 
-# Replaces the the existing application configuration file
+# Replaces the existing application configuration file
 # Reference file: https://github.com/hapifhir/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml
 # or https://github.com/opensrp/hapi-fhir-jpaserver-starter/blob/master/src/main/resources/application.yaml
 # Uses tpl function hence it can read values from references
@@ -164,3 +164,7 @@ pdb:
   enabled: false
   minAvailable: ""
   maxUnavailable: 1
+
+env:
+#   - name: JAVA_OPTS
+#     value: "-XX:+UseStringDeduplication -XX:+UseG1GC"
