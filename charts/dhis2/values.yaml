@@ -130,3 +130,5 @@ pdb:
   enabled: false
   minAvailable: ""
   maxUnavailable: 1
+
+initResources: {}

@@ -35,6 +35,8 @@ spec:
               subPath: dhis2-conf
             - name: dhis-web-volume
               mountPath: /DHIS2_home
+          resources:
+            {{- toYaml .Values.initResources | nindent 12 }}
       volumes:
         - name: dhis-config-map
           configMap:
