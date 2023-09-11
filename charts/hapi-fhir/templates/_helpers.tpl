@@ -69,7 +69,7 @@ Populate the pod annotations
 */}}
 {{- define "hapi-fhir.podAnnotations" -}}
 {{- range $index, $element:=.Values.podAnnotations }}
-{{ $index }}: {{ $element }}
+{{ $index }}: {{ $element | quote }}
 {{- end }}
 {{- if .Values.recreatePodsWhenConfigMapChange }}
 checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
