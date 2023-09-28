@@ -183,7 +183,9 @@ express:
     img-src:
       - "'self'"
       - "https://github.com/opensrp/"
+      - "https://github.com/onaio/fhir-web/"
       - "https://*.githubusercontent.com/opensrp/"
+      - "https://*.githubusercontent.com/onaio/fhir-web/"
     connect-src:
       - "'self'"
       - "{{ if .Values.sentry.domain }}{{ .Values.sentry.domain }}{{ end }}"
