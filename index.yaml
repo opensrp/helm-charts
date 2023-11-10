@@ -3,6 +3,20 @@ entries:
   dhis2:
   - apiVersion: v2
     appVersion: 2.35.3
+    created: "2023-11-10T09:05:22.398972542Z"
+    description: DHIS 2 is a flexible information system for data capture, management,
+      validation, analytics and visualization. https://github.com/dhis2/dhis2-core
+    digest: 350d2a161f39ef249c20e3d660b7183b6403f2265bb528e8f47ea21c88d95a91
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: dhis2
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/dhis2-0.4.1/dhis2-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 2.35.3
     created: "2023-11-10T08:36:48.51243142Z"
     description: DHIS 2 is a flexible information system for data capture, management,
       validation, analytics and visualization. https://github.com/dhis2/dhis2-core
@@ -1767,4 +1781,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-10T08:36:48.513070298Z"
+generated: "2023-11-10T09:05:22.399408363Z"
