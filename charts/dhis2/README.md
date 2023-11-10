@@ -76,3 +76,4 @@ The following table lists the configurable parameters of the Dhis2 chart and the
 | `pdb.minAvailable` | `Number of pods that must be available during a disruption. Can be an absolute number or a percentage` | `1` |
 | `pdb.maxUnavailable` | `Number of pods that can be unavailable during a disruption. Can be an absolute number or a percentage` | `""` |
 | `initResources` |  | `{}` |
+| `env` |  | `null` |
