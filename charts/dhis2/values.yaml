@@ -136,5 +136,5 @@ initResources: {}
 dhis2Home: "/opt/dhis2"
 
 env:
-  - name: DHIS2_HOME
-    value: "{{ .Values.dhis2Home }}"
+#  - name: DHIS2_HOME
+#    value: "{{ .Values.dhis2Home }}"
