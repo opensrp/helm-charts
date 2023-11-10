@@ -28,13 +28,13 @@ spec:
       initContainers:
         - name: prepopulate-dhis-web-volume
           image: busybox
-          command: ['sh', '-c', 'cp /config/dhis.conf /opt/dhis2']
+          command: ['sh', '-c', 'cp /config/dhis.conf {{ .Values.dhis2Home }}']
           volumeMounts:
             - name: dhis-config-map
               mountPath: /config/dhis.conf
               subPath: dhis2-conf
             - name: dhis-web-volume
-              mountPath: /opt/dhis2
+              mountPath: {{ .Values.dhis2Home }}
           resources:
             {{- toYaml .Values.initResources | nindent 12 }}
       volumes:
@@ -51,7 +51,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: dhis-web-volume
-              mountPath: /opt/dhis2
+              mountPath: {{ .Values.dhis2Home }}
           {{- if .Values.env }}
           env:
             {{- tpl (toYaml .Values.env) .  | nindent 12 }}
