@@ -132,3 +132,7 @@ pdb:
   maxUnavailable: 1
 
 initResources: {}
+
+env:
+#  - name: DHIS2_HOME
+#    value: /DHIS2_home
