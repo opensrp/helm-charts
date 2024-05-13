@@ -14,6 +14,7 @@ This is the OpenSRP community's official repository for [Helm](https://helm.sh) 
 8. [OpenHIM Mediator Mapping](https://github.com/jembi/openhim-mediator-mapping)
 9. OpenHIE Helper Tools: FHIR Extractor, OpenCR, MCSD Mock Service
 10. [DHIS2 FHIR Adapter](https://github.com/opensrp/dhis2-fhir-adapter)
+11. [FHIR Gateway](https://github.com/onaio/fhir-gateway-extension)
 
 ## Usage
 
