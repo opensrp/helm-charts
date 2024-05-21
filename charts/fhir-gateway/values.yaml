@@ -4,7 +4,7 @@ image:
   repository: onaio/fhir-gateway-plugin
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1.0.12"
+  tag: "v1.0.13"
 
 imagePullSecrets: []
 nameOverride: ""
