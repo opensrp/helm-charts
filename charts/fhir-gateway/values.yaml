@@ -144,6 +144,7 @@ applicationConfig:
 #  spring:
 #  sentry:
 #    dsn:
+#    debug: false
 #    release:  "{{ .Values.image.tag }}"
 #    environment: staging
 #    tags:
