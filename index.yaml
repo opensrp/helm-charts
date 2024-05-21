@@ -233,6 +233,23 @@ entries:
     urls:
     - https://github.com/opensrp/helm-charts/releases/download/fhir-extractor-0.1.0/fhir-extractor-0.1.0.tgz
     version: 0.1.0
+  fhir-gateway:
+  - apiVersion: v2
+    appVersion: v1.0.13
+    created: "2024-05-21T07:59:22.638455673Z"
+    description: 'This is a simple access-control proxy that sits in front of a [FHIR](https://www.hl7.org/fhir/)
+      store (e.g., a [HAPI FHIR](https://hapifhir.io/) server, [GCP FHIR store](https://cloud.google.com/healthcare-api/docs/concepts/fhir),
+      etc.) and controls access to FHIR resources. '
+    digest: 06464df4b6a6b88442c8479295b95414eaa5fc58567d9073086cb1a3980c0dce
+    icon: https://avatars2.githubusercontent.com/u/7898027?s=200&v=4
+    maintainers:
+    - email: techops@ona.io
+      name: opensrp
+    name: fhir-gateway
+    type: application
+    urls:
+    - https://github.com/opensrp/helm-charts/releases/download/fhir-gateway-0.1.0/fhir-gateway-0.1.0.tgz
+    version: 0.1.0
   hapi-fhir:
   - apiVersion: v2
     appVersion: v6.1.7-SNAPSHOT
@@ -1781,4 +1798,4 @@ entries:
     urls:
     - https://github.com/OpenSRP/helm-charts/releases/download/opensrp-web-0.1.0/opensrp-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-10T09:05:22.399408363Z"
+generated: "2024-05-21T07:59:22.638927291Z"
