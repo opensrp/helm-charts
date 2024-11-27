@@ -102,6 +102,9 @@ containerEnvironmentVariables:
   EXPRESS_CONTENT_SECURITY_POLICY_CONFIG: "{{ (tpl (.Values.express.cspHeaderConfig | toJson) .) }}"
   EXPRESS_OPENSRP_SCOPES: "openid,profile"
   NODE_ENV: "{{ .Values.express.nodeEnv }}"
+  EXPRESS_TEMP_CSV_FILE_STORAGE: "/tmp/csvUploads"
+  EXPRESS_PYTHON_INTERPRETER_PATH: "/usr/local/bin/python"
+  EXPRESS_BULK_UPLOAD_REDIS_QUEUE: null
 
 # The react app environment variables
 reactEnvironmentVariables:
@@ -125,7 +128,7 @@ reactEnvironmentVariables:
   REACT_APP_KEYCLOAK_LOGOUT_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/logout"
   REACT_APP_KEYCLOAK_USERS_PAGE_SIZE: "20"
   REACT_APP_LANGUAGE_CODE: "en"
-  REACT_APP_MAIN_LOGO_SRC: "https://github.com/onaio/fhir-web/raw/{{ .Values.image.tag }}/app/src/assets/images/fhir-web-logo.png"
+  REACT_APP_MAIN_LOGO_SRC: "https://raw.githubusercontent.com/onaio/fhir-web/{{ .Values.image.tag }}/app/src/assets/images/opensrp2-logo.png"
   REACT_APP_OPENSRP_ACCESS_TOKEN_URL: "https://{{ .Values.sharedVars.keycloakUrl }}/auth/realms/{{ .Values.sharedVars.keycloakRealm }}/protocol/openid-connect/token"
   REACT_APP_OPENSRP_API_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/"
   REACT_APP_OPENSRP_API_V2_BASE_URL: "https://{{ .Values.sharedVars.opensrpServer }}/opensrp/rest/v2/"
@@ -138,24 +141,24 @@ reactEnvironmentVariables:
   REACT_APP_OPENSRP_USER_URL: "{{ tpl .Values.sharedVars.userDetailsUrl . }}"
   REACT_APP_OPENSRP_WEB_VERSION: "{{ .Values.image.tag }}"
   REACT_APP_PAGINATION_SIZE: "1000"
-  REACT_APP_PROJECT_LANGUAGE_CODE: "core"
-  REACT_APP_SUPPORTED_LANGUAGES: "en"
-  REACT_APP_USER_FORM_HIDDEN_FIELDS: ""
-  REACT_APP_USER_FORM_RENDER_FIELDS: ""
+  REACT_APP_PROJECT_CODE: "core"
+  REACT_APP_SUPPORTED_LANGUAGES: "en,fr"
   REACT_APP_WEBSITE_NAME: "opensrp-web"
   SKIP_PREFLIGHT_CHECK: "true"
   GENERATE_SOURCEMAP: "false"
   INLINE_RUNTIME_CHUNK: "false"
   IMAGE_INLINE_SIZE_LIMIT: "0"
   REACT_APP_ENABLE_FHIR_HEALTHCARE_SERVICES: "false"
-  REACT_APP_ENABLE_USER_MANAGEMENT: "false"
   REACT_APP_ENABLE_FHIR_USER_MANAGEMENT: "false"
   REACT_APP_FHIR_PATIENT_BUNDLE_SIZE: "1000"
   REACT_APP_ENABLE_FHIR_LOCATIONS: "false"
   REACT_APP_FHIR_ROOT_LOCATION_ID: ""
   REACT_APP_ENABLE_FHIR_GROUP: "false"
   REACT_APP_ENABLE_FHIR_COMMODITY: "false"
-  REACT_APP_COMMODITIES_LIST_RESOURCE_ID: ""
+  REACT_APP_COMMODITIES_LIST_RESOURCE_ID: null
+  REACT_APP_FHIR_INVENTORY_LIST_ID: null
+  REACT_APP_PRACTITIONER_TO_ORG_ASSIGNMENT_STRATEGY: "ONE_TO_MANY"
+  REACT_APP_COLLAPSED_LOGO_SRC: "https://raw.githubusercontent.com/onaio/fhir-web/{{ .Values.image.tag }}/app/src/assets/images/opensrp2-logo-small.png"
 
 sharedVars:
   keycloakUrl: ""
