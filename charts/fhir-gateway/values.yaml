@@ -140,7 +140,8 @@ pdb:
 # Add the spring configuration below check https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.properties-and-configuration.
 applicationConfig:
 #  server:
-#    max-http-header-size: 40KB
+#    max-http-header-size: 40KB  #Use this for Gateway versions 2.0.8 and below
+#    max-http-request-header-size: 40KB  #Use this for Gateway versions 2.1.0 and above
 #  spring:
 #  sentry:
 #    dsn:
